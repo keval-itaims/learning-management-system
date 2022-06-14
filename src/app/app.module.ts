@@ -10,6 +10,7 @@ import { HomeComponent } from './components/homepage/home/home.component';
 import { TestimonialsComponent } from './components/homepage/testimonials/testimonials.component';
 import { InstructorsComponent } from './components/homepage/instructors/instructors.component';
 import { HeroComponent } from './components/homepage/hero/hero.component';
+import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { HeroComponent } from './components/homepage/hero/hero.component';
     TestimonialsComponent,
     InstructorsComponent,
     HeroComponent,
+    AdminhomepageComponent,
 ],
   imports: [
     BrowserModule,
