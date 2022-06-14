@@ -11,6 +11,7 @@ import { TestimonialsComponent } from './components/homepage/testimonials/testim
 import { InstructorsComponent } from './components/homepage/instructors/instructors.component';
 import { HeroComponent } from './components/homepage/hero/hero.component';
 import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { AdminhomepageComponent } from './components/admin/adminhomepage/adminho
 ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
