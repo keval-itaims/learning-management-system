@@ -13,6 +13,13 @@ import { HeroComponent } from './components/homepage/hero/hero.component';
 import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { AdminsidebarComponent } from './components/admin/adminsidebar/adminsidebar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +31,20 @@ import { MaterialModule } from './material/material.module';
     InstructorsComponent,
     HeroComponent,
     AdminhomepageComponent,
+    AdminsidebarComponent,
 
 ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

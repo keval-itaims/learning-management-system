@@ -1,0 +1,86 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="sidenav-header">
+      <img
+        class="sidenav-user-image"
+        src="../../../../assets/images/user.jpg"
+        alt=""
+      />
+      <h2>Instructors Name</h2>
+    </mat-toolbar>
+
+    <mat-nav-list class="sidenav-list">
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >home</mat-icon
+        >Dashboard</a
+      >
+
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >message</mat-icon
+        >Message</a
+      >
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >school</mat-icon
+        >My Courses</a
+      >
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >bar_chart</mat-icon
+        >Earning</a
+      >
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >group</mat-icon
+        >Student</a
+      >
+      <a mat-list-item href="#"
+        ><mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          style="margin-right: 10px"
+          >logout</mat-icon
+        >Logout</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="nav-logo">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img src="../../../../assets/images/logo.png" alt="" />
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
