@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/homepage/navbar/navbar.component';
 import { FooterComponent } from './components/homepage/footer/footer.component';
-import { AdminComponent } from './components/adminpage/admin/admin.component';
+// import { AdminComponent } from './components/adminpage/admin/admin.component';
 import { HomeComponent } from './components/homepage/home/home.component';
 import { TestimonialsComponent } from './components/homepage/testimonials/testimonials.component';
 import { InstructorsComponent } from './components/homepage/instructors/instructors.component';
@@ -16,12 +16,15 @@ import { AboutComponent } from './components/homepage/about/about.component';
 import { ContactComponent } from './components/homepage/contact/contact.component';
 import { ErrorComponent } from './components/homepage/error/error.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    AdminComponent,
+    // AdminComponent,
     HomeComponent,
     TestimonialsComponent,
     InstructorsComponent,
@@ -31,11 +34,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AboutComponent,
     ContactComponent,
     ErrorComponent,
+    AdminhomepageComponent,
 ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
