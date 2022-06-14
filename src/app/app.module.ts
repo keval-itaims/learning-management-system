@@ -9,6 +9,7 @@ import { AdminComponent } from './components/adminpage/admin/admin.component';
 import { HomeComponent } from './components/homepage/home/home.component';
 import { TestimonialsComponent } from './components/homepage/testimonials/testimonials.component';
 import { InstructorsComponent } from './components/homepage/instructors/instructors.component';
+import { HeroComponent } from './components/homepage/hero/hero.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { InstructorsComponent } from './components/homepage/instructors/instruct
     HomeComponent,
     TestimonialsComponent,
     InstructorsComponent,
+    HeroComponent,
 ],
   imports: [
     BrowserModule,
