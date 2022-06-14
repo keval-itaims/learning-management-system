@@ -12,10 +12,10 @@ const routes: Routes = [
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},
+    {path:'about', component:AboutComponent},
+    {path:'contact', component:ContactComponent},
+    {path:'**', component:ErrorComponent},
   ]},
-  {path:'about', component:AboutComponent},
-  {path:'contact', component:ContactComponent},
-  {path:'**', component:ErrorComponent},
   {path:"admin",component:AdminhomepageComponent},
 ];
 

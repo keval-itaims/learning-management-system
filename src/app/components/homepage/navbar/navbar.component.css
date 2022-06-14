@@ -1,0 +1,15 @@
+p {
+    color: var(--blue);
+    margin: 0;
+    margin-right: .5rem;
+}
+
+input,
+.search {
+    background-color: #f5f8fb;
+}
+
+.active,
+.search-icon {
+    color: var(--blue);
+}
