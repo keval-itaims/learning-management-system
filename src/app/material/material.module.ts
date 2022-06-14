@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 const MaterialComponents =[
-  MatButtonModule
+  MatButtonModule,
+  MatSidenavModule
 ]
 @NgModule({
   declarations: [],
