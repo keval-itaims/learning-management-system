@@ -28,6 +28,7 @@ import { HomepageComponent } from './components/homepage/homepage/homepage.compo
 import { MainComponent } from './components/homepage/main/main.component';
 import { TestcoursesComponent } from './components/homepage/testcourses/testcourses.component';
 import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { TestcourseComponent } from './components/homepage/testcourses/testcours
     MainComponent,
     TestcoursesComponent,
     TestcourseComponent,
+    DashboardComponent,
 ],
   imports: [
     BrowserModule,

@@ -34,14 +34,22 @@
           >message</mat-icon
         >Message</a
       >
-      <a mat-list-item href="#"
+      <a mat-list-item
         ><mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
           style="margin-right: 10px"
           >school</mat-icon
-        >My Courses</a
-      >
+        >
+        <div class="flex justify-center">
+          <mat-label>Mycourses</mat-label>
+          <mat-select>
+            <mat-option> Add course </mat-option>
+            <mat-option> Edit course </mat-option>
+          </mat-select>
+        </div>
+      </a>
+
       <a mat-list-item href="#"
         ><mat-icon
           aria-hidden="false"
@@ -79,8 +87,8 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img src="../../../../assets/images/logo.png" alt="" />
+      <img class="m-auto" src="../../../../assets/images/logo.png" alt="" />
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <app-dashboard></app-dashboard>
   </mat-sidenav-content>
 </mat-sidenav-container>
