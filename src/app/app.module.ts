@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/homepage/navbar/navbar.component';
 import { FooterComponent } from './components/homepage/footer/footer.component';
-// import { AdminComponent } from './components/adminpage/admin/admin.component';
-import { HomeComponent } from './components/homepage/home/home.component';
 import { TestimonialsComponent } from './components/homepage/testimonials/testimonials.component';
 import { InstructorsComponent } from './components/homepage/instructors/instructors.component';
 import { HeroComponent } from './components/homepage/hero/hero.component';
@@ -26,13 +24,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { HomepageComponent } from './components/homepage/homepage/homepage.component';
+import { MainComponent } from './components/homepage/main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    // AdminComponent,
-    HomeComponent,
     TestimonialsComponent,
     InstructorsComponent,
     HeroComponent,
@@ -44,6 +42,8 @@ import { MatListModule } from '@angular/material/list';
     AdminhomepageComponent,
     AdminsidebarComponent,
 
+    HomepageComponent,
+    MainComponent,
 ],
   imports: [
     BrowserModule,
