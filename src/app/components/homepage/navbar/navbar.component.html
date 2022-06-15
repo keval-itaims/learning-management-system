@@ -1,1 +1,22 @@
-<p>navbar works!</p>
+<nav class="container justify-between p-8 flex items-center mx-auto">
+  <div class="flex items-center gap-2">
+    <img src="..\assets\images\logo.png" alt="Logo" width="200px" />
+    <p class="p-3 text-blue-600">
+      All Categories
+      <fa-icon [icon]="faAngleDown"></fa-icon>
+    </p>
+    <input type="search" name="course" class="p-3 text-lg" />
+    <fa-icon [icon]="faGlass"></fa-icon>
+  </div>
+  <div class="flex gap-4">
+    <fa-icon [icon]="faBars" class="text-3xl cursor-pointer lg:hidden">
+    </fa-icon>
+    <ul class="hidden lg:flex gap-8">
+      <li routerLink="home" routerLinkActive="active">Home</li>
+      <li routerLink="corses" routerLinkActive="active">Courses</li>
+      <li routerLink="about" routerLinkActive="active">About</li>
+      <li routerLink="contact" routerLinkActive="active">Contact Us</li>
+    </ul>
+    <fa-icon [icon]="faUser" class="text-2xl cursor-pointer"></fa-icon>
+  </div>
+</nav>
