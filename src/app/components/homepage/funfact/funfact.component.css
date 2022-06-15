@@ -1,0 +1,7 @@
+p {
+    margin: 0;
+}
+
+section {
+    clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+}

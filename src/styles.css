@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -52,3 +48,7 @@ html,
 body {
     height: 100%;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
