@@ -41,7 +41,6 @@ import { MainComponent } from './components/homepage/main/main.component';
     ErrorComponent,
     AdminhomepageComponent,
     AdminsidebarComponent,
-
     HomepageComponent,
     MainComponent,
 ],
