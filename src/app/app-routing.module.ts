@@ -15,8 +15,9 @@ const routes: Routes = [
     {path: 'main', component:MainComponent},
     {path:'about', component:AboutComponent},
     {path:'contact', component:ContactComponent},
-    {path:'**', component:ErrorComponent},
+    {path:'error', component:ErrorComponent},
   ]},
+  {path:'**', redirectTo:'homepage/error'},
 ];
 
 @NgModule({
