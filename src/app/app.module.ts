@@ -26,6 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomepageComponent } from './components/homepage/homepage/homepage.component';
 import { MainComponent } from './components/homepage/main/main.component';
+import { TestcoursesComponent } from './components/homepage/testcourses/testcourses.component';
+import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { MainComponent } from './components/homepage/main/main.component';
     AdminsidebarComponent,
     HomepageComponent,
     MainComponent,
+    TestcoursesComponent,
+    TestcourseComponent,
 ],
   imports: [
     BrowserModule,

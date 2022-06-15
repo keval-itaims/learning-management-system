@@ -13,3 +13,7 @@ input,
 .search-icon {
     color: var(--blue);
 }
+
+[mat-menu-item] {
+    font-size: 1.25rem;
+}

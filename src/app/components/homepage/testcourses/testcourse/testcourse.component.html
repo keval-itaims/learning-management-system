@@ -1,0 +1,26 @@
+<article class="relative bg-white rounded-2xl">
+  <img src="{{ course.image }}" alt="course" class="rounded-t-2xl" />
+  <!-- <div class="top-1/2">${{ course.price }}</div> -->
+  <div class="p-4">
+    <p class="cursor-pointer hover:text-blue-600">
+      {{ course.title | titlecase }}
+    </p>
+    <img
+      src="{{ course.instructor_image }}"
+      alt="instructor"
+      width="45px"
+      class="rounded-full inline-block mr-3"
+    />
+    <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
+    <div class="flex justify-between mt-3">
+      <div>
+        <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
+        >{{ course.duration }} weeks
+      </div>
+      <div>
+        {{ course.rating
+        }}<fa-icon [icon]="faStar" class="text-yellow-400"></fa-icon>
+      </div>
+    </div>
+  </div>
+</article>
