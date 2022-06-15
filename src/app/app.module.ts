@@ -48,7 +48,7 @@ import { MainComponent } from './components/homepage/main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // FontAwesomeModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
