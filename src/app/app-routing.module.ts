@@ -9,6 +9,7 @@ import { MainComponent } from './components/homepage/main/main.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
+  {path:"admin",component:AdminhomepageComponent},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
     {path:'contact', component:ContactComponent},
     {path:'**', component:ErrorComponent},
   ]},
-  {path:"admin",component:AdminhomepageComponent},
+
 ];
 
 @NgModule({

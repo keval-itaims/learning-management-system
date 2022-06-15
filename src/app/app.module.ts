@@ -17,6 +17,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { AdminsidebarComponent } from './components/admin/adminsidebar/adminsidebar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { HomepageComponent } from './components/homepage/homepage/homepage.component';
 import { MainComponent } from './components/homepage/main/main.component';
 @NgModule({
@@ -33,6 +40,7 @@ import { MainComponent } from './components/homepage/main/main.component';
     ContactComponent,
     ErrorComponent,
     AdminhomepageComponent,
+    AdminsidebarComponent,
     HomepageComponent,
     MainComponent,
 ],
@@ -41,7 +49,13 @@ import { MainComponent } from './components/homepage/main/main.component';
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
