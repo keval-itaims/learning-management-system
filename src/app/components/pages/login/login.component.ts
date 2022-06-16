@@ -7,9 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  show_pass = false;
 
-  ngOnInit(): void {
+  email: FormControl;
+  password: FormControl;
+  loginForm: FormGroup;
+
+  pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern(this.pat_email)]],
+      password: ['', [Validators.required]],
+    });
+    console.log('Form Builded');
+  }
+
+  togglePassword() {
+    console.log('toggle password');
+    this.show_pass = !this.show_pass;
+  }
+
+  onSubmit(form: FormGroup) {
+    if (form.invalid) return;
   }
 
 }
