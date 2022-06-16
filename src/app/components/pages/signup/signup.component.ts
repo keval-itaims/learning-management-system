@@ -60,6 +60,8 @@ export class SignupComponent implements OnInit {
     console.log('toggle password');
     this.show_pass = !this.show_pass;
   }
-
+  onSubmit(form:FormGroup){
+    if(form.invalid) return;
+  }
 
 }
