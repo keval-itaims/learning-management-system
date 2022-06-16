@@ -1,1 +1,83 @@
-<p>signup works!</p>
+<div class = "h-full w-full px-14 py-10">
+
+      <div class = "flex flex-col items-center justify-center">
+
+          <div class = "bg-gray-200 rounded shadow lg:w-6/12 md:w-9/12 sm:w-9/12 w-full p-10 mt-16">
+              
+              <p tabindex = "0" class = "focus:outline-none text-2xl font-extrabold leading-6 text-gray-800" >
+                  Register Your Account
+              </p>
+
+              <p tabindex = "0" class = "focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500">
+                  Already Have An Account? <a href = "#" class = "text-blue-500 font-bold ml-1 underline">Login Here</a>
+              </p>
+
+
+              <form [formGroup] = "regForm" novalidate (ngSubmit) = "onSubmit(regForm)">
+              <div class = "mt-2">
+                  <label for="firstName" class = "text-sm font-medium text-gray-800">First Name</label>
+                  <input type = "text" id = "firstName" class = "text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2" name = "firstName" formControlName = "firstName"/>
+                  
+                  <div class = "bg-red-300 w-full">
+                      <p class ="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+                  </div>
+              </div>
+
+              <div class = "mt-2">
+                  <label for="lastName" class = "text-sm font-medium text-gray-800">Last Name</label>
+                  <input type = "text" id = "lastName" class = "text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2" name = "lastName" formControlName = "lastName"/>
+                  
+                  <div class = "bg-red-300 w-full">
+                      <p class ="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+                  </div>
+              </div>
+
+
+              <div class = "mt-2">
+                  <label for="email" class = "text-sm font-medium text-gray-800">Email</label>
+                  <input type = "text" id = "email" class = "text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2" name = "email" formControlName = "email"/>
+                  
+                  <div class = "bg-red-300 w-full">
+                      <p class ="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+                  </div>
+              </div>
+
+              <div class = "mt-2">
+                  <label for = "password" class = "text-sm leading-none font-medium text-gray-800">Password</label> 
+                  <div class = "relative flex items-center justify-center">
+                      <input type="password" class = "text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2" formControlName = "password"
+                      (input) = check_password()
+                      />
+                      <div class = "absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800" (click) = "togglePassword()">
+                          <i [class]=" show_pass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye"></i>
+                          
+                      </div>
+                  </div>
+                  <div class = "bg-red-300 w-full">
+                      <p class ="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+                  </div>
+              </div>
+
+              <div class = "mt-2">
+                  <label for="rep_password" class = "text-sm font-medium text-gray-800">Confirm Password</label>
+                  <input type = "password" id = "rep_password" class = "text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2" name = "rep_password" 
+                  formControlName = "rep_password"
+                  (input) = check_password()
+                  />
+                  
+                  <div class = "bg-red-300 w-full">
+                      <p class ="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+                  </div>
+              </div>
+
+              <div class = "mt-4">
+                  <input type = "submit" value = "Register" class = "bg-red-500 py-4 w-full text-white font-extrabold text-xl border rounded hover:bg-indigo-600 cursor-pointer"></input>
+              </div>
+             
+              
+            </form>
+          </div>
+
+      </div>
+
+  </div>
