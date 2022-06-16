@@ -30,7 +30,7 @@ import { TestcoursesComponent } from './components/homepage/testcourses/testcour
 import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/pages/login/login.component';
-import { SignupComponent } from './components/pages/signup/signup.component';
+// import { SignupComponent } from './components/pages/signup/signup.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -55,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TestcourseComponent,
     DashboardComponent,
     LoginComponent,
-    SignupComponent,
+    // SignupComponent,
     ReviewComponent,
     InstructorComponent,
 ],
