@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -12,14 +11,8 @@ import {
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  
-  firstName: FormControl;
-  lastName: FormControl;
-  email: FormControl;
-  password: FormControl;
-  rep_password: FormControl;
 
-  regForm: FormGroup;
+  regForm: FormGroup | any;
 
   //patterns
   password_pattern =
