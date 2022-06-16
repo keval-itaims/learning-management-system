@@ -31,6 +31,8 @@ import { TestcourseComponent } from './components/homepage/testcourses/testcours
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
+import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
+import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,8 @@ import { SignupComponent } from './components/pages/signup/signup.component';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
+    ReviewComponent,
+    InstructorComponent,
 ],
   imports: [
     BrowserModule,

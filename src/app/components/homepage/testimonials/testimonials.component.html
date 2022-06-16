@@ -1,6 +1,9 @@
-<section class="container">
-  <div>
-    <p>Testimonials</p>
-    <p>Student reviews</p>
+<section class="container mx-auto px-4 mb-6">
+  <div class="text-center mb-3">
+    <p class="text-red-400 tracking-wide lg:text-lg">Testimonials</p>
+    <p class="text-lg lg:text-xl">Student reviews</p>
+  </div>
+  <div class="grid md:grid-cols-3 place-items-center gap-2">
+    <app-review *ngFor="let review of reviews" [review]="review"></app-review>
   </div>
 </section>
