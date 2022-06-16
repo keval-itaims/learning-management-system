@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -7,13 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  firstName: FormControl;
-  lastName: FormControl;
-  email: FormControl;
-  password: FormControl;
-  rep_password: FormControl;
-
-  regForm: FormGroup;
+  regForm: FormGroup | any;
 
   //patterns
   password_pattern =
