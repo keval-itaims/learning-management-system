@@ -1,1 +1,12 @@
-<p>instructors works!</p>
+<section class="container mx-auto px-4 mb-5 mt-10">
+  <div class="text-center mb-3">
+    <p class="text-red-500 tracking-wide lg:text-lg">World-class instructors</p>
+    <p class="text-lg lg:text-xl">Classes Taught by Real Creators</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-3">
+      <app-instructor
+        *ngFor="let instructor of instructors"
+        [instructor]="instructor"
+      ></app-instructor>
+    </div>
+  </div>
+</section>

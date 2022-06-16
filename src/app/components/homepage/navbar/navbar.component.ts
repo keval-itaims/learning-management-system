@@ -12,9 +12,11 @@ export class NavbarComponent implements OnInit {
   faXmark = faXmark;
   faAngleDown = faAngleDown;
   faGlass = faMagnifyingGlass;
+  sidebar = false;
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

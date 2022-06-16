@@ -1,7 +1,6 @@
 <article class="relative bg-white rounded-2xl">
   <img src="{{ course.image }}" alt="course" class="rounded-t-2xl" />
-  <!-- <div class="top-1/2">${{ course.price }}</div> -->
-  <div class="p-4">
+  <div class="p-5">
     <p class="cursor-pointer hover:text-blue-600">
       {{ course.title | titlecase }}
     </p>
@@ -12,10 +11,15 @@
       class="rounded-full inline-block mr-3"
     />
     <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
-    <div class="flex justify-between mt-3">
+    <div class="flex justify-between items-center">
       <div>
         <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
         >{{ course.duration }} weeks
+      </div>
+      <div
+        class="rounded-full bg-red-500 text-white grid place-items-center h-14 w-14"
+      >
+        ${{ course.price }}
       </div>
       <div>
         {{ course.rating

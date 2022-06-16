@@ -10,9 +10,9 @@ import { InstructorsComponent } from './components/homepage/instructors/instruct
 import { HeroComponent } from './components/homepage/hero/hero.component';
 import { CoursesComponent } from './components/coursespage/courses/courses.component';
 import { FunfactComponent } from './components/homepage/funfact/funfact.component';
-import { AboutComponent } from './components/homepage/about/about.component';
-import { ContactComponent } from './components/homepage/contact/contact.component';
-import { ErrorComponent } from './components/homepage/error/error.component';
+import { AboutComponent } from './components/pages/about/about.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
+import { ErrorComponent } from './components/pages/error/error.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,10 @@ import { MainComponent } from './components/homepage/main/main.component';
 import { TestcoursesComponent } from './components/homepage/testcourses/testcourses.component';
 import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
+import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
+import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +53,10 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
     TestcoursesComponent,
     TestcourseComponent,
     DashboardComponent,
+    LoginComponent,
+    SignupComponent,
+    ReviewComponent,
+    InstructorComponent,
 ],
   imports: [
     BrowserModule,

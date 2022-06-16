@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/homepage/about/about.component';
-import { ContactComponent } from './components/homepage/contact/contact.component';
-import { ErrorComponent } from './components/homepage/error/error.component';
+import { AboutComponent } from './components/pages/about/about.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
+import { ErrorComponent } from './components/pages/error/error.component';
 import { AdminhomepageComponent } from './components/admin/adminhomepage/adminhomepage.component';
 import { HomepageComponent } from './components/homepage/homepage/homepage.component';
 import { MainComponent } from './components/homepage/main/main.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
+import { LoginComponent } from './components/pages/login/login.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -16,6 +18,8 @@ const routes: Routes = [
     {path:'about', component:AboutComponent},
     {path:'contact', component:ContactComponent},
     {path:'error', component:ErrorComponent},
+    {path:'signup', component:SignupComponent},
+    {path:'login', component:LoginComponent},
   ]},
   {path:'**', redirectTo:'homepage/error'},
 ];

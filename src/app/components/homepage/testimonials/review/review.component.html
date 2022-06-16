@@ -1,0 +1,19 @@
+<article class="text-center border border-gray-600 rounded-lg p-4 shadow-md">
+  <fa-icon [icon]="quote" size="3x" class="text-stone-700"></fa-icon>
+  <div class="text-gray-500 mb-2">
+    {{ review.review }}
+  </div>
+  <fa-icon
+    [icon]="star"
+    class="text-yellow-400"
+    *ngFor="let item of [0, 1, 2, 3, 4]"
+  ></fa-icon>
+  <img
+    src="{{ review.student_image }}"
+    alt=""
+    height="50px"
+    width="50px"
+    class="rounded-full m-auto mt-2"
+  />
+  <div class="text-cyan-600">{{ review.student | titlecase }}</div>
+</article>
