@@ -34,6 +34,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     // SignupComponent,
     ReviewComponent,
     InstructorComponent,
+    SignupComponent,
 ],
   imports: [
     BrowserModule,
