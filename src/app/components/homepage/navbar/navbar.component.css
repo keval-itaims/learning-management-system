@@ -24,6 +24,7 @@ input,
 
 .sidebarClose {
     transform: translateX(-16rem);
+    transition-duration: 0.2s;
 }
 
 .overlayOpen {
@@ -32,4 +33,5 @@ input,
 
 .overlayClose {
     transform: translateX(-100%);
+    transition-duration: 0.2s;
 }
