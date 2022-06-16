@@ -17,3 +17,19 @@ input,
 [mat-menu-item] {
     font-size: 1.25rem;
 }
+
+.sidebarOpen {
+    transform: translateX(16rem);
+}
+
+.sidebarClose {
+    transform: translateX(-16rem);
+}
+
+.overlayOpen {
+    transform: translateX(100%);
+}
+
+.overlayClose {
+    transform: translateX(-100%);
+}
