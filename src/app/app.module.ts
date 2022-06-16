@@ -35,6 +35,7 @@ import { ReviewComponent } from './components/homepage/testimonials/review/revie
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { AddinstructorComponent } from './components/admin/instructor/addinstruc
     ReviewComponent,
     InstructorComponent,
     AddinstructorComponent,
+    SignupComponent,
 ],
   imports: [
     BrowserModule,
