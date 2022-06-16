@@ -33,6 +33,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { InstructorComponent } from './components/homepage/instructors/instructo
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

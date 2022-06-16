@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   show_pass = false;
-
-  email: FormControl;
-  password: FormControl;
-  loginForm: FormGroup;
+  loginForm : FormGroup | any;
 
   pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
 
@@ -22,11 +20,9 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(this.pat_email)]],
       password: ['', [Validators.required]],
     });
-    console.log('Form Builded');
   }
 
   togglePassword() {
-    console.log('toggle password');
     this.show_pass = !this.show_pass;
   }
 
