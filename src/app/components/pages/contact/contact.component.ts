@@ -17,7 +17,6 @@ export class ContactComponent implements OnInit {
   location = '70-80, Upper St Norwich NR2 1LT 39191'
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
