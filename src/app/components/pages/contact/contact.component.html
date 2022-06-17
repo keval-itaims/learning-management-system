@@ -1,1 +1,95 @@
-<p>contact works!</p>
+<section
+  class="px-5 py-10 flex flex-col md:flex-row items-center justify-evenly gap-5"
+>
+  <article>
+    <p class="text-lg text-red-500">Contact</p>
+    <div class="flex gap-3 mt-5">
+      <div class="bg-blue-500 rounded-full h-max p-2">
+        <fa-icon [icon]="faPhone" class="text-white" size="2x"></fa-icon>
+      </div>
+      <div>
+        <p class="font-semibold">Call us on: {{ contactNumber }}</p>
+        <p class="text-gray-700 tracking-tighter text-base">
+          Our office hours are Monday - Friday, 10am-7pm
+        </p>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-3">
+      <div class="bg-yellow-500 rounded-full w-max p-2">
+        <fa-icon [icon]="faMessage" class="text-white" size="2x"></fa-icon>
+      </div>
+      <div>
+        <p class="font-semibold">Email us directly</p>
+        <p class="text-gray-700 tracking-tighter text-base">
+          {{ email }}
+        </p>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-3">
+      <div
+        class="bg-green-500 rounded-full h-max w-14 p-2 grid place-items-center"
+      >
+        <fa-icon [icon]="faLocation" class="text-white" size="2x"></fa-icon>
+      </div>
+      <div>
+        <p class="font-semibold">Our Location</p>
+        <p class="text-gray-700 tracking-tighter text-base">
+          {{ location }}
+        </p>
+      </div>
+    </div>
+  </article>
+  <article class="lg:hidden">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.656486968629!2d72.54448401428266!3d23.036381721594136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84ead1103329%3A0x1a907f7fee8b2b7f!2sGujarat%20University!5e0!3m2!1sen!2sin!4v1655455210515!5m2!1sen!2sin"
+      width="350"
+      height="300"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </article>
+  <article class="hidden lg:block">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.656486968629!2d72.54448401428266!3d23.036381721594136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84ead1103329%3A0x1a907f7fee8b2b7f!2sGujarat%20University!5e0!3m2!1sen!2sin!4v1655455210515!5m2!1sen!2sin"
+      width="550"
+      height="500"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </article>
+</section>
+<section>
+  <div class="text-center mb-5">
+    <p class="text-red-500 md:text-lg">Send Us a Message</p>
+    <p class="font-semibold mb-1 md:text-lg">
+      We will Answer all your Questions
+    </p>
+  </div>
+  <section class="flex flex-col md:flex-row items-center justify-evenly gap-5">
+    <img
+      src="../assets/images/contact.jpg"
+      alt=""
+      width="350"
+      class="rounded-lg"
+    />
+    <article class="grid gap-3 place-items-center">
+      <input type="text" class="rounded-md p-3 border-2" placeholder="Name" />
+      <input type="email" class="rounded-md p-3 border-2" placeholder="Email" />
+      <textarea
+        name=""
+        id=""
+        cols="25"
+        rows="10"
+        class="rounded-md p-3 border-2"
+        placeholder="Message"
+      ></textarea>
+      <button class="text-white px-5 py-3 bg-red-500 rounded-md">
+        <fa-icon [icon]="faPaperPlane"></fa-icon> Send
+      </button>
+    </article>
+  </section>
+</section>
