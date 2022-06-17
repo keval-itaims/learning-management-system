@@ -1,3 +1,12 @@
 .mat-input{
   height:5rem;
 }
+.ng-valid:not(form){
+  border:2px solid green;
+}
+.ng-invalid:not(form){
+  border:2px solid red;
+}
+.ng-untouched:not(form){
+  border:none
+}
