@@ -8,7 +8,8 @@
         Sign-In To Your Account
       </p>
 
-      <p
+      <a
+        routerLink="/homepage/signup"
         tabindex="0"
         class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
       >
@@ -16,7 +17,7 @@
         <a href="#" class="text-blue-500 font-bold ml-1 underline"
           >Sign Up Free</a
         >
-      </p>
+      </a>
 
       <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm)">
         <div class="mt-4">
