@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
+  faChevron = faChevronRight;
   constructor() { }
 
   ngOnInit(): void {
