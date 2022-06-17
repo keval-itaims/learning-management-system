@@ -13,9 +13,7 @@ export class TestcourseComponent implements OnInit {
   @Input() course:any;
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.course);
-    
+  ngOnInit(): void {    
   }
 
 }
