@@ -1,17 +1,15 @@
-<div class="h-full w-full px-4 py-2">
+<div class="px-4 py-2">
   <div class="flex flex-col items-center justify-center">
     <div
       class="bg-gray-100 rounded shadow lg:w-5/12 md:w-9/12 sm:w-9/12 w-full p-10 mt-16"
     >
       <p
-        tabindex="0"
         class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
       >
         Register Your Account
       </p>
 
       <p
-        tabindex="0"
         class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
       >
         Already Have An Account?
@@ -19,10 +17,11 @@
           >Login Here</a
         >
       </p>
-
       <form [formGroup]="regForm" novalidate (ngSubmit)="onSubmit(regForm)">
         <div class="mt-2">
-          <label for="firstName" class="text-sm md:text-base font-medium text-gray-800"
+          <label
+            for="firstName"
+            class="text-sm md:text-base font-medium text-gray-800"
             >First Name</label
           >
           <input
@@ -39,7 +38,9 @@
         </div>
 
         <div class="mt-2">
-          <label for="lastName" class="text-sm md:text-base font-medium text-gray-800"
+          <label
+            for="lastName"
+            class="text-sm md:text-base font-medium text-gray-800"
             >Last Name</label
           >
           <input
@@ -56,7 +57,9 @@
         </div>
 
         <div class="mt-2">
-          <label for="email" class="text-sm md:text-base font-medium text-gray-800"
+          <label
+            for="email"
+            class="text-sm md:text-base font-medium text-gray-800"
             >Email</label
           >
           <input
@@ -86,11 +89,9 @@
               (input)="check_password()"
             />
             <div
-              class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
+              class="mt-2 mr-3 cursor-pointer text-gray-800"
               (click)="togglePassword()"
-            >
-              <!-- <i [class]=" show_pass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye"></i> -->
-            </div>
+            ></div>
           </div>
           <div class="bg-red-300 w-full">
             <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
@@ -98,7 +99,9 @@
         </div>
 
         <div class="mt-2">
-          <label for="rep_password" class="text-sm md:text-base font-medium text-gray-800"
+          <label
+            for="rep_password"
+            class="text-sm md:text-base font-medium text-gray-800"
             >Confirm Password</label
           >
           <input
