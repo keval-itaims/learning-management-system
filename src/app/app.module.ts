@@ -37,6 +37,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CourseComponent } from './components/coursespage/courses/course/course.component';
+import { AccountComponent } from './components/pages/account/account.component';
+import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
+import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
+import { EnrolledCourseComponent } from './components/pages/account/mycourses/enrolled-course/enrolled-course.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,11 +63,16 @@ import { HttpClientModule } from '@angular/common/http';
     TestcourseComponent,
     DashboardComponent,
     LoginComponent,
-    // SignupComponent,
+    SignupComponent,
     ReviewComponent,
     InstructorComponent,
     AddinstructorComponent,
     SignupComponent,
+    CourseComponent,
+    AccountComponent,
+    MyaccountComponent,
+    MycoursesComponent,
+    EnrolledCourseComponent,
 ],
   imports: [
     BrowserModule,

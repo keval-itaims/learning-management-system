@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {faBars, faUser, faXmark, faAngleDown, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -13,10 +14,12 @@ export class NavbarComponent implements OnInit {
   faAngleDown = faAngleDown;
   faGlass = faMagnifyingGlass;
   sidebar = false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
-
+  onClick(){
+    this.router.navigate(['homepage/account']);
+  }
 }

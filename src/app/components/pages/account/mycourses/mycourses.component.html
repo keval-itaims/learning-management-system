@@ -1,0 +1,11 @@
+<section>
+  <p *ngIf="!enrolledCourses" class="text-red-500">
+    You haven't enrolled any course yet...!
+  </p>
+  <section class="flex gap-8 flex-wrap items-center">
+    <app-enrolled-course
+      *ngFor="let course of enrolledCourses"
+      [course]="course"
+    ></app-enrolled-course>
+  </section>
+</section>

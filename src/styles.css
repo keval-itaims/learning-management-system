@@ -49,6 +49,11 @@ body {
     height: 100%;
 }
 
+.active,
+.search-icon {
+    color: var(--blue);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
