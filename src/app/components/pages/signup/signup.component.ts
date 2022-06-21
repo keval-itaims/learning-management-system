@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
 
   show_pass = false; //Toggle between show & hide password
   match_password_error = false; //To show error of matching password
-  email_error = false; //Check if user is already registered
+  emailError = false; //Check if user is already registered
 
   constructor(private fb: FormBuilder, private signupService: SignupService) {}
 
@@ -60,6 +60,6 @@ export class SignupComponent implements OnInit {
   onSubmit(form:FormGroup){
     if(form.invalid) return;
     this.user = form.value;
-    this.email_error = this.signupService.signup(this.user)
+    this.emailError = this.signupService.signup(this.user);
   }
 }

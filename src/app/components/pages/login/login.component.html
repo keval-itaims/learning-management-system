@@ -41,6 +41,11 @@
               Please provide a valid email address
             </p>
           </div>
+          <div class="bg-red-300 w-full" *ngIf="emailError">
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              user doesn't exist with this email address
+            </p>
+          </div>
         </div>
 
         <div class="mt-4">
@@ -77,6 +82,11 @@
           >
             <p class="text-sm text-gray-800 rounded px-2 py-1">
               Please provide a valid password
+            </p>
+          </div>
+          <div class="bg-red-300 w-full" *ngIf="passwordError">
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Invalid password
             </p>
           </div>
         </div>
