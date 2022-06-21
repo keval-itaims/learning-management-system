@@ -2,14 +2,16 @@
   <section class="flex lg:hidden items-center justify-evenly mb-5">
     <a routerLink="myaccount" routerLinkActive="active">My Account</a>
     <a routerLink="mycourses" routerLinkActive="active">My Courses</a>
-    <a>Log out</a>
+    <a>Logout</a>
   </section>
   <section class="lg:flex lg:gap-3">
-    <section class="hidden lg:flex flex-col w-40 border-r-2 gap-2">
+    <section class="hidden lg:flex flex-col w-40 border-r-2 gap-2 items-center">
       <a routerLink="myaccount" routerLinkActive="active">My Account</a>
       <a routerLink="mycourses" routerLinkActive="active">My Courses</a>
-      <a>Log out</a>
+      <a>Logout</a>
     </section>
-    <router-outlet></router-outlet>
+    <section class="flex-grow">
+      <router-outlet></router-outlet>
+    </section>
   </section>
 </main>
