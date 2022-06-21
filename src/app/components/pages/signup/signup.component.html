@@ -13,7 +13,9 @@
         class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
       >
         Already Have An Account?
-        <a href="#" class="text-blue-500 font-bold ml-1 underline"
+        <a
+          routerLink="homepage/login"
+          class="text-blue-500 font-bold ml-1 underline"
           >Login Here</a
         >
       </p>
@@ -93,6 +95,11 @@
               Please provide a valid email address
             </p>
           </div>
+          <div class="bg-red-300 w-full" *ngIf="email_error">
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              User already exist with this email address
+            </p>
+          </div>
         </div>
 
         <div class="mt-2">
@@ -116,7 +123,7 @@
           <div
             class="bg-red-300 w-full"
             *ngIf="
-              regForm.get('password').invalid && regForm.get('password.touched')
+              regForm.get('password').invalid && regForm.get('password').touched
             "
           >
             <p class="text-sm text-gray-800 rounded px-2 py-1">
@@ -128,21 +135,41 @@
 
         <div class="mt-2">
           <label
-            for="repeatPasswordword"
+            for="repeatPassword"
             class="text-sm md:text-base font-medium text-gray-800"
             >Confirm Password</label
           >
           <input
             type="password"
-            id="repeatPasswordword"
+            id="repeatPassword"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
-            name="repeatPasswordword"
-            formControlName="repeatPasswordword"
+            name="repeatPassword"
+            formControlName="repeatPassword"
             (input)="check_password()"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              regForm.get('repeatPassword').hasError('required') &&
+              regForm.get('repeatPassword').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a confirm password
+            </p>
+          </div>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              match_password_error &&
+              regForm.get('password').touched &&
+              regForm.get('repeatPassword').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Both password must be same
+            </p>
           </div>
         </div>
 
