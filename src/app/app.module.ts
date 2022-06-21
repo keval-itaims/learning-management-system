@@ -38,7 +38,7 @@ import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
 import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
-import { DeleteInstructorComponent } from './components/admin/instructor/delete-instructor/delete-instructor.component';
+
 
 import { CourseComponent } from './components/coursespage/courses/course/course.component';
 import { AccountComponent } from './components/pages/account/account.component';
@@ -46,6 +46,9 @@ import { MyaccountComponent } from './components/pages/account/myaccount/myaccou
 import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
 import { EnrolledCourseComponent } from './components/pages/account/mycourses/enrolled-course/enrolled-course.component';
 import { FaqsComponent } from './components/pages/faqs/faqs.component';
+import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
+import { StudentComponent } from './components/admin/student/student.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,13 +77,15 @@ import { FaqsComponent } from './components/pages/faqs/faqs.component';
     SignupComponent,
     InstructorDetailComponent,
     UpdateInstructorComponent,
-    DeleteInstructorComponent,
+
     CourseComponent,
     AccountComponent,
     MyaccountComponent,
     MycoursesComponent,
     EnrolledCourseComponent,
     FaqsComponent,
+    InstructorHomepageComponent,
+    StudentComponent,
 ],
   imports: [
     BrowserModule,

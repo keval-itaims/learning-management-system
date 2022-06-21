@@ -16,11 +16,11 @@ export class InstructorDetailComponent implements OnInit {
 
   instructorDetail : Instructor[]=[
 
-    {instructorId:'1',firstName:'Parth',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {instructorId:'2',firstName:'Harsh',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {instructorId:'3',firstName:'Sunny',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {instructorId:'4',firstName:'Shubham',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {instructorId:'5',firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+    {instructor_id:1,firstName:'Parth',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+    {instructor_id:2,firstName:'Harsh',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+    {instructor_id:3,firstName:'Sunny',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+    {instructor_id:4,firstName:'Shubham',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+    {instructor_id:5,firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
   ];
 
 
@@ -29,8 +29,11 @@ export class InstructorDetailComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','action'];
   dataSource = new MatTableDataSource(this.instructorDetail);
 
+
+
   ngOnInit(): void {
     //this.getInstructor()
+
 
   }
 
@@ -45,10 +48,19 @@ export class InstructorDetailComponent implements OnInit {
       )
   }
 
-  updateInstructor(element:any){
+  onUpdateInstructor(element:any){
     let id = element.instructorId;
-    this.router.navigate(['update-instructor',id]);
+    this.router.navigate(['admin/instructor/update',id]);
 
+  }
+
+  onDeleteInstrcutor(element:any){
+    let id = element.instructorId;
+    alert(id)
+    this.router.navigate(['admin/instructor/detail'])
+    // this.instructorService.deleteInstructor(id).subscribe(
+    //   data => this.router.navigate(['admin/instructor/detail'])
+    // )
   }
 
   applyFilter(event: Event) {

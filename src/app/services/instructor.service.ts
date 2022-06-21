@@ -20,11 +20,15 @@ export class InstructorService {
     return this.httpClient.get<Instructor[]>(`${this.baseURL}`);
   }
 
-  public getInstructorById(id:string):Observable<Instructor>{
+  public getInstructorById(id:number):Observable<Instructor>{
     return this.httpClient.get<Instructor>(`${this.baseURL}/${id}`);
   }
 
-  public updateInstructor(id:string,instructor:Instructor):Observable<Object>{
+  public updateInstructor(id:number,instructor:Instructor):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,instructor);
+  }
+
+  public deleteInstructor(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 }

@@ -23,7 +23,7 @@ export class UpdateInstructorComponent implements OnInit {
     // this.instructorService.getInstructorById(this.id).subscribe(
     //   data => this.instructor = data
     // )
-    this.instructor.instructorId = '1'
+    this.instructor.instructor_id = 1;
     this.instructor.firstName = 'parth';
     this.instructor.lastName = 'shah';
     this.instructor.email = 'abc@gmail.com';
@@ -42,12 +42,13 @@ export class UpdateInstructorComponent implements OnInit {
   }
 
   onUpdateInstructor(){
+    alert(typeof this.activetedRoute.snapshot.params['id'])
     this.instructor = this.instructorForm.value;
     alert(this.instructor.firstName);
     // this.instructorService.updateInstructor(this.instructor.instructorId,this.instructor).subscribe(
     //   data => this.router.navigate(['/instructor'])
     // )
-    this.router.navigate(['/instructor'])
+    this.router.navigate(['/admin/instructor/detail'])
   }
   get firstname(){return this.instructorForm.get('firstName')}
   get lastname(){return this.instructorForm.get('lastName')}
