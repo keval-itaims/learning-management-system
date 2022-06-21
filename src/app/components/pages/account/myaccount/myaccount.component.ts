@@ -5,6 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from 'src/app/classes/user';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-myaccount',
   templateUrl: './myaccount.component.html',
@@ -14,7 +15,8 @@ export class MyaccountComponent implements OnInit {
   user:User = new User()
   userForm: FormGroup | any;
   name_pattern = '[A-Za-z ]+';
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+    private userService: UserService) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({

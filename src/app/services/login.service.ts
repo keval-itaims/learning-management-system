@@ -17,7 +17,7 @@ export class LoginService {
         if(data.emailError) this.flag = 1;
         else if(data.passwordError) this.flag = 2;
         else 
-          localStorage.setItem('user', data);
+          localStorage.setItem('user', JSON.stringify(data));
       }
     )
     return this.flag;
