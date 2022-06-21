@@ -19,8 +19,8 @@ export class AddinstructorComponent implements OnInit {
 
   ngOnInit(): void {
     this.instructorForm = new FormGroup({
-      "firstName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z]*')]),
-      "lastName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z]*')]),
+      "firstName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z ]*')]),
+      "lastName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z ]*')]),
       "email" : new FormControl('',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       "phoneNo" : new FormControl('',[Validators.required,Validators.pattern('[0-9]{10}')]),
       "password" : new FormControl('',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,20}$'),Validators.minLength(8)]),

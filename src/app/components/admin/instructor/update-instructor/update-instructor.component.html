@@ -1,1 +1,108 @@
-<p>update-instructor works!</p>
+<app-adminsidebar>
+  <div class="flex justify-center pt-4 w-full items-center">
+    <h1 class="border-b-4 border-blue-600 p-1">Update Instructor</h1>
+  </div>
+  <div class="w-2/3 mx-auto border-2 rounded-lg shadow-md m-2">
+    <form
+      class="p-2"
+      [formGroup]="instructorForm"
+      (ngSubmit)="onUpdateInstructor()"
+    >
+      <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+        <div class="w-full md:w-1/2 m-1">
+          <p>First Name:<small class="text-red-500">*</small></p>
+          <input
+            type="text"
+            class="leading-8 outline-blue-500 rounded-md p-1 w-full"
+            placeholder="First name"
+            formControlName="firstName"
+          />
+          <div
+            *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)"
+            class="mt-1"
+          >
+            <p *ngIf="firstname.errors.required" class="text-red-600 text-xs">
+              *first name is required!
+            </p>
+            <p *ngIf="firstname.errors.pattern" class="text-red-600 text-xs">
+              *please enter only character!
+            </p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 m-1">
+          <p>Last Name:<small class="text-red-500">*</small></p>
+          <input
+            type="text"
+            class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+            placeholder="Last name"
+            formControlName="lastName"
+          />
+          <div
+            *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)"
+            class="mt-1"
+          >
+            <p *ngIf="lastname.errors.required" class="text-red-600 text-xs">
+              *last name is required!
+            </p>
+            <p *ngIf="lastname.errors.pattern" class="text-red-600 text-xs">
+              *please enter only character!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+        <div class="md:w-1/2 w-full m-1">
+          <p>Email:<small class="text-red-500">*</small></p>
+          <input
+            type="text"
+            class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <div
+            *ngIf="email.invalid && (email.touched || email.dirty)"
+            class="mt-1"
+          >
+            <p *ngIf="email.errors.required" class="text-red-600 text-xs">
+              *email is required!
+            </p>
+            <p *ngIf="email.errors.pattern" class="text-red-600 text-xs">
+              *enter valid email!
+            </p>
+          </div>
+        </div>
+        <div class="md:w-1/2 w-full m-1">
+          <p>Phone No:<small class="text-red-500">*</small></p>
+          <input
+            type="text"
+            class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+            placeholder="Phone No"
+            formControlName="phoneNo"
+          />
+          <div
+            *ngIf="phoneno.invalid && (phoneno.touched || phoneno.dirty)"
+            class="mt-1"
+          >
+            <p *ngIf="phoneno.errors.required" class="text-red-600 text-xs">
+              *phone no is required!
+            </p>
+            <p *ngIf="phoneno.errors.pattern" class="text-red-600 text-xs">
+              *enter valid phone no!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-3 mb-3">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="instructorForm.invalid"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</app-adminsidebar>

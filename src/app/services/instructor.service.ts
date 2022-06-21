@@ -12,8 +12,8 @@ export class InstructorService {
   constructor(private httpClient:HttpClient,private route:Router) { }
   baseURL:string = "http://localhost:8080/instructor";
 
-  public registerInstructorFromRemote(instructor:Instructor):Observable<Instructor>{
-    return this.httpClient.post<Instructor>(`${this.baseURL}`,instructor);
+  public registerInstructorFromRemote(instructor:Object):Observable<Object>{
+    return this.httpClient.post<Object>(`${this.baseURL}`,instructor);
   }
 
   public getInstructorDetails():Observable<Instructor[]>{
@@ -21,6 +21,10 @@ export class InstructorService {
   }
 
   public getInstructorById(id:string):Observable<Instructor>{
-    return this.httpClient.get<Instructor>(`${this.baseURL}/${id}`)
+    return this.httpClient.get<Instructor>(`${this.baseURL}/${id}`);
+  }
+
+  public updateInstructor(id:string,instructor:Instructor):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`,instructor);
   }
 }
