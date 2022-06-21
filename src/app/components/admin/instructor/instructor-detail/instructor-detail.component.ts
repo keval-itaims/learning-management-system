@@ -3,6 +3,7 @@ import { Instructor } from 'src/app/classes/instructor';
 import {MatTableDataSource} from '@angular/material/table';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 
@@ -24,7 +25,7 @@ export class InstructorDetailComponent implements OnInit {
   ];
 
 
-  constructor(private instructorService:InstructorService,private router:Router) { }
+  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','action'];
   dataSource = new MatTableDataSource(this.instructorDetail);
@@ -49,18 +50,35 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onUpdateInstructor(element:any){
-    let id = element.instructorId;
-    this.router.navigate(['admin/instructor/update',id]);
+    let id = element.instructor_id;
+    alert(id);
+    this.router.navigate(['/admin/instructor/update/',id]);
 
   }
 
   onDeleteInstrcutor(element:any){
-    let id = element.instructorId;
-    alert(id)
-    this.router.navigate(['admin/instructor/detail'])
+    // let id = element.instructor_id;
+    // alert(id)
+    // this.router.navigate(['admin/instructor/detail'])
     // this.instructorService.deleteInstructor(id).subscribe(
     //   data => this.router.navigate(['admin/instructor/detail'])
     // )
+    this.confirmDialogService.openConfirmDialog({
+        title: 'Delete Instructor',
+        message:'Are you sure?',
+        confirmText:'Delete',
+        cancleText:'Cancle'
+    }).subscribe(
+      result =>{
+        if(result){
+          alert("user deleted!")
+        }
+        else{
+          alert("user not deleted!")
+        }
+
+      }
+    )
   }
 
   applyFilter(event: Event) {

@@ -4,6 +4,7 @@ import { Instructor } from 'src/app/classes/instructor';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/classes/user';
+import { StudentService } from 'src/app/services/student.service';
 
 
 @Component({
@@ -14,7 +15,11 @@ import { User } from 'src/app/classes/user';
 export class StudentComponent implements OnInit {
 
   studentDetail:User[] = [
-
+      {"user_id":1,"firstName":'parth',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":3,"firstName":'Keval',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
   ];
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email','action'];
@@ -24,13 +29,18 @@ export class StudentComponent implements OnInit {
 
 
 
-  // constructor() { }
+  constructor(private studentService:StudentService,private router:Router) { }
 
   ngOnInit(): void {
 
   }
 
   onDeleteStudent(element:any){
+    let id = element.user_id;
+    alert(`user id : ${id} deleted!`);
+    // this.studentService.deleteStudent(id).subscribe(
+    //   data => this.router.navigate(['/admin/student'])
+    // )
 
   }
 
