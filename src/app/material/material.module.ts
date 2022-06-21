@@ -5,10 +5,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-
 
 
 const MaterialComponents =[
@@ -20,7 +19,8 @@ const MaterialComponents =[
   MatProgressBarModule,
   MatTableModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+
 ]
 @NgModule({
   declarations: [],

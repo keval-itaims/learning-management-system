@@ -15,7 +15,7 @@ export class AddinstructorComponent implements OnInit {
 
   message=''
   instructor = new Instructor()
-  constructor(private instructorService : InstructorService) { }
+  constructor(private instructorService : InstructorService,private router:Router) { }
 
   ngOnInit(): void {
     this.instructorForm = new FormGroup({
@@ -27,7 +27,6 @@ export class AddinstructorComponent implements OnInit {
       "confirmPassword" : new FormControl('',[Validators.required])
     })
   }
-
 
 
   addInstructor(){
@@ -48,6 +47,14 @@ export class AddinstructorComponent implements OnInit {
     //     console.log("error occured!")
     //   }
     // )
+  }
+
+  onAddInstructor(){
+    this.addInstructor();
+  }
+
+  goToInstructorList(){
+    this.router.navigate(["/instructor-detail"]);
   }
 
   get firstname(){return this.instructorForm.get('firstName')}

@@ -1,0 +1,75 @@
+<app-adminsidebar>
+  <div class="d-flex justify-content-center mt-1">
+    <h1
+      class="text-center border-bottom border-5 border-primary p-1 font-extrabold"
+    >
+      Instructor
+    </h1>
+  </div>
+
+  <div class="m-3 w-auto">
+    <div class="flex justify-between items-center mt-1">
+      <a routerLink="/create-instructor"
+        ><button mat-raised-button color="primary">
+          <mat-icon>add</mat-icon>Add
+        </button>
+      </a>
+      <mat-form-field appearance="standard">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. ium"
+          #input
+        />
+      </mat-form-field>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Fisst Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- PhoneNO Column -->
+      <ng-container matColumnDef="phoneNo">
+        <th mat-header-cell *matHeaderCellDef>Contact No</th>
+        <td mat-cell *matCellDef="let element">{{ element.phoneNo }}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button (click)="updateInstructor(element)">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</app-adminsidebar>

@@ -36,6 +36,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
+import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
+import { DeleteInstructorComponent } from './components/admin/instructor/delete-instructor/delete-instructor.component';
+
 import { CourseComponent } from './components/coursespage/courses/course/course.component';
 import { AccountComponent } from './components/pages/account/account.component';
 import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
@@ -68,6 +72,9 @@ import { FaqsComponent } from './components/pages/faqs/faqs.component';
     InstructorComponent,
     AddinstructorComponent,
     SignupComponent,
+    InstructorDetailComponent,
+    UpdateInstructorComponent,
+    DeleteInstructorComponent,
     CourseComponent,
     AccountComponent,
     MyaccountComponent,
@@ -88,7 +95,8 @@ import { FaqsComponent } from './components/pages/faqs/faqs.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
