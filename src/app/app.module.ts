@@ -41,6 +41,7 @@ import { AccountComponent } from './components/pages/account/account.component';
 import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
 import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
 import { EnrolledCourseComponent } from './components/pages/account/mycourses/enrolled-course/enrolled-course.component';
+import { FaqsComponent } from './components/pages/faqs/faqs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { EnrolledCourseComponent } from './components/pages/account/mycourses/en
     MyaccountComponent,
     MycoursesComponent,
     EnrolledCourseComponent,
+    FaqsComponent,
 ],
   imports: [
     BrowserModule,
