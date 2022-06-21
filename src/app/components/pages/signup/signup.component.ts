@@ -5,6 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from 'src/app/classes/user';
+import { SignupService } from 'src/app/services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
 
   regForm: FormGroup | any;
   user: User = new User();
+
   //patterns
   password_pattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,}';
   pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
@@ -22,8 +24,9 @@ export class SignupComponent implements OnInit {
 
   show_pass = false; //Toggle between show & hide password
   match_password_error = false; //To show error of matching password
+  email_error = false; //Check if user is already registered
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private signupService: SignupService) {}
 
   ngOnInit() {
     this.regForm = this.fb.group({
@@ -57,6 +60,6 @@ export class SignupComponent implements OnInit {
   onSubmit(form:FormGroup){
     if(form.invalid) return;
     this.user = form.value;
+    this.email_error = this.signupService.signup(this.user)
   }
-
 }

@@ -13,7 +13,9 @@
         class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
       >
         Already Have An Account?
-        <a routerLink="homepage/login" class="text-blue-500 font-bold ml-1 underline"
+        <a
+          routerLink="homepage/login"
+          class="text-blue-500 font-bold ml-1 underline"
           >Login Here</a
         >
       </p>
@@ -91,6 +93,11 @@
           >
             <p class="text-sm text-gray-800 rounded px-2 py-1">
               Please provide a valid email address
+            </p>
+          </div>
+          <div class="bg-red-300 w-full" *ngIf="email_error">
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              User already exist with this email address
             </p>
           </div>
         </div>
