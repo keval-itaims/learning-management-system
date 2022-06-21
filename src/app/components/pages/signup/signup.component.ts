@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   regForm: FormGroup | any;
   user: User = new User();
   //patterns
-  password_pattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}';
+  password_pattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,}';
   pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
   name_pattern = '[A-Za-z ]+';
 
@@ -40,23 +40,18 @@ export class SignupComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern(this.password_pattern)],
       ],
-      repeatPasswordword: ['', [Validators.required]],
+      repeatPassword: ['', [Validators.required]],
     });
   }
 
   check_password() {
     let pass = this.regForm.controls['password'].value;
-    let repeatPassword = this.regForm.controls['repeatPasswordword'].value;
+    let repeatPassword = this.regForm.controls['repeatPassword'].value;
 
-    if (pass === repeatPassword) {
-      this.match_password_error = false;
-    } else {
-      this.match_password_error = true;
-    }
+    this.match_password_error = pass === repeatPassword ? false : true;
   }
 
   togglePassword() {
-    console.log('toggle password');
     this.show_pass = !this.show_pass;
   }
   onSubmit(form:FormGroup){

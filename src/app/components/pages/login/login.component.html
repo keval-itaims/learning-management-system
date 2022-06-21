@@ -2,7 +2,6 @@
   <div class="flex flex-col items-center justify-center">
     <div class="bg-gray-200 rounded shadow lg:w-1/3 md:w-1/2 w-full p-10 mt-16">
       <p
-        tabindex="0"
         class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
       >
         Sign-In To Your Account
@@ -10,7 +9,6 @@
 
       <a
         routerLink="/homepage/signup"
-        tabindex="0"
         class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
       >
         Not A Member Yet?
@@ -34,14 +32,14 @@
           />
 
           <div
-            class="bg-red-300"
+            class="bg-red-300 w-full"
             *ngIf="
-              loginForm.controls['email']?.errors &&
-              (loginForm.controls['email']?.touched ||
-                loginForm.controls['email']?.dirty)
+              loginForm.get('email').invalid && loginForm.get('email').touched
             "
           >
-            <span>Hey you have error</span>
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid email address
+            </p>
           </div>
         </div>
 
@@ -69,6 +67,17 @@
                 "
               ></i>
             </div>
+          </div>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              loginForm.get('password').invalid &&
+              loginForm.get('password').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid password
+            </p>
           </div>
         </div>
 
