@@ -15,13 +15,25 @@ import { UpdateInstructorComponent } from './components/admin/instructor/update-
 import { AccountComponent } from './components/pages/account/account.component';
 import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
 import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component'
+import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
+import { StudentComponent } from './components/admin/student/student.component';
+
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
-  {path:"admin",component:AdminhomepageComponent},
-  {path:"create-instructor",component:AddinstructorComponent},
-  {path:"instructor",component:InstructorDetailComponent},
-  {path:"update-instructor/:id",component:UpdateInstructorComponent},
+  {path:'create-instructor',component:AddinstructorComponent},
+  {path:'admin', component:AdminhomepageComponent, children:[
+    {path:'',redirectTo: 'dashboard',pathMatch: 'full'},
+    {path:'dashboard',component:DashboardComponent},
+    {path:'student',component:StudentComponent},
+    {path:'instructor',component:InstructorHomepageComponent,children:[
+        {path:'',redirectTo: 'detail',pathMatch: 'full'},
+        {path:'detail',component:InstructorDetailComponent},
+        {path:'create',component:AddinstructorComponent},
+        {path:'update/:id',component:UpdateInstructorComponent},
+      ]},
+    ]},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},

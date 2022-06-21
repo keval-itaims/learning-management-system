@@ -1,5 +1,5 @@
 export class Instructor{
-  instructorId!:string
+  instructor_id!:number;
   firstName!:string;
   lastName!:string;
   email!:string;

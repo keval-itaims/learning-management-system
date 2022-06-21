@@ -17,7 +17,7 @@
     </mat-toolbar>
 
     <mat-nav-list class="sidenav-list">
-      <a mat-list-item routerLink="/admin"
+      <a mat-list-item routerLink="/admin/dashboard"
         ><mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
@@ -59,8 +59,10 @@
         <div class="flex justify-center">
           <mat-label>Users</mat-label>
           <mat-select>
-            <a routerLink="/instructor"><mat-option>Instructor </mat-option></a>
-            <a href=""><mat-option> User </mat-option></a>
+            <a routerLink="/admin/instructor"
+              ><mat-option>Instructor </mat-option></a
+            >
+            <a href=""><mat-option>Student</mat-option></a>
           </mat-select>
         </div>
       </a>
