@@ -12,6 +12,9 @@ import { SignupComponent } from './components/pages/signup/signup.component';
 import { CoursesComponent } from './components/coursespage/courses/courses.component';
 import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
 import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
+import { AccountComponent } from './components/pages/account/account.component';
+import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
+import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -28,6 +31,11 @@ const routes: Routes = [
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
     {path:'login', component:LoginComponent},
+    {path:'account', component:AccountComponent, children:[
+      {path:'', redirectTo:'myaccount', pathMatch: 'full'},
+      {path:'myaccount', component:MyaccountComponent},
+      {path:'mycourses', component:MycoursesComponent},
+    ]},
   ]},
   {path:'**', redirectTo:'homepage/error'},
 ];

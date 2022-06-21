@@ -30,7 +30,6 @@ import { TestcoursesComponent } from './components/homepage/testcourses/testcour
 import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/pages/login/login.component';
-// import { SignupComponent } from './components/pages/signup/signup.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +40,12 @@ import { InstructorDetailComponent } from './components/admin/instructor/instruc
 import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
 import { DeleteInstructorComponent } from './components/admin/instructor/delete-instructor/delete-instructor.component';
 
+import { CourseComponent } from './components/coursespage/courses/course/course.component';
+import { AccountComponent } from './components/pages/account/account.component';
+import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
+import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
+import { EnrolledCourseComponent } from './components/pages/account/mycourses/enrolled-course/enrolled-course.component';
+import { FaqsComponent } from './components/pages/faqs/faqs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +67,7 @@ import { DeleteInstructorComponent } from './components/admin/instructor/delete-
     TestcourseComponent,
     DashboardComponent,
     LoginComponent,
-    // SignupComponent,
+    SignupComponent,
     ReviewComponent,
     InstructorComponent,
     AddinstructorComponent,
@@ -70,6 +75,12 @@ import { DeleteInstructorComponent } from './components/admin/instructor/delete-
     InstructorDetailComponent,
     UpdateInstructorComponent,
     DeleteInstructorComponent,
+    CourseComponent,
+    AccountComponent,
+    MyaccountComponent,
+    MycoursesComponent,
+    EnrolledCourseComponent,
+    FaqsComponent,
 ],
   imports: [
     BrowserModule,

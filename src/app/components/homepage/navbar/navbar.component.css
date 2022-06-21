@@ -18,19 +18,12 @@ input,
     font-size: 1.25rem;
 }
 
-.sidebarOpen {
-    transform: translateX(16rem);
-}
-
-.sidebarClose {
-    transform: translateX(-16rem);
-    transition-duration: 0.2s;
-}
-
+.sidebarOpen,
 .overlayOpen {
     transform: translateX(100%);
 }
 
+.sidebarClose,
 .overlayClose {
     transform: translateX(-100%);
     transition-duration: 0.2s;
