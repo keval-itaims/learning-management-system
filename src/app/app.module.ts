@@ -37,6 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
+import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
+import { DeleteInstructorComponent } from './components/admin/instructor/delete-instructor/delete-instructor.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +67,9 @@ import { HttpClientModule } from '@angular/common/http';
     InstructorComponent,
     AddinstructorComponent,
     SignupComponent,
+    InstructorDetailComponent,
+    UpdateInstructorComponent,
+    DeleteInstructorComponent,
 ],
   imports: [
     BrowserModule,
@@ -77,7 +84,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

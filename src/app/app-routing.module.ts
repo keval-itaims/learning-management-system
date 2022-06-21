@@ -10,11 +10,15 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { CoursesComponent } from './components/coursespage/courses/courses.component';
+import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
+import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
   {path:"admin",component:AdminhomepageComponent},
-  {path:"addinstructor",component:AddinstructorComponent},
+  {path:"create-instructor",component:AddinstructorComponent},
+  {path:"instructor",component:InstructorDetailComponent},
+  {path:"update-instructor/:id",component:UpdateInstructorComponent},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},
