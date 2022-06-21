@@ -32,8 +32,16 @@
             formControlName="firstName"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              regForm.get('firstName').invalid &&
+              regForm.get('firstName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid first name
+            </p>
           </div>
         </div>
 
@@ -51,8 +59,15 @@
             formControlName="lastName"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              regForm.get('lastName').invalid && regForm.get('lastName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid last name
+            </p>
           </div>
         </div>
 
@@ -70,8 +85,13 @@
             formControlName="email"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="regForm.get('email').invalid && regForm.get('email').touched"
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid email address
+            </p>
           </div>
         </div>
 
@@ -93,23 +113,31 @@
               (click)="togglePassword()"
             ></div>
           </div>
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              regForm.get('password').invalid && regForm.get('password.touched')
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Password must be of at least 8 characters and mixture of
+              Uppercase, Lowercase & symbols
+            </p>
           </div>
         </div>
 
         <div class="mt-2">
           <label
-            for="rep_password"
+            for="repeatPasswordword"
             class="text-sm md:text-base font-medium text-gray-800"
             >Confirm Password</label
           >
           <input
             type="password"
-            id="rep_password"
+            id="repeatPasswordword"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
-            name="rep_password"
-            formControlName="rep_password"
+            name="repeatPasswordword"
+            formControlName="repeatPasswordword"
             (input)="check_password()"
           />
 
