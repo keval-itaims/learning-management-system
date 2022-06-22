@@ -3,8 +3,13 @@
     <div
       class="bg-gray-100 rounded shadow lg:w-5/12 md:w-9/12 sm:w-9/12 w-full p-10"
     >
-      <form>
-        <div class="mt-2">
+      <p
+        class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
+      >
+        My Account
+      </p>
+      <form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="mt-5">
           <label
             for="firstName"
             class="text-sm md:text-base font-medium text-gray-800"
@@ -14,10 +19,21 @@
             type="text"
             id="firstName"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
-            [value]="firstName"
-            readonly
             name="firstName"
+            formControlName="firstName"
           />
+
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              userForm.get('firstName').invalid &&
+              userForm.get('firstName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid first name
+            </p>
+          </div>
         </div>
 
         <div class="mt-2">
@@ -31,9 +47,20 @@
             id="lastName"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
             name="lastName"
-            readonly
-            [value]="lastName"
+            formControlName="lastName"
           />
+
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              userForm.get('lastName').invalid &&
+              userForm.get('lastName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid last name
+            </p>
+          </div>
         </div>
 
         <div class="mt-2">
@@ -43,26 +70,27 @@
             >Email</label
           >
           <input
-            type="email"
+            type="text"
+            readonly
             id="email"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
             name="email"
-            [value]="email"
-            readonly
+            formControlName="email"
           />
         </div>
+
         <div class="mt-2">
           <label
             for="password"
-            class="text-sm md:text-base font-medium text-gray-800"
+            class="text-sm md:text-base leading-none font-medium text-gray-800"
             >Password</label
           >
           <div class="relative flex items-center justify-center">
             <input
               readonly
               [type]="show_pass ? 'text' : 'password'"
-              [value]="password"
               class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
+              formControlName="password"
             />
             <div
               class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
@@ -71,6 +99,14 @@
               <fa-icon [icon]="show_pass ? faEye : faEyeSlash"></fa-icon>
             </div>
           </div>
+        </div>
+
+        <div class="mt-4 mx-auto w-max">
+          <input
+            type="submit"
+            value="Save"
+            class="bg-red-500 py-2 px-4 text-white font-extrabold text-xl border rounded hover:bg-indigo-600 cursor-pointer"
+          />
         </div>
       </form>
     </div>

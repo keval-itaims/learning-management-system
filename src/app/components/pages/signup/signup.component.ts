@@ -47,6 +47,7 @@ export class SignupComponent implements OnInit {
         [Validators.required, Validators.pattern(this.password_pattern)],
       ],
       repeatPassword: ['', [Validators.required]],
+      role: ['student'],
     });
   }
 
@@ -59,7 +60,6 @@ export class SignupComponent implements OnInit {
   onSubmit(form:FormGroup){
     if(form.invalid) return;
     this.user = form.value;
-    this.user.role = 'student'
     this.emailError = this.signupService.signup(this.user);
   }
 }
