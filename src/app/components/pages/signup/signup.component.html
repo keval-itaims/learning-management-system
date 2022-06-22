@@ -110,7 +110,7 @@
           >
           <div class="relative flex items-center justify-center">
             <input
-              type="password"
+              [type]="show_pass ? 'text' : 'password'"
               class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
               formControlName="password"
               (input)="check_password()"
