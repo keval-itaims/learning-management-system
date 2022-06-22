@@ -115,10 +115,10 @@
               formControlName="password"
               (input)="check_password()"
             />
-            <div
-              class="mt-2 mr-3 cursor-pointer text-gray-800"
-              (click)="togglePassword()"
-            ></div>
+            <div class = "absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800" (click) = "togglePassword()">
+                            <!-- <i [class]=" show_pass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye"></i> -->
+              <i class = "fa-solid fa-eye-slash text-gray-800"></i>
+            </div>
           </div>
           <div
             class="bg-red-300 w-full"
