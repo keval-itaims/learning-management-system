@@ -115,20 +115,34 @@
               formControlName="password"
               (input)="check_password()"
             />
-            <div class = "absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800" (click) = "togglePassword()">
-                            <!-- <i [class]=" show_pass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye"></i> -->
-              <i class = "fa-solid fa-eye-slash text-gray-800"></i>
+            <div
+              class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
+              (click)="show_pass = !show_pass"
+            >
+              <fa-icon [icon]="show_pass ? faEye : faEyeSlash"></fa-icon>
             </div>
           </div>
           <div
             class="bg-red-300 w-full"
             *ngIf="
-              regForm.get('password').invalid && regForm.get('password').touched
+              regForm.get('password').hasError('required') &&
+              regForm.get('password').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a confirm password
+            </p>
+          </div>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              regForm.get('password').hasError('pattern') &&
+              regForm.get('password').touched
             "
           >
             <p class="text-sm text-gray-800 rounded px-2 py-1">
               Password must be of at least 8 characters and mixture of
-              Uppercase, Lowercase & symbols
+              uppercase, lowercase, numbers & symbols
             </p>
           </div>
         </div>
@@ -161,11 +175,7 @@
           </div>
           <div
             class="bg-red-300 w-full"
-            *ngIf="
-              match_password_error &&
-              regForm.get('password').touched &&
-              regForm.get('repeatPassword').touched
-            "
+            *ngIf="match_password_error && regForm.get('password').touched"
           >
             <p class="text-sm text-gray-800 rounded px-2 py-1">
               Both password must be same

@@ -6,6 +6,7 @@ import {
 } from '@angular/forms';
 import { User } from 'src/app/classes/user';
 import { SignupService } from 'src/app/services/signup.service';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,8 @@ import { SignupService } from 'src/app/services/signup.service';
 })
 export class SignupComponent implements OnInit {
 
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
   regForm: FormGroup | any;
   user: User = new User();
 
@@ -53,13 +56,10 @@ export class SignupComponent implements OnInit {
 
     this.match_password_error = pass === repeatPassword ? false : true;
   }
-
-  togglePassword() {
-    this.show_pass = !this.show_pass;
-  }
   onSubmit(form:FormGroup){
     if(form.invalid) return;
     this.user = form.value;
+    this.user.role = 'student'
     this.emailError = this.signupService.signup(this.user);
   }
 }

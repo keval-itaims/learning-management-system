@@ -26,4 +26,7 @@ export class NavbarComponent implements OnInit {
     else
       this.router.navigate(['homepage/login']);
   }
+  logoClick(){
+    this.router.navigate(['homepage']);
+  }
 }
