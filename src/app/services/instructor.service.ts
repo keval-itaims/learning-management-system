@@ -29,6 +29,7 @@ export class InstructorService {
   }
 
   public deleteInstructor(id:number):Observable<Object>{
+    alert(id);
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 }

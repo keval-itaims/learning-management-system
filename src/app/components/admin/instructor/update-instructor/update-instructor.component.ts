@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
 import { Instructor } from 'src/app/classes/instructor';
 import { InstructorService } from 'src/app/services/instructor.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-instructor',
@@ -11,44 +11,66 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateInstructorComponent implements OnInit {
 
-  instructorForm : any
-
-  constructor(private instructorService:InstructorService,private activetedRoute:ActivatedRoute,private router:Router) { }
+  instructorForm : any | FormGroup
   instructor:Instructor = new Instructor();
 
-  id:string = '';
-
-  ngOnInit(): void {
-    // this.id = this.activetedRoute.snapshot.params['id'];
-    // this.instructorService.getInstructorById(this.id).subscribe(
-    //   data => this.instructor = data
-    // )
-    this.instructor.tutor_id = 1;
-    this.instructor.firstName = 'parth';
-    this.instructor.lastName = 'shah';
-    this.instructor.email = 'abc@gmail.com';
-    this.instructor.phoneNo = "8694940389"
-    this.instructor.password = "abc@1234";
-
-    this.instructorForm = new FormGroup({
-
-      "firstName" : new FormControl(this.instructor.firstName,[Validators.required,Validators.pattern('[a-zA-z ]*')]),
-      "lastName" : new FormControl(this.instructor.lastName,[Validators.required,Validators.pattern('[a-zA-z ]*')]),
-      "email" : new FormControl(this.instructor.email,[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-      "phoneNo" : new FormControl(this.instructor.phoneNo,[Validators.required,Validators.pattern('[0-9]{10}')]),
-
-    })
+  constructor(private instructorService:InstructorService,private activetedRoute:ActivatedRoute,private router:Router) {
 
   }
 
+
+  id!:number;
+
+
+  ngOnInit(): void{
+
+    this.getInstructor();
+    this.instructorForm = new FormGroup({
+
+      "firstName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z ]*')]),
+      "lastName" : new FormControl('',[Validators.required,Validators.pattern('[a-zA-z ]*')]),
+      "email" : new FormControl('',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      "phoneNo" : new FormControl('',[Validators.required,Validators.pattern('[0-9]{10}')]),
+
+    })
+    console.log(this.instructor)
+  }
+
+  getInstructor():any{
+    this.id = this.activetedRoute.snapshot.params['id'];
+    this.instructorService.getInstructorById(this.id).subscribe(
+      data => {
+        console.log(data)
+        this.instructor = data;
+        console.log("instructor data",this.instructor);
+        this.instructorForm.patchValue({
+          firstName : this.instructor.firstName,
+          lastName : this.instructor.lastName,
+          email : this.instructor.email,
+          phoneNo : this.instructor.phoneNo
+        })
+        console.log("form value",this.instructorForm.value)
+      },
+      error =>{
+          console.log(error);
+
+      },
+
+    )
+    return null;
+
+  }
   onUpdateInstructor(){
-    alert(typeof this.activetedRoute.snapshot.params['id'])
+
     this.instructor = this.instructorForm.value;
     alert(this.instructor.firstName);
-    // this.instructorService.updateInstructor(this.instructor.instructorId,this.instructor).subscribe(
-    //   data => this.router.navigate(['/instructor'])
+    this.instructor.tutor_id = this.id;
+    console.log(this.instructor.tutor_id)
+    console.log(this.instructor)
+    // this.instructorService.updateInstructor(this.instructor.tutor_id,this.instructor).subscribe(
+    //   data => this.router.navigate(['/admin/instructor/detail'])
     // )
-    this.router.navigate(['/admin/instructor/detail'])
+
   }
   get firstname(){return this.instructorForm.get('firstName')}
   get lastname(){return this.instructorForm.get('lastName')}

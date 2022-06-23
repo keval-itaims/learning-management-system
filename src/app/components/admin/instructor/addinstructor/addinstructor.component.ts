@@ -35,12 +35,14 @@ export class AddinstructorComponent implements OnInit {
     this.instructor = this.instructorForm.value;
     this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
       data =>{
-        console.log("response received!")
+        console.log("response received!");
+        console.log(data);
         if(data!=null){
           this.message = 'email is already registered!'
+          this.router.navigate(['admin/instructor/detail'])
         }
         else{
-          alert("Instructor added succesfully!")
+
         }
       },
       error =>{
