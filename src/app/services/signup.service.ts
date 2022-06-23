@@ -16,9 +16,11 @@ export class SignupService {
     
     this.doSignup(user).subscribe(
       (data) => {
-        console.log(data);
-        if(data)
+        if(data!=null){
           this.flag = false;
+          console.log(data)
+          console.log("flag")
+        }
         else
           this.flag = true;
       },

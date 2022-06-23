@@ -58,10 +58,11 @@ export class SignupComponent implements OnInit {
     let repeatPassword = this.regForm.controls['repeatPassword'].value;
     this.match_password_error = pass === repeatPassword ? false : true;
   }
-  onSubmit(form:FormGroup){
-    if(form.invalid) return;
-    this.user = form.value;
+  onSubmit(){
+    if(this.regForm.invalid) return;
+    this.user = this.regForm.value;
     this.emailError = this.signupService.signup(this.user);
+    console.log(this.emailError);
     if(!this.emailError){
       this.router.navigate(['./login'], {relativeTo:this.route});
     }
