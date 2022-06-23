@@ -16,15 +16,19 @@ export class SignupService {
     
     this.doSignup(user).subscribe(
       (data) => {
+        console.log(data);
         if(data)
           this.flag = false;
         else
           this.flag = true;
+      },
+      (error) => {
+      console.log(error);
       }
     );
     return this.flag;
   }
   doSignup(user: User): Observable<any>{
-    return this.http.post<any>(`${this.url}/signup`, user);
+    return this.http.post<any>(`${this.url}/register`, user);
   }
 }

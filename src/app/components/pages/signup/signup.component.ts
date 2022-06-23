@@ -7,6 +7,7 @@ import {
 import { User } from 'src/app/classes/user';
 import { SignupService } from 'src/app/services/signup.service';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +30,8 @@ export class SignupComponent implements OnInit {
   match_password_error = false; //To show error of matching password
   emailError = false; //Check if user is already registered
 
-  constructor(private fb: FormBuilder, private signupService: SignupService) {}
+  constructor(private fb: FormBuilder, private signupService: SignupService,
+    private router: Router, private route:ActivatedRoute) {}
 
   ngOnInit() {
     this.regForm = this.fb.group({
@@ -41,7 +43,7 @@ export class SignupComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern(this.name_pattern)],
       ],
-      email: ['', [Validators.required, Validators.pattern(this.pat_email)]],
+      emailId: ['', [Validators.required, Validators.pattern(this.pat_email)]],
       password: [
         '',
         [Validators.required, Validators.pattern(this.password_pattern)],
@@ -60,5 +62,8 @@ export class SignupComponent implements OnInit {
     if(form.invalid) return;
     this.user = form.value;
     this.emailError = this.signupService.signup(this.user);
+    if(!this.emailError){
+      this.router.navigate(['./login'], {relativeTo:this.route});
+    }
   }
 }

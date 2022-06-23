@@ -49,6 +49,7 @@ import { FaqsComponent } from './components/pages/faqs/faqs.component';
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
 import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.component';
+import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,6 @@ import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.com
     SignupComponent,
     InstructorDetailComponent,
     UpdateInstructorComponent,
-
     CourseComponent,
     AccountComponent,
     MyaccountComponent,
@@ -88,6 +88,7 @@ import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.com
     InstructorHomepageComponent,
     StudentComponent,
     ConfirmdialogComponent,
+    CourseDetailsComponent,
 ],
   imports: [
     BrowserModule,

@@ -16,19 +16,15 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 export class StudentComponent implements OnInit {
 
   studentDetail:User[] = [
-      {"user_id":1,"firstName":'parth',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
-      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
-      {"user_id":3,"firstName":'Keval',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
-      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
-      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"email":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":1,"firstName":'parth',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":3,"firstName":'Keval',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
+      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":''},
   ];
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'email','action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'emailId','action'];
   dataSource = new MatTableDataSource(this.studentDetail);
-
-
-
-
 
   constructor(private studentService:StudentService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
 
@@ -67,6 +63,4 @@ export class StudentComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
 }

@@ -34,7 +34,7 @@ export class MyaccountComponent implements OnInit {
         this.user.lastName,
         [Validators.required, Validators.pattern(this.name_pattern)],
       ],
-      email: [this.user.email],
+      emailId: [this.user.emailId],
       password: [
         this.user.password],
     });
@@ -43,5 +43,6 @@ export class MyaccountComponent implements OnInit {
     if(this.userForm.invalid)return;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
+    this.userService.updateUser(this.user);
   }
 }
