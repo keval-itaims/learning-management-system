@@ -34,7 +34,7 @@ export class MyaccountComponent implements OnInit {
         this.user.lastName,
         [Validators.required, Validators.pattern(this.name_pattern)],
       ],
-      email: [this.user.email],
+      emailId: [this.user.emailId],
       password: [
         this.user.password],
     });
