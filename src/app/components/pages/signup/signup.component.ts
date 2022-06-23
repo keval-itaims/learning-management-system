@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern(this.name_pattern)],
       ],
-      email: ['', [Validators.required, Validators.pattern(this.pat_email)]],
+      emailId: ['', [Validators.required, Validators.pattern(this.pat_email)]],
       password: [
         '',
         [Validators.required, Validators.pattern(this.password_pattern)],
