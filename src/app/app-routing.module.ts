@@ -18,11 +18,13 @@ import { MycoursesComponent } from './components/pages/account/mycourses/mycours
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component'
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
+import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
 
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
   {path:'create-instructor',component:AddinstructorComponent},
+  {path:'addcontactus',component:AddcontactusComponent},
   {path:'admin', component:AdminhomepageComponent, children:[
     {path:'',redirectTo: 'dashboard',pathMatch: 'full'},
     {path:'dashboard',component:DashboardComponent},

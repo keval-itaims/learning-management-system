@@ -50,6 +50,7 @@ import { InstructorHomepageComponent } from './components/admin/instructor/instr
 import { StudentComponent } from './components/admin/student/student.component';
 import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.component';
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
+import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { CourseDetailsComponent } from './components/coursespage/course-details/
     StudentComponent,
     ConfirmdialogComponent,
     CourseDetailsComponent,
+    AddcontactusComponent,
 ],
   imports: [
     BrowserModule,
