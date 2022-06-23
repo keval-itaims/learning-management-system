@@ -15,33 +15,40 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 })
 export class InstructorDetailComponent implements OnInit {
 
-  instructorDetail : Instructor[]=[
+  // instructorDetail : Instructor[]=[
 
-    {tutor_id:1,firstName:'Parth',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {tutor_id:2,firstName:'Harsh',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {tutor_id:3,firstName:'Sunny',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {tutor_id:4,firstName:'Shubham',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-    {tutor_id:5,firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
-  ];
+  //   {tutor_id:1,firstName:'Parth',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+  //   {tutor_id:2,firstName:'Harsh',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+  //   {tutor_id:3,firstName:'Sunny',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+  //   {tutor_id:4,firstName:'Shubham',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+  //   {tutor_id:5,firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
+  // ];
+
+  instructorDetail !: Instructor[];
+  loading_data:boolean = true;
 
 
   constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','action'];
-  dataSource = new MatTableDataSource(this.instructorDetail);
-
-
-
   ngOnInit(): void {
-    //this.getInstructor()
 
+    this.getInstructor()
 
   }
+
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','action'];
+  dataSource:MatTableDataSource<Instructor[]> | any;
+
 
   private getInstructor(){
       this.instructorService.getInstructorDetails().subscribe(
         data =>{
+
+          console.log(data);
+          this.loading_data = false;
           this.instructorDetail = data;
+          this.dataSource = new MatTableDataSource(this.instructorDetail);
+          console.log(this.instructorDetail)
         },
         error =>{
 
@@ -50,19 +57,16 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onUpdateInstructor(element:any){
-    let id = element.instructor_id;
-    alert(id);
+    let id = element.tutor_id;
     this.router.navigate(['/admin/instructor/update/',id]);
 
   }
 
   onDeleteInstrcutor(element:any){
-    // let id = element.instructor_id;
-    // alert(id)
-    // this.router.navigate(['admin/instructor/detail'])
-    // this.instructorService.deleteInstructor(id).subscribe(
-    //   data => this.router.navigate(['admin/instructor/detail'])
-    // )
+    let id = element.tutor_id;
+
+
+
     this.confirmDialogService.openConfirmDialog({
         title: 'Delete Instructor',
         message:'Are you sure?',
@@ -71,7 +75,9 @@ export class InstructorDetailComponent implements OnInit {
     }).subscribe(
       result =>{
         if(result){
-          alert("user deleted!")
+          this.instructorService.deleteInstructor(id).subscribe(
+            data => this.router.navigate(['admin/instructor/detail'])
+          )
         }
         else{
           alert("user not deleted!")
