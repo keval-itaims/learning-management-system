@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../classes/user';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { User } from '../classes/user';
 })
 export class SignupService {
 
-  url = 'http://localhost:8080/signup'
+  url = environment.url;
   flag = true;
   constructor(private http: HttpClient) { }
   signup(user: User): boolean{
@@ -24,6 +25,6 @@ export class SignupService {
     return this.flag;
   }
   doSignup(user: User): Observable<any>{
-    return this.http.post<any>(this.url, user);
+    return this.http.post<any>(`${this.url}/signup`, user);
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {faLocationDot, faMessage, faPhone, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { Contact } from 'src/app/classes/contact';
+
 
 @Component({
   selector: 'app-contact',
@@ -18,5 +21,6 @@ export class ContactComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {}
-
+  onSubmit(){
+  }
 }

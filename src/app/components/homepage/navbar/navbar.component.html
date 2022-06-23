@@ -4,9 +4,10 @@
   <div class="flex items-center">
     <img
       src="..\assets\images\logo.png"
-      class="mr-8"
+      class="mr-8 cursor-pointer"
       alt="Logo"
       width="200px"
+      (click)="logoClick()"
     />
     <p class="cursor-pointer hidden lg:block" [matMenuTriggerFor]="appMenu">
       All Categories

@@ -4,21 +4,27 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { User } from 'src/app/classes/user';
 import { UserService } from 'src/app/services/user.service';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { User } from 'src/app/classes/user';
+
 @Component({
   selector: 'app-myaccount',
   templateUrl: './myaccount.component.html',
   styleUrls: ['./myaccount.component.css']
 })
 export class MyaccountComponent implements OnInit {
-  user:User = new User()
-  userForm: FormGroup | any;
+
+  show_pass = false;
+  user: User|any;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+  userForm: FormGroup|any;
   name_pattern = '[A-Za-z ]+';
-  constructor(private fb: FormBuilder,
-    private userService: UserService) {}
+  constructor(private fb:FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
+    this.user = this.userService.getUser();
     this.userForm = this.fb.group({
       firstName: [
         this.user.firstName,
@@ -28,13 +34,14 @@ export class MyaccountComponent implements OnInit {
         this.user.lastName,
         [Validators.required, Validators.pattern(this.name_pattern)],
       ],
-      email: [
-        this.user.email,
-      ],
-  })
+      email: [this.user.email],
+      password: [
+        this.user.password],
+    });
   }
   onSubmit(){
-    this.user.firstName = this.userForm.firstName;
-    this.user.lastName = this.userForm.lastName;
+    if(this.userForm.invalid)return;
+    this.user.firstName = this.userForm.get("firstName").value;
+    this.user.lastName = this.userForm.get("lastName").value;
   }
 }

@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../classes/user';
+import { environment } from 'src/environments/environment';
 import { UserLogin } from '../classes/user-login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  url = 'http://localhost:8080/login'
+  url = environment.url;
   flag = 0;
   constructor(private http: HttpClient) { }
-  login(user:UserLogin):number{
-    this.doLogin(user).subscribe(
+  login(userLogin:UserLogin):number{
+    this.doLogin(userLogin).subscribe(
       (data)=>{
         if(data.emailError) this.flag = 1;
         else if(data.passwordError) this.flag = 2;
@@ -22,8 +22,8 @@ export class LoginService {
     )
     return this.flag;
   }
-  doLogin(user:UserLogin): Observable<any>{
-    return this.http.post<any>(this.url, user);
+  doLogin(userLogin:UserLogin): Observable<any>{
+    return this.http.post<any>(`${this.url}/login`, userLogin);
   }
   isLoggedIn(){
     return localStorage.getItem('user') ? true : false;

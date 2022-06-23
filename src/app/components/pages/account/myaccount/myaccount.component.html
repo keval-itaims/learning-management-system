@@ -3,8 +3,13 @@
     <div
       class="bg-gray-100 rounded shadow lg:w-5/12 md:w-9/12 sm:w-9/12 w-full p-10"
     >
+      <p
+        class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
+      >
+        My Account
+      </p>
       <form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
-        <div class="mt-2">
+        <div class="mt-5">
           <label
             for="firstName"
             class="text-sm md:text-base font-medium text-gray-800"
@@ -18,8 +23,16 @@
             formControlName="firstName"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              userForm.get('firstName').invalid &&
+              userForm.get('firstName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid first name
+            </p>
           </div>
         </div>
 
@@ -37,8 +50,16 @@
             formControlName="lastName"
           />
 
-          <div class="bg-red-300 w-full">
-            <p class="text-sm text-gray-800 rounded px-2 py-1">Error</p>
+          <div
+            class="bg-red-300 w-full"
+            *ngIf="
+              userForm.get('lastName').invalid &&
+              userForm.get('lastName').touched
+            "
+          >
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Please provide a valid last name
+            </p>
           </div>
         </div>
 
@@ -50,19 +71,41 @@
           >
           <input
             type="text"
+            readonly
             id="email"
             class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
             name="email"
             formControlName="email"
-            readonly
           />
         </div>
 
-        <div class="mt-5 mx-auto w-max">
+        <div class="mt-2">
+          <label
+            for="password"
+            class="text-sm md:text-base leading-none font-medium text-gray-800"
+            >Password</label
+          >
+          <div class="relative flex items-center justify-center">
+            <input
+              readonly
+              [type]="show_pass ? 'text' : 'password'"
+              class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
+              formControlName="password"
+            />
+            <div
+              class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
+              (click)="show_pass = !show_pass"
+            >
+              <fa-icon [icon]="show_pass ? faEye : faEyeSlash"></fa-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 mx-auto w-max">
           <input
             type="submit"
             value="Save"
-            class="bg-red-500 p-2 md:px-4 md:py-3 text-white font-extrabold text-xl border rounded hover:bg-indigo-600 cursor-pointer"
+            class="bg-red-500 py-2 px-4 text-white font-extrabold text-xl border rounded hover:bg-indigo-600 cursor-pointer"
           />
         </div>
       </form>
