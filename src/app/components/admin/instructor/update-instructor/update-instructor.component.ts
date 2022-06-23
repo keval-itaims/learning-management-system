@@ -23,7 +23,7 @@ export class UpdateInstructorComponent implements OnInit {
     // this.instructorService.getInstructorById(this.id).subscribe(
     //   data => this.instructor = data
     // )
-    this.instructor.instructor_id = 1;
+    this.instructor.tutor_id = 1;
     this.instructor.firstName = 'parth';
     this.instructor.lastName = 'shah';
     this.instructor.email = 'abc@gmail.com';

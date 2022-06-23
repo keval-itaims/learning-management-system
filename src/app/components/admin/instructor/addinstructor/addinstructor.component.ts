@@ -31,22 +31,22 @@ export class AddinstructorComponent implements OnInit {
 
   addInstructor(){
     this.message = ''
-    alert(`${this.instructorForm.value.firstName} is added!`)
-    // this.instructor = this.instructorForm.value;
-    // this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
-    //   data =>{
-    //     console.log("response received!")
-    //     if(data!=null){
-    //       this.message = 'email is already registered!'
-    //     }
-    //     else{
-
-    //     }
-    //   },
-    //   error =>{
-    //     console.log("error occured!")
-    //   }
-    // )
+    // alert(`${this.instructorForm.value.firstName} is added!`)
+    this.instructor = this.instructorForm.value;
+    this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
+      data =>{
+        console.log("response received!")
+        if(data!=null){
+          this.message = 'email is already registered!'
+        }
+        else{
+          alert("Instructor added succesfully!")
+        }
+      },
+      error =>{
+        alert("error occured!")
+      }
+    )
   }
 
   onAddInstructor(){

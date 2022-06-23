@@ -50,7 +50,6 @@ export class SignupComponent implements OnInit {
   check_password() {
     let pass = this.regForm.controls['password'].value;
     let repeatPassword = this.regForm.controls['repeatPassword'].value;
-
     this.match_password_error = pass === repeatPassword ? false : true;
   }
 
