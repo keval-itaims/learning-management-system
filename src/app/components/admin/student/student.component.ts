@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/classes/user';
 import { StudentService } from 'src/app/services/student.service';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 @Component({
@@ -29,18 +30,36 @@ export class StudentComponent implements OnInit {
 
 
 
-  constructor(private studentService:StudentService,private router:Router) { }
+  constructor(private studentService:StudentService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
 
   ngOnInit(): void {
 
   }
 
   onDeleteStudent(element:any){
-    let id = element.user_id;
-    alert(`user id : ${id} deleted!`);
+    // let id = element.user_id;
+    // alert(`user id : ${id} deleted!`);
     // this.studentService.deleteStudent(id).subscribe(
     //   data => this.router.navigate(['/admin/student'])
     // )
+    this.confirmDialogService.openConfirmDialog(
+      {
+        title:'Delete Student',
+        message:'Are you sure?',
+        confirmText:'Delete',
+        cancleText : 'cancle'
+      }
+    ).subscribe(
+      result => {
+        if(result){
+          alert("student deleted!")
+        }
+        else{
+          alert("student not deletd!")
+        }
+      }
+    )
+
 
   }
 

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class InstructorService {
 
   constructor(private httpClient:HttpClient,private route:Router) { }
-  baseURL:string = "http://localhost:8080/instructor";
+  baseURL:string = "http://localhost:8080/tutor";
 
   public registerInstructorFromRemote(instructor:Object):Observable<Object>{
     return this.httpClient.post<Object>(`${this.baseURL}`,instructor);
