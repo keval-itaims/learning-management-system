@@ -11,6 +11,7 @@ import { Contact } from 'src/app/classes/contact';
 })
 export class ContactComponent implements OnInit {
 
+  // contactForm: formGroup | any;
   faLocation = faLocationDot;
   faMessage = faMessage;
   faPhone = faPhone;
@@ -18,7 +19,7 @@ export class ContactComponent implements OnInit {
   contactNumber = '+91 1234123433';
   email = 'info@support.com'
   location = '70-80, Upper St Norwich NR2 1LT 39191'
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {}
   onSubmit(){

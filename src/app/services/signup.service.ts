@@ -20,6 +20,9 @@ export class SignupService {
           this.flag = false;
         else
           this.flag = true;
+      },
+      (error) => {
+      console.log(error);
       }
     );
     return this.flag;

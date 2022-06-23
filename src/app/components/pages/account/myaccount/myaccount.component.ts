@@ -43,5 +43,6 @@ export class MyaccountComponent implements OnInit {
     if(this.userForm.invalid)return;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
+    this.userService.updateUser(this.user);
   }
 }
