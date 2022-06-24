@@ -5,5 +5,6 @@ export class User {
     emailId!: string;
     password!: string;
     repeatPassword!: string;
+    phoneNum!: string;
     role !: string;
 }
