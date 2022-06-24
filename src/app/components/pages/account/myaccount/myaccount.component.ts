@@ -43,6 +43,11 @@ export class MyaccountComponent implements OnInit {
     if(this.userForm.invalid)return;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
-    this.userService.updateUser(this.user);
+    this.userService.updateUser(this.user).subscribe(
+      (data) => {
+        this.userService.saveUser(data);
+      },
+      (error) => console.log(error)
+    );
   }
 }

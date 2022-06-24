@@ -16,11 +16,11 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 export class StudentComponent implements OnInit {
 
   studentDetail:User[] = [
-      {"user_id":1,"firstName":'parth',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":3,"firstName":'Keval',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
+      {"user_id":1,"firstName":'parth',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':'', "emailError":false, "passwordError":false},
+      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':'', "emailError":false, "passwordError":false},
+      {"user_id":3,"firstName":'Keval',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':'', "emailError":false, "passwordError":false},
+      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':'', "emailError":false, "passwordError":false},
+      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':'', "emailError":false, "passwordError":false},
   ];
 
   displayedColumns: string[] = ['firstName', 'lastName', 'emailId','action'];

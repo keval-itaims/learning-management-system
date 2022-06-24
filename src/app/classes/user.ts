@@ -6,5 +6,7 @@ export class User {
     password!: string;
     repeatPassword!: string;
     phoneNum!: string;
-    role !: string;
+    role!: string;
+    emailError!: boolean;
+    passwordError!: boolean;
 }

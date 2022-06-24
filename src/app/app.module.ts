@@ -52,6 +52,7 @@ import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.com
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
 import { ChaptersComponent } from './components/coursespage/course-details/chapters/chapters.component';
+import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ChaptersComponent } from './components/coursespage/course-details/chapt
     CourseDetailsComponent,
     AddcontactusComponent,
     ChaptersComponent,
+    ForgotPasswordComponent,
 ],
   imports: [
     BrowserModule,
