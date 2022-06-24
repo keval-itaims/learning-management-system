@@ -14,7 +14,7 @@ export class UserService {
   getUser(): JSON{
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
-  saveUser(user:User){
+  saveUser(user:User): void{
     localStorage.setItem("user", JSON.stringify(user));
   }
   updateUser(user:User): Observable<User>{
