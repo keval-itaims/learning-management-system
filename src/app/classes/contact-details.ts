@@ -1,5 +1,6 @@
 export class ContactDetails{
-    phone!: string;
-    email!: string;
+    cId!: number;
+    phoneNumber!: string;
+    emailId!: string;
     address!: string;
 }

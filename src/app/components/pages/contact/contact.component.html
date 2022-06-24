@@ -1,7 +1,9 @@
 <section
   class="px-5 py-10 flex flex-col md:flex-row items-center justify-evenly gap-5"
 >
-  <article>
+  <div *ngIf="isLoading" class="text-xl text-grey-600">Loading...</div>
+
+  <article *ngIf="!isLoading">
     <p class="text-lg text-red-500">Contact</p>
     <div class="flex gap-3 mt-5">
       <div class="bg-blue-500 rounded-full h-max p-2">
@@ -76,20 +78,63 @@
       width="350"
       class="rounded-lg"
     />
-    <article class="grid gap-3 place-items-center">
-      <input type="text" class="rounded-md p-3 border-2" placeholder="Name" />
-      <input type="email" class="rounded-md p-3 border-2" placeholder="Email" />
-      <textarea
-        name=""
-        id=""
-        cols="25"
-        rows="10"
-        class="rounded-md p-3 border-2"
-        placeholder="Message"
-      ></textarea>
-      <button class="text-white px-5 py-3 bg-red-500 rounded-md">
-        <fa-icon [icon]="faPaperPlane"></fa-icon> Send
-      </button>
+    <article>
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        class="grid gap-3 place-items-center"
+      >
+        <input
+          type="text"
+          class="rounded-md p-3 border-2"
+          placeholder="Name"
+          formControlName="name"
+        />
+        <div
+          class="text-sm tracking-tight -mt-3 text-red-400"
+          *ngIf="
+            contactForm.get('name').invalid && contactForm.get('name').touched
+          "
+        >
+          Field can not be empty
+        </div>
+        <input
+          type="email"
+          class="rounded-md p-3 border-2"
+          placeholder="Email"
+          formControlName="emailId"
+        />
+        <div
+          class="text-sm tracking-tight -mt-3 text-red-400"
+          *ngIf="
+            contactForm.get('emailId').invalid &&
+            contactForm.get('emailId').touched
+          "
+        >
+          Field can not be empty
+        </div>
+        <textarea
+          name=""
+          id=""
+          cols="25"
+          rows="10"
+          formControlName="message"
+          class="rounded-md p-3 border-2"
+          placeholder="Message"
+        ></textarea>
+        <div
+          class="text-sm tracking-tight -mt-3 text-red-400"
+          *ngIf="
+            contactForm.get('message').invalid &&
+            contactForm.get('message').touched
+          "
+        >
+          Field can not be empty
+        </div>
+        <button class="text-white px-5 py-3 bg-red-500 rounded-md">
+          <fa-icon [icon]="faPaperPlane"></fa-icon> Send
+        </button>
+      </form>
     </article>
   </section>
 </section>
