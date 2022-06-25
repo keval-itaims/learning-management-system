@@ -51,8 +51,13 @@ import { StudentComponent } from './components/admin/student/student.component';
 import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.component';
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
+<<<<<<< HEAD
 import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
+=======
+import { ChaptersComponent } from './components/coursespage/course-details/chapters/chapters.component';
+import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
+>>>>>>> 25d566ac7f6346528af8c78a8398579c15028572
 
 @NgModule({
   declarations: [
@@ -93,8 +98,13 @@ import { ContactusHomepageComponent } from './components/admin/contact-us/contac
     ConfirmdialogComponent,
     CourseDetailsComponent,
     AddcontactusComponent,
+<<<<<<< HEAD
     ContactusDetailComponent,
     ContactusHomepageComponent,
+=======
+    ChaptersComponent,
+    ForgotPasswordComponent,
+>>>>>>> 25d566ac7f6346528af8c78a8398579c15028572
 ],
   imports: [
     BrowserModule,

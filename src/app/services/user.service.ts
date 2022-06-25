@@ -11,20 +11,13 @@ export class UserService {
 
   url =  environment.url;
   constructor(private http: HttpClient) { }
-  getUser(){
+  getUser(): JSON{
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
-  updateUser(user:User){
-    this.doUpdate(user).subscribe(
-      (data)=>{
-        localStorage.setItem("user", JSON.stringify(data));
-      },
-      (error) => {
-        console.log("something went wrong");
-      }
-    );
+  saveUser(user:User): void{
+    localStorage.setItem("user", JSON.stringify(user));
   }
-  doUpdate(user:User): Observable<User>{
+  updateUser(user:User): Observable<User>{
     return this.http.put<User>(`${this.url}/user`, user);
   }
 }

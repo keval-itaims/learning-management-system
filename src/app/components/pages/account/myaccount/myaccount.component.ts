@@ -37,12 +37,19 @@ export class MyaccountComponent implements OnInit {
       emailId: [this.user.emailId],
       password: [
         this.user.password],
+      phoneNum: [this.user.phoneNum, [Validators.required, Validators.pattern('^[6789][0-9]{9}$')]]
     });
   }
   onSubmit(){
     if(this.userForm.invalid)return;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
-    this.userService.updateUser(this.user);
+    this.user.phoneNum = this.userForm.get("phoneNum").value;
+    this.userService.updateUser(this.user).subscribe(
+      (data) => {
+        this.userService.saveUser(data);
+      },
+      (error) => console.log(error)
+    );
   }
 }

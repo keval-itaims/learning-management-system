@@ -61,10 +61,18 @@ export class SignupComponent implements OnInit {
   onSubmit(){
     if(this.regForm.invalid) return;
     this.user = this.regForm.value;
-    this.emailError = this.signupService.signup(this.user);
-    console.log(this.emailError);
-    if(!this.emailError){
-      this.router.navigate(['./login'], {relativeTo:this.route});
-    }
+    this.signupService.signup(this.user).subscribe(
+      (data) => {
+        if(data === null){
+          this.emailError = true;
+          return;
+        }
+        else{
+          this.emailError = false;
+          this.router.navigate(['../login'], {relativeTo:this.route});
+        }
+      },
+      (error) => console.log(error)
+    )
   }
 }
