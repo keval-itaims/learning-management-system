@@ -13,7 +13,7 @@ export class SignupService {
   flag = true;
   constructor(private http: HttpClient) { }
   signup(user: User): boolean{
-    
+
     this.doSignup(user).subscribe(
       (data) => {
         if(data!=null){

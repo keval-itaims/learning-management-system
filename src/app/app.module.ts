@@ -51,6 +51,8 @@ import { StudentComponent } from './components/admin/student/student.component';
 import { ConfirmdialogComponent } from './shared/confirmdialog/confirmdialog.component';
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
+import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
+import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { AddcontactusComponent } from './components/admin/contact-us/addcontactu
     ConfirmdialogComponent,
     CourseDetailsComponent,
     AddcontactusComponent,
+    ContactusDetailComponent,
+    ContactusHomepageComponent,
 ],
   imports: [
     BrowserModule,

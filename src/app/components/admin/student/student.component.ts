@@ -15,29 +15,33 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 })
 export class StudentComponent implements OnInit {
 
-  studentDetail:User[] = [
-      {"user_id":1,"firstName":'parth',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":2,"firstName":'Harsh',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":3,"firstName":'Keval',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":4,"firstName":'Shubham',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-      {"user_id":5,"firstName":'Sunny',"lastName":'shah',"emailId":'abc@gmail.com',"role":"Student","password":'',"repeatPassword":'', 'phoneNum':''},
-  ];
+  studentDetail!:User[]
 
   displayedColumns: string[] = ['firstName', 'lastName', 'emailId','action'];
-  dataSource = new MatTableDataSource(this.studentDetail);
+  dataSource : MatTableDataSource<User[]> | any
 
   constructor(private studentService:StudentService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
 
-  ngOnInit(): void {
+  getStudent(){
+    this.studentService.getStudent().subscribe(
+      data => {
+        console.log(data)
+        this.studentDetail = data.filter((item)=>{
+          return item.role === "student";
+        })
+        this.dataSource = new MatTableDataSource(this.studentDetail);
+        console.log(this.studentDetail)
+      }
 
+    )
   }
 
-  onDeleteStudent(element:any){
-    // let id = element.user_id;
-    // alert(`user id : ${id} deleted!`);
-    // this.studentService.deleteStudent(id).subscribe(
-    //   data => this.router.navigate(['/admin/student'])
-    // )
+  ngOnInit(): void {
+
+      this.getStudent();
+  }
+
+  deleteStudent(id:any){
     this.confirmDialogService.openConfirmDialog(
       {
         title:'Delete Student',
@@ -48,7 +52,11 @@ export class StudentComponent implements OnInit {
     ).subscribe(
       result => {
         if(result){
-          alert("student deleted!")
+          this.studentService.deleteStudent(id).subscribe(
+            data => window.location.reload(),
+            error => console.log(error)
+
+          )
         }
         else{
           alert("student not deletd!")
@@ -57,6 +65,10 @@ export class StudentComponent implements OnInit {
     )
 
 
+  }
+  onDeleteStudent(element:any){
+    let id = element.user_id;
+    this.deleteStudent(id);
   }
 
   applyFilter(event: Event) {

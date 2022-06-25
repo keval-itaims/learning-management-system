@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ContactDetails } from 'src/app/classes/contact-details';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-addcontactus',
@@ -8,9 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddcontactusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private utilityService:UtilityService,private router:Router) { }
 
   contactusForm : FormGroup | any;
+  contactDetail : ContactDetails | any
   ngOnInit(): void {
 
     this.contactusForm = new FormGroup({
@@ -23,7 +27,9 @@ export class AddcontactusComponent implements OnInit {
 
 
   onAddContactusDetail(){
-
+      this.contactDetail = this.contactusForm.value;
+      console.log(this.contactDetail)
+      const data = this.utilityService.addContactusDetail(this.contactDetail);
   }
 
   get email(){return this.contactusForm.get('email')};

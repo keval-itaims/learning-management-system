@@ -19,6 +19,8 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
+import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
+import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 
 
 const routes: Routes = [
@@ -34,8 +36,13 @@ const routes: Routes = [
         {path:'detail',component:InstructorDetailComponent},
         {path:'create',component:AddinstructorComponent},
         {path:'update/:id',component:UpdateInstructorComponent},
-      ]},
     ]},
+    {path:'contact-us',component:ContactusHomepageComponent,children:[
+      {path:'',redirectTo:'detail',pathMatch:'full'},
+      {path:'detail',component:ContactusDetailComponent},
+      {path:'add',component:AddcontactusComponent},
+    ]},
+  ]},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},

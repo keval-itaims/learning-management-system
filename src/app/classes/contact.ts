@@ -1,6 +1,7 @@
 export class Contact {
     id!: number;
     name!: string;
-    email!: string;
+    emailId!: string;
     message!: string;
+    status!:number;
 }
