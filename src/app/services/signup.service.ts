@@ -11,6 +11,8 @@ export class SignupService {
 
   url = environment.url;
   constructor(private http: HttpClient) { }
+
+
   signup(user: User): Observable<User>{
     return this.http.post<User>(`${this.url}/register`, user);
   }

@@ -20,7 +20,8 @@ import { InstructorHomepageComponent } from './components/admin/instructor/instr
 import { StudentComponent } from './components/admin/student/student.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
 import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
-
+import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
+import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -35,8 +36,13 @@ const routes: Routes = [
         {path:'detail',component:InstructorDetailComponent},
         {path:'create',component:AddinstructorComponent},
         {path:'update/:id',component:UpdateInstructorComponent},
-      ]},
     ]},
+    {path:'contact-us',component:ContactusHomepageComponent,children:[
+      {path:'',redirectTo:'detail',pathMatch:'full'},
+      {path:'detail',component:ContactusDetailComponent},
+      {path:'add',component:AddcontactusComponent},
+    ]},
+  ]},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
     {path: 'main', component:MainComponent},

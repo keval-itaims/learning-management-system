@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Contact } from '../classes/contact';
-import { ContactDetails } from '../classes/contact-details';
+import { ContactDetails } from '../classes/contact-details'
+
+import { environment } from 'src/environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,26 @@ import { ContactDetails } from '../classes/contact-details';
 export class UtilityService {
   url = environment.url;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http:HttpClient) { }
+
+  baseURL = 'http://localhost:8080/contact';
+
+  public addContactusDetail(contactDetail:ContactDetails):any{
+    this.http.put<any>(`${this.baseURL}`,contactDetail).subscribe(
+      data => {
+
+        return data},
+      error => {console.log(error)
+            return false;
+      }
+    );
+
+  }
+
+  public getContactusDetail():Observable<Contact[]>{
+    return this.http.get<Contact[]>(this.baseURL);
+  }
+
 
   getContactDetails(): Observable<ContactDetails[]>{
     return this.http.get<ContactDetails[]>(`${this.url}/contactDetails`);
@@ -26,3 +48,4 @@ export class UtilityService {
     );
   }
 }
+
