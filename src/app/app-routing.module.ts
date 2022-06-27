@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
+import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,9 @@ const routes: Routes = [
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
-    {path:'login', component:LoginComponent},
+    {path:'login', component:LoginComponent, children:[
+      {path:'forgot-password', component:ForgotPasswordComponent}
+    ]},
     {path:'account', component:AccountComponent, children:[
       {path:'', redirectTo:'myaccount', pathMatch: 'full'},
       {path:'myaccount', component:MyaccountComponent},
