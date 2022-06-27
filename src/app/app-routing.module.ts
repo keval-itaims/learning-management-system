@@ -23,6 +23,7 @@ import { ForgotPasswordComponent } from './components/pages/login/forgot-passwor
 import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
+import { FaqsComponent } from './components/pages/faqs/faqs.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routes: Routes = [
     {path: 'main', component:MainComponent},
     {path:'about', component:AboutComponent},
     {path:'contact', component:ContactComponent},
+    {path:'faqs', component:FaqsComponent},
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
