@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Instructor } from 'src/app/classes/instructor';
+import { User } from 'src/app/classes/user';
 import { InstructorService } from 'src/app/services/instructor.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddinstructorComponent implements OnInit {
   instructorForm : any
 
   message=''
-  instructor = new Instructor()
+  instructor = new User()
   constructor(private instructorService : InstructorService,private router:Router) { }
 
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class AddinstructorComponent implements OnInit {
     // alert(`${this.instructorForm.value.firstName} is added!`)
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
+    console.log(this.instructor);
     this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
       data =>{
         console.log("response received!");

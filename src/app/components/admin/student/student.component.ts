@@ -53,8 +53,13 @@ export class StudentComponent implements OnInit {
       result => {
         if(result){
           this.studentService.deleteStudent(id).subscribe(
-            data => window.location.reload(),
-            error => console.log(error)
+            data =>{
+              this.getStudent();
+              console.log("data received!")
+            },
+            error => {
+              this.getStudent();
+              console.log(error)}
 
           )
         }
