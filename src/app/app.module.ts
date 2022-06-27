@@ -32,7 +32,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { LoginComponent } from './components/pages/login/login.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
 import { InstructorComponent } from './components/homepage/instructors/instructor/instructor.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddinstructorComponent } from './components/admin/instructor/addinstructor/addinstructor.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -107,6 +107,7 @@ import { ForgotPasswordComponent } from './components/pages/login/forgot-passwor
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
+    FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,

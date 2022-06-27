@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,11 @@ export class LoginComponent implements OnInit {
 
   pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private userService: UserService, private router:Router) {}
+  constructor(private fb: FormBuilder,
+    private loginService: LoginService,
+    private userService: UserService,
+    private router:Router,
+    private utilityService: UtilityService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -41,6 +46,7 @@ export class LoginComponent implements OnInit {
         if(this.emailError || this.passwordError) return;
         else{
             this.userService.saveUser(data);
+            this.utilityService.openSnackBar("Logged in successfully!", "Dismiss")
             this.router.navigate(['/']);
         }
       },

@@ -19,9 +19,11 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
 import { AddcontactusComponent } from './components/admin/contact-us/addcontactus/addcontactus.component';
+import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
 import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
-
+import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
+import { FaqsComponent } from './components/pages/faqs/faqs.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -48,10 +50,13 @@ const routes: Routes = [
     {path: 'main', component:MainComponent},
     {path:'about', component:AboutComponent},
     {path:'contact', component:ContactComponent},
+    {path:'faqs', component:FaqsComponent},
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
+    {path:'courses/:id', component:CourseDetailsComponent},
     {path:'login', component:LoginComponent},
+    {path:'forgot-password', component:ForgotPasswordComponent},
     {path:'account', component:AccountComponent, children:[
       {path:'', redirectTo:'myaccount', pathMatch: 'full'},
       {path:'myaccount', component:MyaccountComponent},

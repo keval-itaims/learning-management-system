@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-account',
@@ -11,12 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 export class AccountComponent implements OnInit {
 
   constructor(private loginService: LoginService,
-    private router: Router) { }
+    private router: Router, private utilityService: UtilityService) { }
 
   ngOnInit(): void {
   }
   logout(){
     this.loginService.logout();
+    this.utilityService.openSnackBar("Logged out successfully!", "Dismiss");
     this.router.navigate(['/']);
   }
 }

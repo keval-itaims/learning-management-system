@@ -7,6 +7,7 @@ import {
 import { UserService } from 'src/app/services/user.service';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 import { User } from 'src/app/classes/user';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-myaccount',
@@ -21,7 +22,7 @@ export class MyaccountComponent implements OnInit {
   faEyeSlash = faEyeSlash;
   userForm: FormGroup|any;
   name_pattern = '[A-Za-z ]+';
-  constructor(private fb:FormBuilder, private userService: UserService) {}
+  constructor(private fb:FormBuilder, private userService: UserService, private utilityService: UtilityService) {}
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
@@ -48,6 +49,7 @@ export class MyaccountComponent implements OnInit {
     this.userService.updateUser(this.user).subscribe(
       (data) => {
         this.userService.saveUser(data);
+        this.utilityService.openSnackBar("Account updated!", "Dismiss")
       },
       (error) => console.log(error)
     );
