@@ -8,6 +8,7 @@ import { User } from 'src/app/classes/user';
 import { SignupService } from 'src/app/services/signup.service';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +32,8 @@ export class SignupComponent implements OnInit {
   emailError = false; //Check if user is already registered
 
   constructor(private fb: FormBuilder, private signupService: SignupService,
-    private router: Router, private route:ActivatedRoute) {}
+    private router: Router, private route:ActivatedRoute,
+    private utilityService: UtilityService) {}
 
   ngOnInit() {
     this.regForm = this.fb.group({
@@ -69,6 +71,7 @@ export class SignupComponent implements OnInit {
         }
         else{
           this.emailError = false;
+          this.utilityService.openSnackBar("Account registered successfully!", "Dismiss")
           this.router.navigate(['../login'], {relativeTo:this.route});
         }
       },

@@ -20,4 +20,7 @@ export class LoginService {
   logout(){
     localStorage.removeItem("user");
   }
+  forgotPassword(email:string): Observable<boolean>{
+    return this.http.post<boolean>(`${this.url}/forgot-password`, email);
+  }
 }

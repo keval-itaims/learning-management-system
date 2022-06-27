@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,11 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
   email = ''
-  constructor() { }
+  emailError = false;
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute, private utilityService: UtilityService) { }
 
   ngOnInit(): void {
   }
   onClick(){
-    console.log(this.email);
+    this.loginService.forgotPassword(this.email).subscribe(
+      (response) => {
+        this.emailError = !response;
+        if(response){
+          this.utilityService.openSnackBar("An email has been sent to your email address!", "Dismiss")
+          this.router.navigate(['../login'], {relativeTo: this.route})
+        }
+      },
+      error => console.log(error)
+    );
   }
 }

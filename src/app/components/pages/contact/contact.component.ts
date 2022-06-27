@@ -51,5 +51,6 @@ export class ContactComponent implements OnInit {
     this.contact = this.contactForm.value;
     this.utilityService.contactAdmin(this.contact);
     this.contactForm.reset();
+    this.utilityService.openSnackBar("Message sent to admin!", "Dismiss")
   }
 }

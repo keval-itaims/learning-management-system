@@ -22,6 +22,7 @@ import { AddcontactusComponent } from './components/admin/contact-us/addcontactu
 import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
 import { ContactusDetailComponent } from './components/admin/contact-us/contactus-detail/contactus-detail.component';
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
+import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -51,9 +52,9 @@ const routes: Routes = [
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
-    {path:'login', component:LoginComponent, children:[
-      {path:'forgot-password', component:ForgotPasswordComponent}
-    ]},
+    {path:'courses/:id', component:CourseDetailsComponent},
+    {path:'login', component:LoginComponent},
+    {path:'forgot-password', component:ForgotPasswordComponent},
     {path:'account', component:AccountComponent, children:[
       {path:'', redirectTo:'myaccount', pathMatch: 'full'},
       {path:'myaccount', component:MyaccountComponent},
