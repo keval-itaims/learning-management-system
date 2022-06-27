@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Instructor } from '../classes/instructor';
 import { Observable } from 'rxjs';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class InstructorService {
     return this.httpClient.post<Object>(`${this.baseURL}`,instructor);
   }
 
-  public getInstructorDetails():Observable<Instructor[]>{
-    return this.httpClient.get<Instructor[]>(`${this.baseURL}`);
+  public getInstructorDetails():Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
 
   public getInstructorById(id:number):Observable<Instructor>{

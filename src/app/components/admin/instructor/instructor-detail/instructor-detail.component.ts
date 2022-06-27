@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { User } from 'src/app/classes/user';
 
 
 
@@ -24,7 +25,7 @@ export class InstructorDetailComponent implements OnInit {
   //   {tutor_id:5,firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
   // ];
 
-  instructorDetail !: Instructor[];
+  instructorDetail !: User[];
   loading_data:boolean = true;
 
 
