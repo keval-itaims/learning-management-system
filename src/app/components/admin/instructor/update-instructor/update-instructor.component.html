@@ -16,17 +16,17 @@
           placeholder="First name"
           formControlName="firstName"
         />
-        <div
+        <!-- <div
           *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)"
           class="mt-1"
         >
-          <p *ngIf="firstname.errors.required" class="text-red-600 text-xs">
+          <p *ngIf="firstname.errors?.required" class="text-red-600 text-xs">
             *first name is required!
           </p>
-          <p *ngIf="firstname.errors.pattern" class="text-red-600 text-xs">
+          <p *ngIf="firstname.errors?.pattern" class="text-red-600 text-xs">
             *please enter only character!
           </p>
-        </div>
+        </div> -->
       </div>
       <div class="w-full md:w-1/2 m-1">
         <p>Last Name:<small class="text-red-500">*</small></p>
@@ -56,7 +56,7 @@
           type="text"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"
           placeholder="Email"
-          formControlName="email"
+          formControlName="emailId"
         />
         <div
           *ngIf="email.invalid && (email.touched || email.dirty)"
@@ -76,7 +76,7 @@
           type="text"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"
           placeholder="Phone No"
-          formControlName="phoneNo"
+          formControlName="phoneNum"
         />
         <div
           *ngIf="phoneno.invalid && (phoneno.touched || phoneno.dirty)"

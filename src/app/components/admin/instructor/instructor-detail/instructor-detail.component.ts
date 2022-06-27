@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit} from '@angular/core';
 import { Instructor } from 'src/app/classes/instructor';
 import {MatTableDataSource} from '@angular/material/table';
 import { InstructorService } from 'src/app/services/instructor.service';
@@ -48,6 +48,7 @@ export class InstructorDetailComponent implements OnInit {
           console.log(data);
           this.loading_data = false;
           this.instructorDetail = data;
+          console.log("Instructor detail object : ",this.instructorDetail)
           this.dataSource = new MatTableDataSource(this.instructorDetail);
           console.log(this.instructorDetail)
         },
@@ -58,7 +59,9 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onUpdateInstructor(element:any){
-    let id = element.tutor_id;
+    alert("method called!")
+    let id = element.user_id;
+    alert(id)
     this.router.navigate(['/admin/instructor/update/',id]);
 
   }
