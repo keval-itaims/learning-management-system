@@ -22,6 +22,8 @@ export class MyaccountComponent implements OnInit {
   faEyeSlash = faEyeSlash;
   userForm: FormGroup|any;
   name_pattern = '[A-Za-z ]+';
+  isLoading = false;
+
   constructor(private fb:FormBuilder, private userService: UserService, private utilityService: UtilityService) {}
 
   ngOnInit(): void {
@@ -43,15 +45,18 @@ export class MyaccountComponent implements OnInit {
   }
   onSubmit(){
     if(this.userForm.invalid)return;
+    this.isLoading = true;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
     this.user.phoneNum = this.userForm.get("phoneNum").value;
     this.userService.updateUser(this.user).subscribe(
       (data) => {
+        this.isLoading = false;
         this.userService.saveUser(data);
         this.utilityService.openSnackBar("Account updated!", "Dismiss")
       },
-      (error) => console.log(error)
+      (error) => {console.log(error);
+      this.isLoading = false;}
     );
   }
 }

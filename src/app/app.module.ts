@@ -55,6 +55,7 @@ import { ContactusDetailComponent } from './components/admin/contact-us/contactu
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 import { ChaptersComponent } from './components/coursespage/course-details/chapters/chapters.component';
 import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { ForgotPasswordComponent } from './components/pages/login/forgot-passwor
     ContactusHomepageComponent,
     ChaptersComponent,
     ForgotPasswordComponent,
+    SpinnerComponent,
 ],
   imports: [
     BrowserModule,

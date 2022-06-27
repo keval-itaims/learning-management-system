@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   show_pass = false;
   emailError = false;
   passwordError = false;
+  isLoading = false;
   loginForm : FormGroup | any;
   login: UserLogin = new UserLogin();
 
@@ -39,8 +40,10 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormGroup) {
     if (form.invalid) return;
     this.login = form.value;
+    this.isLoading = true;
     this.loginService.login(this.login).subscribe(
       (data) => {
+        this.isLoading = false;
         this.emailError = data.emailError;
         this.passwordError = data.passwordError;
         if(this.emailError || this.passwordError) return;
@@ -50,7 +53,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/']);
         }
       },
-      error => console.log(error)
+      error => {console.log(error)
+      this.isLoading = false;}
     )
   }
 }
