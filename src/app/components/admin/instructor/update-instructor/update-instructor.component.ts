@@ -46,8 +46,8 @@ export class UpdateInstructorComponent implements OnInit {
         this.instructorForm.patchValue({
           firstName : this.instructor.firstName,
           lastName : this.instructor.lastName,
-          email : this.instructor.email,
-          phoneNo : this.instructor.phoneNo
+          email : this.instructor.emailId,
+          phoneNo : this.instructor.phoneNum
         })
         console.log("form value",this.instructorForm.value)
       },
