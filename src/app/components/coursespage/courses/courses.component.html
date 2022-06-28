@@ -1,14 +1,9 @@
 <section class="container mx-auto mt-5">
   <p class="text-red-500 text-center text-xl mb-3">Courses</p>
-  <!-- <section class="p-3 text-center">
+  <Header class="p-3 text-center">
     Filters <fa-icon [icon]="faFilter" class="text-blue-500"></fa-icon>
-    <section>
-      <p class="cursor-pointer out tracking-wide w-max">
-        All Categories
-        <fa-icon [icon]="faAngleDown"></fa-icon>
-      </p>
-    </section>
-  </section> -->
+    <section></section>
+  </Header>
   <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
     <app-course *ngFor="let course of courses" [course]="course"></app-course>
   </section>
