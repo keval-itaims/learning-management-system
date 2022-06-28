@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
   show_pass = false; //Toggle between show & hide password
   match_password_error = false; //To show error of matching password
   emailError = false; //Check if user is already registered
+  isLoading = false;
 
   constructor(private fb: FormBuilder, private signupService: SignupService,
     private router: Router, private route:ActivatedRoute,
@@ -62,9 +63,11 @@ export class SignupComponent implements OnInit {
   }
   onSubmit(){
     if(this.regForm.invalid) return;
+    this.isLoading = true;
     this.user = this.regForm.value;
     this.signupService.signup(this.user).subscribe(
       (data) => {
+        this.isLoading = false;
         if(data === null){
           this.emailError = true;
           return;
@@ -75,7 +78,9 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['../login'], {relativeTo:this.route});
         }
       },
-      (error) => console.log(error)
+      (error) => {console.log(error)
+        this.isLoading = false;
+      }
     )
   }
 }
