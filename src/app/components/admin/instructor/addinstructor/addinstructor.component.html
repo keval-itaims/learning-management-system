@@ -19,7 +19,7 @@
           <p *ngIf="firstname.errors.required" class="text-red-600 text-xs">
             *first name is required!
           </p>
-          <p *ngIf="firstname.errors.pattern" class="text-danger text-xs">
+          <p *ngIf="firstname.errors.pattern" class="text-red-600 text-xs">
             *please enter only character!
           </p>
         </div>
@@ -39,7 +39,7 @@
           <p *ngIf="lastname.errors.required" class="text-red-600 text-xs">
             *last name is required!
           </p>
-          <p *ngIf="lastname.errors.pattern" class="text-danger text-xs">
+          <p *ngIf="lastname.errors.pattern" class="text-red-600 text-xs">
             *please enter only character!
           </p>
         </div>
@@ -54,6 +54,7 @@
           placeholder="Email"
           formControlName="emailId"
         />
+        <p class="text-red-600 text-xs">{{ message }}</p>
         <div
           *ngIf="email.invalid && (email.touched || email.dirty)"
           class="mt-1"
@@ -61,7 +62,7 @@
           <p *ngIf="email.errors.required" class="text-red-600 text-xs">
             *email is required!
           </p>
-          <p *ngIf="email.errors.pattern" class="text-danger text-xs">
+          <p *ngIf="email.errors.pattern" class="text-red-600 text-xs">
             *enter valid email!
           </p>
         </div>
@@ -81,7 +82,7 @@
           <p *ngIf="phoneno.errors.required" class="text-red-600 text-xs">
             *phone no is required!
           </p>
-          <p *ngIf="phoneno.errors.pattern" class="text-danger text-xs">
+          <p *ngIf="phoneno.errors.pattern" class="text-red-600 text-xs">
             *enter valid phone no!
           </p>
         </div>
@@ -112,7 +113,7 @@
           <p *ngIf="getpassword.errors.minlength" class="text-red-600 text-xs">
             *must contains 8 charcters!
           </p>
-          <p *ngIf="getpassword.errors.pattern" class="text-danger text-xs">
+          <p *ngIf="getpassword.errors.pattern" class="text-red-600 text-xs">
             *must contains capital and small character, digit, special
             character!
           </p>

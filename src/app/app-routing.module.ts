@@ -24,6 +24,7 @@ import { ContactusDetailComponent } from './components/admin/contact-us/contactu
 import { ContactusHomepageComponent } from './components/admin/contact-us/contactus-homepage/contactus-homepage.component';
 import { CourseDetailsComponent } from './components/coursespage/course-details/course-details.component';
 import { FaqsComponent } from './components/pages/faqs/faqs.component';
+import { ReplycontactmessageComponent } from './components/admin/contact-us/replycontactmessage/replycontactmessage.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -43,6 +44,7 @@ const routes: Routes = [
       {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'detail',component:ContactusDetailComponent},
       {path:'add',component:AddcontactusComponent},
+      {path:'reply/:id',component:ReplycontactmessageComponent}
     ]},
   ]},
   {path:'homepage', component:HomepageComponent, children:[

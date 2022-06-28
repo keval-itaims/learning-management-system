@@ -18,18 +18,8 @@ export class UtilityService {
 
   baseURL = 'http://localhost:8080/contact';
 
-  public addContactusDetail(contactDetail:ContactDetails):any{
-    this.http.put<any>(`${this.baseURL}`,contactDetail).subscribe(
-      data => {
 
-        return data},
-      error => {console.log(error)
-            return false;
-      }
-    );
-  }
-
-  public getContactusDetail():Observable<Contact[]>{
+  getContactMessages():Observable<Contact[]>{
     return this.http.get<Contact[]>(this.baseURL);
   }
 
@@ -37,7 +27,7 @@ export class UtilityService {
     return this.http.get<ContactDetails[]>(`${this.url}/contactDetails`);
   }
   setContactDetails(contactDetails: ContactDetails): Observable<ContactDetails>{
-    return this.http.post<ContactDetails>(`${this.url}/contactDetails`, contactDetails);
+    return this.http.put<ContactDetails>(`${this.url}/contactDetails`, contactDetails);
   }
   contactAdmin(contact: Contact){
     this.http.post<Contact>(`${this.url}/contact`, contact).subscribe(
