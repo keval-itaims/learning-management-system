@@ -45,6 +45,7 @@ export class MyaccountComponent implements OnInit {
   }
   onSubmit(){
     if(this.userForm.invalid)return;
+    if(!this.userForm.dirty) return;
     this.isLoading = true;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;

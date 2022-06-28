@@ -15,12 +15,12 @@ export class LoginService {
     return this.http.post<User>(`${this.url}/login`, userLogin);
   }
   isLoggedIn(){
-    return localStorage.getItem('user') ? true : false;
+    return !!localStorage.getItem('user');
   }
   logout(){
     localStorage.removeItem("user");
   }
   forgotPassword(email:string): Observable<boolean>{
-    return this.http.post<boolean>(`${this.url}/forgot-password`, email);
+    return this.http.post<boolean>(`${this.url}/user/forgot-password`, email);
   }
 }
