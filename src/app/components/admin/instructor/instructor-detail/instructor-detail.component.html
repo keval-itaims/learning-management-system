@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="flex justify-center pt-4 w-full items-center">
   <h1 class="border-b-4 border-blue-600 p-1">Instructor</h1>
 </div>
@@ -23,7 +24,6 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <div *ngIf="loading_data">Loading data...</div>
     <!-- Fisst Name Column -->
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef>First Name</th>

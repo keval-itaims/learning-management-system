@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Contact } from 'src/app/classes/contact';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -11,18 +12,25 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class ContactusDetailComponent implements OnInit {
 
-  constructor(private contactusService:UtilityService,private snackbar:MatSnackBar) { }
+  constructor(private contactusService:UtilityService,private snackbar:MatSnackBar,private router:Router) { }
 
 
   contactusDetails!: Contact[];
+  isLoading:boolean = true;
 
   displayedColumns: string[] = ['name', 'emailId', 'message','action'];
   dataSource : MatTableDataSource<Contact[]> | any
 
   ngOnInit(): void {
 
-    this.contactusService.getContactusDetail().subscribe(
+    this.getCotactMessage();
+  }
+
+
+  getCotactMessage(){
+    this.contactusService.getContactMessages().subscribe(
       data => {
+        this.isLoading = false;
         console.log(data)
 
         this.contactusDetails = data.filter((item)=>{
@@ -32,16 +40,18 @@ export class ContactusDetailComponent implements OnInit {
         console.log(this.contactusDetails)
         this.dataSource = new MatTableDataSource(this.contactusDetails);
       },
-      error => console.log(error)
+      error => {
+        this.isLoading = false;
+        console.log(error)
+      }
     )
-  }
-
-  openSnackbar(){
-    this.snackbar.open("email send!",'close',{duration:2000})
   }
   onReply(element : any){
     console.log(element)
-    this.openSnackbar();
+    let id = element.cId;
+    console.log(id)
+    this.router.navigate(['/admin/contact-us/reply/',id])
+    // this.openSnackbar();
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

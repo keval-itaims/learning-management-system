@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/classes/user';
 import { StudentService } from 'src/app/services/student.service';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UtilityService } from 'src/app/services/utility.service';
 
 
 @Component({
@@ -16,23 +18,28 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 export class StudentComponent implements OnInit {
 
   studentDetail!:User[]
+  isLoading:boolean = true;
 
   displayedColumns: string[] = ['firstName', 'lastName', 'emailId','action'];
   dataSource : MatTableDataSource<User[]> | any
 
-  constructor(private studentService:StudentService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
+  constructor(private studentService:StudentService,private router:Router,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService) { }
 
   getStudent(){
     this.studentService.getStudent().subscribe(
       data => {
+        this.isLoading = false;
         console.log(data)
         this.studentDetail = data.filter((item)=>{
           return item.role === "student";
         })
         this.dataSource = new MatTableDataSource(this.studentDetail);
         console.log(this.studentDetail)
+      },
+      error => {
+        this.isLoading = false;
+        console.log(error)
       }
-
     )
   }
 
@@ -54,12 +61,14 @@ export class StudentComponent implements OnInit {
         if(result){
           this.studentService.deleteStudent(id).subscribe(
             data =>{
-              this.getStudent();
-              console.log("data received!")
+
+              this.utilityService.openSnackBar("Student deleted!","close");
+              this.getStudent()
             },
             error => {
-              this.getStudent();
-              console.log(error)}
+
+              console.log(error)
+            }
 
           )
         }

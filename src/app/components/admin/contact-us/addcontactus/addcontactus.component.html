@@ -1,5 +1,6 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="flex justify-center pt-4 w-full items-center">
-  <h1 class="border-b-4 border-blue-600 p-1">Add Contactus</h1>
+  <h1 class="border-b-4 border-blue-600 p-1">Update Contactus</h1>
 </div>
 <div class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2">
   <form
@@ -14,7 +15,7 @@
           type="text"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"
           placeholder="Email"
-          formControlName="email"
+          formControlName="emailId"
         />
         <div
           *ngIf="email.invalid && (email.touched || email.dirty)"
@@ -34,7 +35,7 @@
           type="text"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"
           placeholder="Phone No"
-          formControlName="phoneNo"
+          formControlName="phoneNumber"
         />
         <div
           *ngIf="phoneno.invalid && (phoneno.touched || phoneno.dirty)"
@@ -80,7 +81,7 @@
         color="primary"
         [disabled]="contactusForm.invalid"
       >
-        Add
+        Update
       </button>
     </div>
   </form>

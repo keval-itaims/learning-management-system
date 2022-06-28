@@ -21,7 +21,7 @@ export class UpdateInstructorComponent implements OnInit {
 
 
   id!:number;
-
+  isLoading : boolean = true;
 
   ngOnInit(): void{
 
@@ -55,10 +55,12 @@ export class UpdateInstructorComponent implements OnInit {
           emailId : this.instructor.emailId,
           phoneNum : this.instructor.phoneNum
         })
+        this.isLoading = false;
         console.log("form value",this.instructorForm.value)
       },
       error =>{
           console.log(error);
+          this.isLoading = false;
 
       },
 

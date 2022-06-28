@@ -42,10 +42,10 @@ export class AddinstructorComponent implements OnInit {
         console.log(data);
         if(data!=null){
           this.message = 'email is already registered!'
-          this.router.navigate(['admin/instructor/detail'])
+
         }
         else{
-
+          this.router.navigate(['admin/instructor/detail'])
         }
       },
       error =>{

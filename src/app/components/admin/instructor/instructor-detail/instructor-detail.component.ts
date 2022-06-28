@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { User } from 'src/app/classes/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UtilityService } from 'src/app/services/utility.service';
 
 
 
@@ -27,10 +28,10 @@ export class InstructorDetailComponent implements OnInit {
   // ];
 
   instructorDetail !: User[];
-  loading_data:boolean = true;
+  isLoading : boolean = true;
 
 
-  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService,private snackBar:MatSnackBar) { }
+  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService) { }
 
   ngOnInit(): void {
 
@@ -47,13 +48,15 @@ export class InstructorDetailComponent implements OnInit {
         data =>{
 
           console.log(data);
-          this.loading_data = false;
+          this.isLoading = false;
           this.instructorDetail = data;
           console.log("Instructor detail object : ",this.instructorDetail)
           this.dataSource = new MatTableDataSource(this.instructorDetail);
           console.log(this.instructorDetail)
         },
         error =>{
+          this.isLoading = false;
+          console.log(error);
 
         }
       )
@@ -81,17 +84,15 @@ export class InstructorDetailComponent implements OnInit {
           this.instructorService.deleteInstructor(id).subscribe(
             data => {
               console.log(data)
-              this.snackBar.open("Instructor Deleted!","close",{duration:2000}).afterDismissed().subscribe(
-                // () => this.router.navigate(['admin/instructor/detail'])
-              )
-
+              this.utilityService.openSnackBar("Instructor deleted!","close");
+              this.getInstructor();
 
             },
             error =>console.log(error)
           )
         }
         else{
-          alert("user not deleted!")
+
         }
 
       }

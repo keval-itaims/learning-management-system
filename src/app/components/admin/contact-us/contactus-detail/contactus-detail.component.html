@@ -1,16 +1,19 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="flex justify-center pt-4 w-full items-center">
-  <h1 class="border-b-4 border-blue-600 p-1">Contact-us</h1>
+  <h1 class="border-b-4 border-blue-600 p-1">Contact Message</h1>
 </div>
 
 <div class="m-2 w-auto">
-  <div class="flex justify-between items-center mt-1 lg:ml-32 ml-0">
-    <button
-      mat-raised-button
-      color="primary"
-      matTooltip="update contactus detail"
-    >
-      Update
-    </button>
+  <div class="flex justify-between items-center mt-1">
+    <a routerLink="/admin/contact-us/add">
+      <button
+        mat-raised-button
+        color="primary"
+        matTooltip="update contact detail"
+      >
+        Update
+      </button>
+    </a>
     <mat-form-field appearance="standard">
       <mat-label>Search</mat-label>
       <input
@@ -52,7 +55,7 @@
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
         <button mat-button color="primary" (click)="onReply(element)">
-          <mat-icon>email</mat-icon>Email
+          <mat-icon>reply</mat-icon>Reply
         </button>
       </td>
     </ng-container>
