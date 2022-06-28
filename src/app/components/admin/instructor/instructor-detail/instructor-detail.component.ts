@@ -5,6 +5,7 @@ import { InstructorService } from 'src/app/services/instructor.service';
 import { Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { User } from 'src/app/classes/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -29,7 +30,7 @@ export class InstructorDetailComponent implements OnInit {
   loading_data:boolean = true;
 
 
-  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService) { }
+  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService,private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -67,10 +68,8 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onDeleteInstrcutor(element:any){
-    let id = element.tutor_id;
-
-
-
+    let id = element.user_id;
+    alert("user Id : "+id)
     this.confirmDialogService.openConfirmDialog({
         title: 'Delete Instructor',
         message:'Are you sure?',
@@ -80,7 +79,15 @@ export class InstructorDetailComponent implements OnInit {
       result =>{
         if(result){
           this.instructorService.deleteInstructor(id).subscribe(
-            data => this.router.navigate(['admin/instructor/detail'])
+            data => {
+              console.log(data)
+              this.snackBar.open("Instructor Deleted!","close",{duration:2000}).afterDismissed().subscribe(
+                // () => this.router.navigate(['admin/instructor/detail'])
+              )
+
+
+            },
+            error =>console.log(error)
           )
         }
         else{
