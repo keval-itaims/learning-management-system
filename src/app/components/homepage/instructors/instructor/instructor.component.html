@@ -1,5 +1,10 @@
 <article class="text-center">
-  <img src="{{ instructor.image }}" alt="" class="mx-auto rounded-md mb-2" />
+  <img
+    src="{{ instructor.image }}"
+    alt=""
+    loading="lazy"
+    class="mx-auto rounded-md mb-2"
+  />
   <p class="text-cyan-500">{{ instructor.name | titlecase }}</p>
   <p class="text-gray-500 tracking-tighter">
     Teaches {{ instructor.teaches | titlecase }}

@@ -11,20 +11,24 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class ForgotPasswordComponent implements OnInit {
   email = ''
   emailError = false;
+  isLoading = false;
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute, private utilityService: UtilityService) { }
 
   ngOnInit(): void {
   }
   onClick(){
+    this.isLoading = true;
     this.loginService.forgotPassword(this.email).subscribe(
       (response) => {
+        this.isLoading = false;
         this.emailError = !response;
         if(response){
           this.utilityService.openSnackBar("An email has been sent to your email address!", "Dismiss")
           this.router.navigate(['../login'], {relativeTo: this.route})
         }
       },
-      error => console.log(error)
+      error => {console.log(error)
+      this.isLoading = false;}
     );
   }
 }
