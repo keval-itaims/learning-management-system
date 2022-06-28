@@ -21,11 +21,13 @@ export class ForgotPasswordComponent implements OnInit {
     this.loginService.forgotPassword(this.email).subscribe(
       (response) => {
         this.isLoading = false;
-        this.emailError = !response;
-        if(response){
-          this.utilityService.openSnackBar("An email has been sent to your email address!", "Dismiss")
-          this.router.navigate(['../login'], {relativeTo: this.route})
+        if(!response){
+          this.emailError = true;
+          return;
         }
+        this.emailError = false;
+        this.utilityService.openSnackBar("An email has been sent to your email address!", "Dismiss")
+        this.router.navigate(['../login'], {relativeTo: this.route})
       },
       error => {console.log(error)
       this.isLoading = false;}
