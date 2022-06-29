@@ -4,4 +4,5 @@ export class Contact {
     emailId!: string;
     message!: string;
     status!: number;
+    replyMessage!:string
 }
