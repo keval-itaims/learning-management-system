@@ -1,28 +1,28 @@
-<article class="bg-white rounded-2xl">
-  <img src="{{ course.image }}" alt="course" class="rounded-t-2xl" />
+<article class="bg-white rounded-2xl" (click)="courseClick()">
+  <img src="{{ course.courseImage }}" alt="course" class="rounded-t-2xl" />
   <div class="p-5">
     <p class="cursor-pointer hover:text-blue-600">
-      {{ course.title | titlecase }}
+      {{ course.courseName | titlecase }}
     </p>
-    <img
+    <!-- <img
       src="{{ course.instructor_image }}"
       alt="instructor"
       width="45px"
       class="rounded-full inline-block mr-3"
-    />
-    <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
+    /> -->
+    <!-- <span class="text-gray-600"> {{ course.instructor | titlecase }}</span> -->
     <div class="flex justify-between items-center">
       <div>
         <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
-        >{{ course.duration }} weeks
+        >{{ course.courseDuration }} weeks
       </div>
       <div
         class="rounded-full bg-red-500 text-white grid place-items-center h-14 w-14"
       >
-        ${{ course.price }}
+        ${{ course.coursePrice }}
       </div>
       <div>
-        {{ course.rating
+        {{ course.courseRating
         }}<fa-icon [icon]="faStar" class="text-yellow-400"></fa-icon>
       </div>
     </div>
