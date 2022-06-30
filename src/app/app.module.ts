@@ -57,6 +57,8 @@ import { ChaptersComponent } from './components/coursespage/course-details/chapt
 import { ForgotPasswordComponent } from './components/pages/login/forgot-password/forgot-password.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ReplycontactmessageComponent } from './components/admin/contact-us/replycontactmessage/replycontactmessage.component';
+import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
+import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { ReplycontactmessageComponent } from './components/admin/contact-us/repl
     ForgotPasswordComponent,
     SpinnerComponent,
     ReplycontactmessageComponent,
+    AdmincoursesComponent,
+    AddcoursesComponent,
 ],
   imports: [
     BrowserModule,

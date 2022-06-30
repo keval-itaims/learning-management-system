@@ -15,6 +15,7 @@ export class AddinstructorComponent implements OnInit {
   instructorForm : any
 
   message=''
+  profileImage!:File
   instructor = new User()
   constructor(private instructorService : InstructorService,private router:Router) { }
 
@@ -26,13 +27,20 @@ export class AddinstructorComponent implements OnInit {
       "phoneNum" : new FormControl('',[Validators.required,Validators.pattern('[0-9]{10}')]),
       "password" : new FormControl('',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,20}$'),Validators.minLength(8)]),
       "confirmPassword" : new FormControl('',[Validators.required]),
-      "profileImage" :  new FormControl('')
+
     })
   }
 
+  onFileSelected(event:any){
+    this.profileImage = <File>event.target.files[0];
+    console.log("profile Image : ",this.profileImage)
+
+  }
 
   addInstructor(){
     this.message = ''
+    const formData = new FormData();
+    formData.append('profileImage',this.profileImage,this.profileImage.name);
     // alert(`${this.instructorForm.value.firstName} is added!`)
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
@@ -43,10 +51,19 @@ export class AddinstructorComponent implements OnInit {
         console.log(data);
         if(data!=null){
           this.message = 'email is already registered!'
+          this.instructor = data;
+          console.log("id",this.instructor.user_id);
+          this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
+            data => console.log("Data in upload image",data),
+            error => console.log(error)
+
+          )
 
         }
         else{
-          this.router.navigate(['admin/instructor/detail'])
+
+
+          // this.router.navigate(['admin/instructor/detail'])
         }
       },
       error =>{
