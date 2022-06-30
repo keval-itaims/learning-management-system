@@ -43,6 +43,12 @@
       </mat-form-field>
     </section>
   </Header>
+  <article
+    *ngIf="noResultFound"
+    class="w-max mx-auto font-semibold text-red-500 text-xl"
+  >
+    Your search doesn't match with any course...
+  </article>
   <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
     <app-course *ngFor="let course of courses" [course]="course"></app-course>
   </section>

@@ -16,6 +16,7 @@ export class CoursesComponent implements OnInit {
   copy: Course[] = [];
 
   search = ''
+  noResultFound = false;
   courseType = 'present'
   sortType = 'relevant'
   constructor(private courseService: CourseService,
@@ -54,5 +55,6 @@ export class CoursesComponent implements OnInit {
   onSearch(){
     this.courses = this.courses.filter(item => 
       item.courseName.toLocaleLowerCase().match(this.search.trim().toLocaleLowerCase()))
+    this.noResultFound = !!this.courses;
   }
 }
