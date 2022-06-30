@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-hero',
@@ -7,9 +8,15 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeroComponent implements OnInit {
   glass = faMagnifyingGlass;
-  constructor() { }
+  search = ''
+  constructor(private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+  onSearch(){
+    if(!this.search.trim()) return;
+    this.router.navigate(['../courses'], {relativeTo: this.route, state: {search: this.search} })
   }
 
 }

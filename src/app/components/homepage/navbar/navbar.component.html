@@ -16,11 +16,16 @@
     <div class="search px-3 py-1 rounded-sm hidden lg:block">
       <input
         type="search"
-        name="course"
+        name="search"
+        [(ngModel)]="search"
         class="p-1 text-base text-gray-600 outline-none"
         placeholder="Search for courses"
       />
-      <fa-icon [icon]="faGlass" class="search-icon cursor-pointer"></fa-icon>
+      <fa-icon
+        [icon]="faGlass"
+        (click)="onSearch()"
+        class="search-icon cursor-pointer"
+      ></fa-icon>
     </div>
   </div>
   <div class="flex gap-3 xl:gap-8 items-center">

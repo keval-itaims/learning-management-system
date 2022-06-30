@@ -123,7 +123,6 @@ import { AddcoursesComponent } from './components/admin/admincourses/addcourses/
     MatIconModule,
     MatListModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,15 +8,20 @@
       Minimum theory and maximum practice. Solve tasks and check the results
       right away. Courses so easy way.
     </p>
-    <div class="rounded bg-red-500 flex w-full md:w-1/2">
+    <div class="rounded bg-red-500 flex w-max">
       <input
         type="search"
         placeholder="Search for courses"
         name="search"
+        [(ngModel)]="search"
         class="rounded px-5 py-3 m-1 outline-none w-full"
       />
       <div class="w-16 bg-red-500 grid place-items-center rounded-r rounded-b">
-        <fa-icon [icon]="glass" class="text-white"></fa-icon>
+        <fa-icon
+          [icon]="glass"
+          (click)="onSearch()"
+          class="text-white cursor-pointer"
+        ></fa-icon>
       </div>
     </div>
   </article>

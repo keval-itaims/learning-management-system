@@ -1,9 +1,54 @@
 <section class="container mx-auto mt-5">
   <p class="text-red-500 text-center text-xl mb-3">Courses</p>
-  <Header class="p-3 text-center">
-    Filters <fa-icon [icon]="faFilter" class="text-blue-500"></fa-icon>
-    <section></section>
+  <Header
+    class="text-center flex flex-col md:flex-row justify-center items-center gap-3 lg:gap-10"
+  >
+    <section>
+      Filters <fa-icon [icon]="faFilter" class="text-blue-500"></fa-icon>
+      <mat-form-field class="ml-3">
+        <input
+          matInput
+          type="search"
+          placeholder="Search courses"
+          (input)="onSearch()"
+          [(ngModel)]="search"
+        />
+      </mat-form-field>
+    </section>
+    <section
+      class="md:mt-3 flex md:gap-3 items-center justify-center flex-wrap lg:gap-10"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Course type</mat-label>
+        <mat-select
+          [(value)]="courseType"
+          (selectionChange)="onCourseTypeChanged()"
+        >
+          <mat-option value="past">Previous Courses</mat-option>
+          <mat-option value="future">Running Courses</mat-option>
+          <mat-option value="present">Upcoming Courses</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sort</mat-label>
+        <mat-select
+          [(value)]="sortType"
+          (selectionChange)="onSortTypeChanged()"
+        >
+          <mat-option value="relevant">Relevant</mat-option>
+          <mat-option value="az">A-Z</mat-option>
+          <mat-option value="za">Z-A</mat-option>
+          <mat-option value="price">Price (Low-High)</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
   </Header>
+  <article
+    *ngIf="noResultFound"
+    class="w-max mx-auto font-semibold text-red-500 text-xl"
+  >
+    Your search doesn't match with any course...
+  </article>
   <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
     <app-course *ngFor="let course of courses" [course]="course"></app-course>
   </section>

@@ -1,16 +1,16 @@
-<article class="bg-white rounded-2xl" (click)="courseClick()">
+<article class="bg-white rounded-2xl cursor-pointer" (click)="courseClick()">
   <img src="{{ course.courseImage }}" alt="course" class="rounded-t-2xl" />
   <div class="p-5">
-    <p class="cursor-pointer hover:text-blue-600">
+    <p class="hover:text-blue-600">
       {{ course.courseName | titlecase }}
     </p>
-    <!-- <img
+    <img
       src="{{ course.instructor_image }}"
       alt="instructor"
       width="45px"
       class="rounded-full inline-block mr-3"
-    /> -->
-    <!-- <span class="text-gray-600"> {{ course.instructor | titlecase }}</span> -->
+    />
+    <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
     <div class="flex justify-between items-center">
       <div>
         <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
