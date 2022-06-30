@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import {CourseService} from 'src/app/services/course.service'
 import { Course } from 'src/app/classes/course';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +18,9 @@ export class CoursesComponent implements OnInit {
   search = ''
   courseType = 'present'
   sortType = 'relevant'
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.courseService.getAllCourses().subscribe(
@@ -25,6 +28,8 @@ export class CoursesComponent implements OnInit {
     //     console.log(data)
     //     this.allCourses = data;
     //     this.onCourseTypeChanged()
+    //     this.search = history.state.search
+    //     this.onSearch()
     //   },
     //   (error) => console.log(error)
     // )
@@ -47,7 +52,7 @@ export class CoursesComponent implements OnInit {
     this.copy = this.courses;
   }
   onSearch(){
-    this.courses = this.allCourses.filter(item => 
-      item.courseName.toLocaleLowerCase().match(this.search.toLocaleLowerCase()))
+    this.courses = this.courses.filter(item => 
+      item.courseName.toLocaleLowerCase().match(this.search.trim().toLocaleLowerCase()))
   }
 }

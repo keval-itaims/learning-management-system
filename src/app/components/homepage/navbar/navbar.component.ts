@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {faBars, faUser, faXmark, faAngleDown, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -15,7 +15,10 @@ export class NavbarComponent implements OnInit {
   faAngleDown = faAngleDown;
   faGlass = faMagnifyingGlass;
   sidebar = false;
-  constructor(private router: Router, private loginService: LoginService) { }
+  search = '';
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
 
@@ -28,5 +31,9 @@ export class NavbarComponent implements OnInit {
   }
   logoClick(){
     this.router.navigate(['homepage']);
+  }
+  onSearch(){
+    if(!this.search.trim()) return;
+    this.router.navigate(['../courses'], {relativeTo: this.route, state: {search: this.search} })
   }
 }
