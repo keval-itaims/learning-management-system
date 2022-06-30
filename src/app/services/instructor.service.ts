@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Instructor } from '../classes/instructor';
-import { Observable } from 'rxjs';
+import { Observable, ObservableNotification } from 'rxjs';
 import { User } from '../classes/user';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,14 @@ export class InstructorService {
 
   public registerInstructorFromRemote(instructor:User):Observable<User>{
     return this.httpClient.post<User>(`${this.baseURL}`,instructor);
+  }
+
+  public uploadProfileImage(id:number,formData:FormData):Observable<HttpEvent<string[]>>{
+    console.log("Id in upload image service",id)
+    return this.httpClient.post<string[]>(`http://localhost:8080/tutor/save-tutor/${id}`,formData,{
+      reportProgress:true,
+      observe:'events',
+    });
   }
 
   public getInstructorDetails():Observable<User[]>{

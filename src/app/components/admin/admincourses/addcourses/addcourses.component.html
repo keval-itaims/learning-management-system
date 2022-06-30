@@ -1,0 +1,65 @@
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Add Course</h1>
+</div>
+<div class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2">
+  <form class="p-2" [formGroup]="addCourseForm">
+    <!-- <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+      
+      <div class="md:w-1/2 w-full m-1">
+        <mat-form-field>
+          <mat-label>Choose a date:</mat-label>
+          <input matInput [matDatepicker]="myDatePicker" />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <label class="mb-2"
+          >Course Title:<span class="text-red-500">*</span></label
+        >
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 mt-1 w-full"
+          placeholder="Title"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+      <div class="w-full md:w-1/2 m-1">
+        <p>Course Price:<small class="text-red-500">*</small></p>
+        <input
+          type="text"
+          class="leading-8 outline-blue-500 rounded-md p-1 w-full"
+          placeholder="Price"
+        />
+      </div>
+      <div class="w-full md:w-1/2 m-1">
+        <p>Course Duration:<small class="text-red-500">*</small></p>
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+          placeholder="Duration"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+      <div class="w-full md:w-1/2 m-1">
+        <mat-form-field>
+          <mat-label>Starting date:</mat-label>
+          <input matInput [matDatepicker]="myDatePicker" />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 m-1"></div>
+    </div>
+  </form>
+</div>

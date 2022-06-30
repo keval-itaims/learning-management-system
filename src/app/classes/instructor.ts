@@ -6,5 +6,4 @@ export class Instructor{
   phoneNum!:string;
   password!:string;
   role!:string;
-  profileImage!:File
 }
