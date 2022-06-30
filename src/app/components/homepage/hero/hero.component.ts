@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass, faBrush, faBook, faCrown, faGraduationCap, faCloudRain, faLeaf, faFishFins} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -8,6 +8,14 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeroComponent implements OnInit {
   glass = faMagnifyingGlass;
+  book = faBook;
+  brush = faBrush;
+  cap = faGraduationCap;
+  crown = faCrown;
+  fish = faFishFins;
+  leaf = faLeaf;
+  cloud = faCloudRain;
+
   search = ''
   constructor(private router: Router,
     private route: ActivatedRoute) { }
