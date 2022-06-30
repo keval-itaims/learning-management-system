@@ -119,7 +119,6 @@ import { ReplycontactmessageComponent } from './components/admin/contact-us/repl
     MatIconModule,
     MatListModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

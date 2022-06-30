@@ -13,9 +13,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
-
-
 const MaterialComponents =[
   MatButtonModule,
   MatSidenavModule,
@@ -30,7 +27,6 @@ const MaterialComponents =[
   MatDialogModule,
   MatTooltipModule,
   MatSnackBarModule
-
 ]
 @NgModule({
   declarations: [],
