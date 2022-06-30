@@ -25,7 +25,8 @@ export class AddinstructorComponent implements OnInit {
       "emailId" : new FormControl('',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       "phoneNum" : new FormControl('',[Validators.required,Validators.pattern('[0-9]{10}')]),
       "password" : new FormControl('',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,20}$'),Validators.minLength(8)]),
-      "confirmPassword" : new FormControl('',[Validators.required])
+      "confirmPassword" : new FormControl('',[Validators.required]),
+      "profileImage" :  new FormControl('')
     })
   }
 
@@ -68,4 +69,5 @@ export class AddinstructorComponent implements OnInit {
   get phoneno(){return this.instructorForm.get('phoneNum')}
   get getpassword(){return this.instructorForm.get('password')}
   get confirmpassword(){return this.instructorForm.get('confirmPassword')}
+  get profileimage(){return this.instructorForm.get('profileImage')}
 }

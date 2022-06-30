@@ -23,6 +23,14 @@ export class UtilityService {
     return this.http.get<Contact[]>(this.baseURL);
   }
 
+  getContactMessageById(id:number):Observable<Contact>{
+    return this.http.get<Contact>(`${this.baseURL}/${id}`)
+  }
+
+  replyContactMessage(contact:Contact):Observable<object>{
+    return this.http.post<Object>(`${this.url}/contact-reply`,contact);
+  }
+
   getContactDetails(): Observable<ContactDetails[]>{
     return this.http.get<ContactDetails[]>(`${this.url}/contactDetails`);
   }
