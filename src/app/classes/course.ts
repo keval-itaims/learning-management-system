@@ -8,5 +8,5 @@ export class Course{
     courseTutorId!: number;
     courseRating!: number;
     courseStatus!: string;
-    courseImage!: File;
+    courseImage!: File|any;
 }

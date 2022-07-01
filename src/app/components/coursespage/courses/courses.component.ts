@@ -3,6 +3,7 @@ import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import {CourseService} from 'src/app/services/course.service'
 import { Course } from 'src/app/classes/course';
 import { ActivatedRoute, Router } from '@angular/router';
+import { test } from './test';
 
 @Component({
   selector: 'app-courses',
@@ -16,14 +17,17 @@ export class CoursesComponent implements OnInit {
   copy: Course[] = [];
 
   search = ''
-  noResultFound = false;
-  courseType = 'present'
+  courseType = 'future'
   sortType = 'relevant'
   constructor(private courseService: CourseService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.allCourses = test;
+    this.onCourseTypeChanged();
+    this.search = (history.state.search);
+    // if(this.search?.trim())this.onSearch();
     // this.courseService.getAllCourses().subscribe(
     //   (data) => {
     //     console.log(data)
@@ -40,21 +44,17 @@ export class CoursesComponent implements OnInit {
   }
   onSortTypeChanged(){
     if(this.sortType === 'az')
-      this.courses = this.courses.sort((a, b) => a.courseName.localeCompare(b.courseName));
+    this.courses = this.courses.sort((a, b) => a.courseName.localeCompare(b.courseName));
     else if(this.sortType === 'za')
-      this.courses = this.courses.sort((a, b) => b.courseName.localeCompare(a.courseName));
-    else if(this.courseType === 'price')
-      this.courses = this.courses.sort((a, b) => a.coursePrice - b.coursePrice);
+    this.courses = this.courses.sort((a, b) => b.courseName.localeCompare(a.courseName));
+    else if(this.sortType === 'price')
+    this.courses = this.courses.sort((a, b) => a.coursePrice - b.coursePrice);
     else
-      this.courses = this.copy;
+      this.courses = [...this.copy];
   }
   filterCourseType(status: string){
     this.courses = this.allCourses.filter(item => item.courseStatus === status)
-    this.copy = this.courses;
-  }
-  onSearch(){
-    this.courses = this.courses.filter(item => 
-      item.courseName.toLocaleLowerCase().match(this.search.trim().toLocaleLowerCase()))
-    this.noResultFound = !!this.courses;
+    this.copy = [...this.courses];
+    this.sortType = 'relevant'
   }
 }
