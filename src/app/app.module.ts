@@ -59,6 +59,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ReplycontactmessageComponent } from './components/admin/contact-us/replycontactmessage/replycontactmessage.component';
 import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { AddcoursesComponent } from './components/admin/admincourses/addcourses/
     MatIconModule,
     MatListModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -62,7 +62,7 @@ const routes: Routes = [
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
     {path:'courses', component:CoursesComponent},
-    {path:'courses/:id', component:CourseDetailsComponent},
+    {path:'course/:id', component:CourseDetailsComponent},
     {path:'login', component:LoginComponent},
     {path:'forgot-password', component:ForgotPasswordComponent},
     {path:'account', component:AccountComponent, children:[

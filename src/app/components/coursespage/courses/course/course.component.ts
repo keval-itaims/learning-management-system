@@ -16,6 +16,6 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
   }
   courseClick(){
-    this.router.navigate([`/${this.course.courseId}`], {relativeTo:this.route})
+    this.router.navigate([`../course/${this.course.courseId}`], {relativeTo:this.route})
   }
 }

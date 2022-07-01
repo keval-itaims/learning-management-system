@@ -1,5 +1,5 @@
 <section class="container mx-auto mt-5">
-  <p class="text-red-500 text-center text-xl mb-3">Courses</p>
+  <p class="text-red-500 text-center text-xl mb-3">Featured Courses</p>
   <Header
     class="text-center flex flex-col md:flex-row justify-center items-center gap-3 lg:gap-10"
   >
@@ -10,7 +10,6 @@
           matInput
           type="search"
           placeholder="Search courses"
-          (input)="onSearch()"
           [(ngModel)]="search"
         />
       </mat-form-field>
@@ -25,8 +24,8 @@
           (selectionChange)="onCourseTypeChanged()"
         >
           <mat-option value="past">Previous Courses</mat-option>
-          <mat-option value="future">Running Courses</mat-option>
-          <mat-option value="present">Upcoming Courses</mat-option>
+          <mat-option value="present">Running Courses</mat-option>
+          <mat-option value="future">Upcoming Courses</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -43,13 +42,17 @@
       </mat-form-field>
     </section>
   </Header>
+  <hr class="border border-red-200 rounded-full w-11/12 mx-auto mb-5" />
   <article
-    *ngIf="noResultFound"
-    class="w-max mx-auto font-semibold text-red-500 text-xl"
+    *ngIf="(courses | filter: search) == false"
+    class="w-max mx-auto font-semibold text-red-500 text-2xl my-16"
   >
     Your search doesn't match with any course...
   </article>
   <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
-    <app-course *ngFor="let course of courses" [course]="course"></app-course>
+    <app-course
+      *ngFor="let course of courses | filter: search"
+      [course]="course"
+    ></app-course>
   </section>
 </section>
