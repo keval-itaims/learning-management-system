@@ -20,13 +20,17 @@
         <div class="flex justify-between flex-wrap items-center">
           <p class="pt-4 text-xl lg:text-2xl"><strong>Instructor</strong></p>
           <p class="pt-4 text-xl font-medium lg:text-2xl">
-            {{ course.courseDuration }} Weeks
+            <fa-icon [icon]="clock" class="text-blue-500"></fa-icon
+            >{{ course.courseDuration }} Weeks
           </p>
         </div>
         <div class="flex justify-between flex-wrap items-center">
           <span class="pt-4 text-xl font-medium lg:text-2xl"
-            >Rating: {{ course.courseRating }}/5</span
-          >
+            >{{ course.courseRating }}/5<fa-icon
+              [icon]="star"
+              class="text-yellow-400"
+            ></fa-icon
+          ></span>
           <button
             class="bg-red-500 p-2 md:p-4 mt-2 md:mt-4 text-white font-extrabold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
           >

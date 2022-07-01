@@ -21,7 +21,7 @@
       >
         ${{ course.coursePrice }}
       </div>
-      <div>
+      <div *ngIf="course.courseStatus == 'past'">
         {{ course.courseRating
         }}<fa-icon [icon]="faStar" class="text-yellow-400"></fa-icon>
       </div>
