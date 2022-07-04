@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -26,5 +26,12 @@ export class CourseService {
   }
   deleteCourse(courseId: number): Observable<string>{
     return this.http.delete<string>(`${this.url}/course/${courseId}`);
+  }
+  public uploadCourseImage(id:number,formData:FormData):Observable<HttpEvent<string[]>>{
+    console.log("Id in upload image service",id)
+    return this.http.post<string[]>(`http://localhost:8080/course/save-course/${id}`,formData,{
+      reportProgress:true,
+      observe:'events',
+    });
   }
 }
