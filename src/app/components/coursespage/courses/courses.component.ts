@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import {CourseService} from 'src/app/services/course.service'
-import { Course } from 'src/app/classes/course';
 import { ActivatedRoute, Router } from '@angular/router';
-import { test } from './test';
+import { CoursesResponse } from 'src/app/classes/courses-response';
 
 @Component({
   selector: 'app-courses',
@@ -12,32 +11,19 @@ import { test } from './test';
 })
 export class CoursesComponent implements OnInit {
   faFilter = faFilter;
-  allCourses: Course[] = [];
-  courses: Course[] = [];
-  copy: Course[] = [];
+  allCourses: CoursesResponse[] = [];
+  courses: CoursesResponse[] = [];
+  copy: CoursesResponse[] = [];
 
   search = ''
   courseType = 'future'
   sortType = 'relevant'
-  constructor(private courseService: CourseService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.allCourses = test;
+    this.allCourses = (<CoursesResponse[]>(this.route.snapshot.data['courses']));
     this.onCourseTypeChanged();
     this.search = (history.state.search);
-    // if(this.search?.trim())this.onSearch();
-    // this.courseService.getAllCourses().subscribe(
-    //   (data) => {
-    //     console.log(data)
-    //     this.allCourses = data;
-    //     this.onCourseTypeChanged()
-    //     this.search = history.state.search
-    //     this.onSearch()
-    //   },
-    //   (error) => console.log(error)
-    // )
   }
   onCourseTypeChanged(){
     this.filterCourseType(this.courseType)
