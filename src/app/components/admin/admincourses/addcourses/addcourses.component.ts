@@ -32,7 +32,8 @@ export class AddcoursesComponent implements OnInit {
       "courseDate" : new FormControl('',[Validators.required]),
       // "courseLink" : new FormControl('',[Validators.required]),
       "courseTutorId" : new FormControl('',[Validators.required]),
-      "courseImages" : new FormControl('',[Validators.required])
+      "courseImages" : new FormControl('',[Validators.required]),
+      "courseStatus" : new FormControl('future')
     })
     this.getInstructor();
   }

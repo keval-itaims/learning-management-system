@@ -22,6 +22,7 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.allCourses = (<CoursesResponse[]>(this.route.snapshot.data['courses']));
+    
     this.onCourseTypeChanged();
     this.search = (history.state.search);
   }
