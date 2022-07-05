@@ -60,6 +60,8 @@ import { ReplycontactmessageComponent } from './components/admin/contact-us/repl
 import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DisplayReviewComponent } from './components/coursespage/display-review/display-review.component';
+import { AddReviewComponent } from './components/coursespage/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +110,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReplycontactmessageComponent,
     AdmincoursesComponent,
     AddcoursesComponent,
+    DisplayReviewComponent,
+    AddReviewComponent,
 ],
   imports: [
     BrowserModule,
