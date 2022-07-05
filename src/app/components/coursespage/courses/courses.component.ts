@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.allCourses = (<CoursesResponse[]>(this.route.snapshot.data['courses']));
-    
+    console.log(this.allCourses);
     this.onCourseTypeChanged();
     this.search = (history.state.search);
   }
