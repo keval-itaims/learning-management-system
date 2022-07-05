@@ -6,16 +6,16 @@ import {
 } from '@angular/router';
 import {CourseService} from './course.service'
 import { Observable } from 'rxjs';
-import { CoursesResponse } from '../classes/courses-response';
+import { CourseResponse } from '../classes/course-response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesResolver implements Resolve<CoursesResponse[]> {
+export class CoursesResolver implements Resolve<CourseResponse[]> {
 
   constructor(private courseService: CourseService) {}
   
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CoursesResponse[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CourseResponse[]> {
     return this.courseService.getAllCourses();
   }
 }
