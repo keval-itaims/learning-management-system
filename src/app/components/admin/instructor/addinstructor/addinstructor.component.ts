@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -54,7 +55,13 @@ export class AddinstructorComponent implements OnInit {
           this.instructor = data;
           console.log("id",this.instructor.user_id);
           this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
-            data => console.log("Data in upload image",data),
+            // data => console.log("Data in upload image",data),
+            event =>{
+              
+              if(event.type=== HttpEventType.UploadProgress){
+              //   if(Math.round(event.loaded / event.total) * 100)
+               }
+            },
             error => console.log(error)
 
           )
