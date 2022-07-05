@@ -4,6 +4,7 @@ import { User } from 'src/app/classes/user';
 import { Course } from 'src/app/classes/course';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { CourseService } from 'src/app/services/course.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-addcourses',
@@ -31,7 +32,7 @@ export class AddcoursesComponent implements OnInit {
       "courseDate" : new FormControl('',[Validators.required]),
       // "courseLink" : new FormControl('',[Validators.required]),
       "courseTutorId" : new FormControl('',[Validators.required]),
-      "courseImage" : new FormControl('',[Validators.required])
+      "courseImages" : new FormControl('',[Validators.required])
     })
     this.getInstructor();
   }
@@ -80,7 +81,7 @@ export class AddcoursesComponent implements OnInit {
     let date=this.formateDate(this.addCourseForm.value.courseDate);
     // console.log("Formatted Date: ",date)
     this.courseDetail = this.addCourseForm.value;
-    this.courseDetail.courseImage = '';
+    // this.courseDetail.courseImage = '';
     // this.courseDetail.courseImage = this.courseImage;
     // this.courseDetail.courseDate = new Date(date);
     // console.log("new Date:",new Date(date))
@@ -91,7 +92,16 @@ export class AddcoursesComponent implements OnInit {
         this.courseDetail = data;
         console.log("course id : ",this.courseDetail.courseId)
         this.courseService.uploadCourseImage(this.courseDetail.courseId,formData).subscribe(
-          data => console.log(data),
+          // data => console.log(data),
+          event =>{
+            if(event.type === HttpEventType.UploadProgress){
+              if(event.total){
+                let progress = Math.round(event.loaded / event.total ?? 1) * 100;
+                console.log("progress: ",progress)
+              }
+
+             }
+          },
           error => console.log(error)
         )
       },
@@ -109,7 +119,7 @@ export class AddcoursesComponent implements OnInit {
   get courseduration(){return this.addCourseForm.get('courseDuration')}
   get coursedate(){return this.addCourseForm.get('courseDate')}
   get courseinstructor(){return this.addCourseForm.get('courseTutorId')}
-  get courseimage(){return this.addCourseForm.get('courseImage')}
+  get courseimage(){return this.addCourseForm.get('courseImages')}
   get startdate(){return this.addCourseForm.get('startDate')}
   get enddate(){return this.addCourseForm.get('endDate')}
 

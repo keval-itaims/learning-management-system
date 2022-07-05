@@ -57,9 +57,13 @@ export class AddinstructorComponent implements OnInit {
           this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
             // data => console.log("Data in upload image",data),
             event =>{
-              
-              if(event.type=== HttpEventType.UploadProgress){
-              //   if(Math.round(event.loaded / event.total) * 100)
+
+              if(event.type === HttpEventType.UploadProgress){
+                if(event.total){
+                  let progress = Math.round(event.loaded / event.total ?? 1) * 100;
+                  console.log("progress: ",progress)
+                }
+
                }
             },
             error => console.log(error)
