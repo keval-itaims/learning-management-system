@@ -7,7 +7,7 @@ export class CourseResponse{
     courseDate!: Date;
     courseRating!: number;
     courseStatus!: string;
-    courseImage!: File;
+    courseImage!: string;
     tutorName!: string;
-    tutorImage!: File;
+    tutorImage!: string;
 }

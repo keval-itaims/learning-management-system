@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
-import {CourseService} from 'src/app/services/course.service'
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoursesResponse } from 'src/app/classes/courses-response';
+import { CourseResponse } from 'src/app/classes/course-response';
 
 @Component({
   selector: 'app-courses',
@@ -11,9 +10,9 @@ import { CoursesResponse } from 'src/app/classes/courses-response';
 })
 export class CoursesComponent implements OnInit {
   faFilter = faFilter;
-  allCourses: CoursesResponse[] = [];
-  courses: CoursesResponse[] = [];
-  copy: CoursesResponse[] = [];
+  allCourses: CourseResponse[] = [];
+  courses: CourseResponse[] = [];
+  copy: CourseResponse[] = [];
 
   search = ''
   courseType = 'future'
@@ -21,7 +20,7 @@ export class CoursesComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.allCourses = (<CoursesResponse[]>(this.route.snapshot.data['courses']));
+    this.allCourses = (<CourseResponse[]>(this.route.snapshot.data['courses']));
     console.log(this.allCourses);
     this.onCourseTypeChanged();
     this.search = (history.state.search);

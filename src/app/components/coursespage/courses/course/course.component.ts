@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {faStar, faClock} from '@fortawesome/free-solid-svg-icons';
-import { CoursesResponse } from 'src/app/classes/courses-response';
+import { CourseResponse } from 'src/app/classes/course-response';
 
 @Component({
   selector: 'app-course',
@@ -11,7 +11,7 @@ import { CoursesResponse } from 'src/app/classes/courses-response';
 export class CourseComponent implements OnInit {
   faStar = faStar;
   faClock = faClock;
-  @Input() course:CoursesResponse|any;
+  @Input() course:CourseResponse|any;
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
