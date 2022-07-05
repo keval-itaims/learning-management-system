@@ -1,6 +1,6 @@
-import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit} from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
 import { Instructor } from 'src/app/classes/instructor';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
@@ -28,10 +28,10 @@ export class InstructorDetailComponent implements OnInit {
   // ];
 
   instructorDetail !: User[];
-  isLoading : boolean = true;
+  isLoading: boolean = true;
 
 
-  constructor(private instructorService:InstructorService,private router:Router,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService) { }
+  constructor(private instructorService: InstructorService, private router: Router, private confirmDialogService: ConfirmDialogService, private utilityService: UtilityService) { }
 
   ngOnInit(): void {
 
@@ -39,59 +39,54 @@ export class InstructorDetailComponent implements OnInit {
 
   }
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','action'];
-  dataSource:MatTableDataSource<Instructor[]> | any;
+  displayedColumns: string[] = ['profileImage', 'firstName', 'lastName', 'email', 'phoneNo', 'action'];
+  dataSource: MatTableDataSource<Instructor[]> | any;
 
 
-  private getInstructor(){
-      this.instructorService.getInstructorDetails().subscribe(
-        data =>{
-
-          console.log(data);
-          this.isLoading = false;
-          this.instructorDetail = data;
-          console.log("Instructor detail object : ",this.instructorDetail)
-          this.dataSource = new MatTableDataSource(this.instructorDetail);
-          console.log(this.instructorDetail)
-        },
-        error =>{
-          this.isLoading = false;
-          console.log(error);
-
-        }
-      )
+  private getInstructor() {
+    this.instructorService.getInstructorDetails().subscribe(
+      data => {
+        this.isLoading = false;
+        this.instructorDetail = data;
+        this.dataSource = new MatTableDataSource(this.instructorDetail);
+      },
+      error => {
+        this.isLoading = false;
+        console.log(error);
+      }
+    )
   }
 
-  onUpdateInstructor(element:any){
+  onUpdateInstructor(element: any) {
     alert("method called!")
     let id = element.user_id;
     alert(id)
-    this.router.navigate(['/admin/instructor/update/',id]);
+    this.router.navigate(['/admin/instructor/update/', id]);
 
   }
 
-  onDeleteInstrcutor(element:any){
+  onDeleteInstrcutor(element: any) {
     let id = element.user_id;
-    alert("user Id : "+id)
+    alert("user Id : " + id)
     this.confirmDialogService.openConfirmDialog({
-        title: 'Delete Instructor',
-        message:'Are you sure?',
-        confirmText:'Delete',
-        cancleText:'Cancle'
+      title: 'Delete Instructor',
+      message: 'Are you sure?',
+      confirmText: 'Delete',
+      cancleText: 'Cancle'
     }).subscribe(
-      result =>{
-        if(result){
+      result => {
+        if (result) {
           this.instructorService.deleteInstructor(id).subscribe(
             data => {
               console.log(data)
-              this.utilityService.openSnackBar("Instructor deleted!","close");
+              this.utilityService.openSnackBar("Instructor deleted!", "close");
               this.getInstructor();
 
             },
-            error =>console.log(error)
+            error => console.log(error)
           )
         }
-        else{
+        else {
 
         }
 
