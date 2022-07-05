@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="flex justify-center pt-4 w-full items-center">
   <h1 class="border-b-4 border-blue-600 p-1">Add Instructor</h1>
 </div>
@@ -90,9 +91,7 @@
     </div>
     <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
       <div class="md:w-1/2 w-full m-1 relative">
-        <label class="mb-2"
-          >Password:<small class="text-red-500">*</small></label
-        >
+        <p>Password:<small class="text-red-500">*</small></p>
 
         <input
           type="password"
@@ -120,9 +119,7 @@
         </div>
       </div>
       <div class="md:w-1/2 w-full m-1">
-        <p for="firstname">
-          Confirm Password:<small class="text-red-500">*</small>
-        </p>
+        <p>Confirm Password:<small class="text-red-500">*</small></p>
         <input
           type="password"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"

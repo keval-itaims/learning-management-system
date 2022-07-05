@@ -54,12 +54,14 @@ export class ReplycontactmessageComponent implements OnInit {
   }
 
   onReply(){
+    this.isLoading = true
     this.contactMessage = this.replyMessageForm.value;
     this.contactMessage.cId = this.id;
     console.log(this.contactMessage);
 
     this.utilityService.replyContactMessage(this.contactMessage).subscribe(
       data => {
+        this.isLoading = false;
         this.utilityService.openSnackBar("Mail send!","close");
         this.router.navigate(['/admin/contact-us/detail'])
         console.log(data)

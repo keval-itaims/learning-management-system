@@ -29,6 +29,7 @@ import { AdmincoursesComponent } from './components/admin/admincourses/admincour
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
 import { CoursesResolver } from './services/courses.resolver';
 import { CourseResolver } from './services/course.resolver';
+import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -51,8 +52,9 @@ const routes: Routes = [
       {path:'reply/:id',component:ReplycontactmessageComponent}
     ]},
     {path:'courses',component:AdmincoursesComponent,children:[
-      {path:'',redirectTo:'create',pathMatch:'full'},
+      {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'create',component:AddcoursesComponent},
+      {path:'detail',component:CoursesDetailsComponent}
     ]},
   ]},
   {path:'homepage', component:HomepageComponent, children:[
