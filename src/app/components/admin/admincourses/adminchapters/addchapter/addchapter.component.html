@@ -1,1 +1,93 @@
-<p>addchapter works!</p>
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Add Chapter</h1>
+</div>
+<div class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2">
+  <form class="p-2" [formGroup]="addChapterForm" (ngSubmit)="onAddChapter()">
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <label class="mb-2"
+          >Chapter Title:<small class="text-red-500">*</small></label
+        >
+
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+          placeholder="Title"
+          formControlName="chapterName"
+        />
+
+        <div
+          *ngIf="
+            chaptername.invalid && (chaptername.touched || chaptername.dirty)
+          "
+          class="mt-1"
+        >
+          <p *ngIf="chaptername.errors.required" class="text-red-600 text-xs">
+            *title is required!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <label class="mb-2"
+          >Meeting Link:<small class="text-red-500">*</small></label
+        >
+
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+          placeholder="Link"
+          formControlName="chapterlink"
+        />
+
+        <div
+          *ngIf="
+            chapterlink.invalid && (chapterlink.touched || chapterlink.dirty)
+          "
+          class="mt-1"
+        >
+          <p *ngIf="chapterlink.errors.required" class="text-red-600 text-xs">
+            *link is required!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <mat-form-field class="w-full">
+          <mat-label>Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="myDatePicker"
+            formControlName="chapterDate"
+          />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+          <mat-error
+            *ngIf="
+              (chapterdate.invalid &&
+                (chapterdate.touched || chapterdate.dirty)) ||
+              chapterdate.hasError('required')
+            "
+            class="text-red-600 text-xs"
+            >*date is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="text-center mt-3 mb-3">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="addChapterForm.invalid"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>

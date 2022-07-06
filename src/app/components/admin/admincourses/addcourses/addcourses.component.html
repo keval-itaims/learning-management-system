@@ -117,7 +117,7 @@
             matInput
             [matDatepicker]="myDatePicker"
             formControlName="courseDate"
-            [min] = "minDate"
+            [min]="minDate"
           />
           <mat-datepicker-toggle
             [for]="myDatePicker"
@@ -131,7 +131,7 @@
               coursedate.hasError('required')
             "
             class="text-red-600 text-xs"
-            >date is required</mat-error
+            >*date is required</mat-error
           >
         </mat-form-field>
       </div>

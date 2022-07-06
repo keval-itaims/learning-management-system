@@ -41,47 +41,24 @@
       </td>
     </ng-container>
 
-    <!-- Course Title Column -->
-    <ng-container matColumnDef="courseName">
-      <th mat-header-cell *matHeaderCellDef>Title</th>
-      <td mat-cell *matCellDef="let element">{{ element.courseName }}</td>
-    </ng-container>
-
     <!-- Course Date Column -->
     <ng-container matColumnDef="courseDate">
       <th mat-header-cell *matHeaderCellDef>Date</th>
       <td mat-cell *matCellDef="let element">{{ element.courseDate }}</td>
     </ng-container>
 
-    <!-- Course duration Column -->
-    <ng-container matColumnDef="courseDuration">
-      <th mat-header-cell *matHeaderCellDef>Duration</th>
-      <td mat-cell *matCellDef="let element">{{ element.courseDuration }}</td>
-    </ng-container>
-
-    <!-- Course price Column -->
-    <ng-container matColumnDef="coursePrice">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let element">{{ element.coursePrice }}</td>
-    </ng-container>
-
-    <!-- Course Description column -->
-    <ng-container matColumnDef="courseDescription">
-      <th mat-header-cell *matHeaderCellDef>Description</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.courseDescription }}
-      </td>
+    <!-- Course Title Column -->
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.courseName }}</td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="onUpdateCourse(element)">
-          <mat-icon color="primary">edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="onDeleteCourse(element)">
-          <mat-icon>delete</mat-icon>
+        <button mat-icon-button (click)="onViewChapters(element)">
+          <mat-icon color="primary">View</mat-icon>
         </button>
       </td>
     </ng-container>
