@@ -22,8 +22,7 @@ export class CourseDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    console.log(this.route.params)
-    this.courseService.getSingleCourse(+this.route.params).subscribe(
+    this.courseService.getSingleCourse(+this.route.snapshot.params['id']).subscribe(
       (data) => {
         this.isLoading = false;
         this.course = data;

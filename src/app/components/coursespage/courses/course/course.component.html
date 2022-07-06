@@ -5,16 +5,15 @@
     class="rounded-t-2xl"
   />
   <div class="p-5">
-    <p class="hover:text-blue-600">
+    <p class="hover:text-blue-600 text-lg">
       {{ course.courseName }}
     </p>
     <img
-      src="{{ 'data:image/png;base64,' + course.instructor_image }}"
+      src="{{ 'data:image/png;base64,' + course.tutorImage }}"
       alt="instructor"
-      width="45px"
-      class="rounded-full inline-block mr-3"
+      class="inline-block mr-3 rounded-full w-10 h-10"
     />
-    <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
+    <span class="text-gray-600"> {{ course.tutorName | titlecase }}</span>
     <div class="flex justify-between items-center">
       <div>
         <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
