@@ -18,6 +18,7 @@ export class AddcoursesComponent implements OnInit {
   courseImage!: File
   instructorDetail !: User[]
   courseDetail!:Course
+  minDate : Date = new Date()
   constructor(private instructorService:InstructorService,private courseService:CourseService) { }
 
   ngOnInit(): void {

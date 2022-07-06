@@ -63,6 +63,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
 import { DisplayReviewComponent } from './components/coursespage/display-review/display-review.component';
 import { AddReviewComponent } from './components/coursespage/add-review/add-review.component';
+import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
+import { AdminchaptersComponent } from './components/admin/admincourses/adminchapters/adminchapters.component';
+import { AddchapterComponent } from './components/admin/admincourses/adminchapters/addchapter/addchapter.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +117,9 @@ import { AddReviewComponent } from './components/coursespage/add-review/add-revi
     CoursesDetailsComponent,
     DisplayReviewComponent,
     AddReviewComponent,
+    UpdateCourseComponent,
+    AdminchaptersComponent,
+    AddchapterComponent,
 ],
   imports: [
     BrowserModule,

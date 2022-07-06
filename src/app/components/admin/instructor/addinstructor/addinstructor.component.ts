@@ -40,19 +40,25 @@ export class AddinstructorComponent implements OnInit {
   }
 
   addInstructor(){
-    this.isLoading = true;
+    // this.isLoading = true;
     this.message = ''
 
     // alert(`${this.instructorForm.value.firstName} is added!`)
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
     console.log(this.instructor);
-    const formData = new FormData();
+    let formData:FormData = new FormData();
+    // formData.append('instructorData',this.instructor);
     formData.append('profileImage',this.profileImage,this.profileImage.name);
-    this.instructorService.registerInstructorFromRemote(formData,this.instructor).subscribe(
+    formData.append('instructorData',JSON.stringify(this.instructor));
+
+    console.log("Image : ",formData.get('profileImage'))
+    console.log("Data : ",formData.get('instructorData'))
+    this.instructorService.registerInstructorFromRemote(formData).subscribe(
       data => console.log(data),
       error => console.log(error)
     )
+
     // this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
     //   data =>{
     //     console.log("response received!");

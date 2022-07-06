@@ -1,1 +1,92 @@
+<!-- <app-spinner *ngIf="isLoading"></app-spinner> -->
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Instructor</h1>
+</div>
 
+<div class="m-2 w-auto">
+  <div class="flex justify-between items-center mt-1">
+    <a routerLink="/admin/instructor/create"
+      ><button mat-raised-button color="primary">
+        <mat-icon>add</mat-icon>Add
+      </button>
+    </a>
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. ium"
+        #input
+      />
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Course image Column -->
+
+    <ng-container matColumnDef="courseImage">
+      <th mat-header-cell *matHeaderCellDef>Course Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img
+          alt="profile"
+          class="block rounded-full w-12 h-12 p-1"
+          [src]="
+            element.courseImage
+              ? 'data:image/png;base64,' + element.courseImage
+              : '../assets/images/tutor 2.png'
+          "
+        />
+      </td>
+    </ng-container>
+
+    <!-- Course Title Column -->
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.courseName }}</td>
+    </ng-container>
+
+    <!-- Course Date Column -->
+    <ng-container matColumnDef="courseDate">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.courseDate }}</td>
+    </ng-container>
+
+    <!-- Course duration Column -->
+    <ng-container matColumnDef="courseDuration">
+      <th mat-header-cell *matHeaderCellDef>Duration</th>
+      <td mat-cell *matCellDef="let element">{{ element.courseDuration }}</td>
+    </ng-container>
+
+    <!-- Course price Column -->
+    <ng-container matColumnDef="coursePrice">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.coursePrice }}</td>
+    </ng-container>
+
+    <!-- Course Description column -->
+    <ng-container matColumnDef="courseDescription">
+      <th mat-header-cell *matHeaderCellDef>Descriptionth></th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.courseDescription }}
+      </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onUpdateCourse(element)">
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onDeleteCourse(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

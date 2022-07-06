@@ -19,8 +19,8 @@ export class InstructorService {
   //   return this.httpClient.post<User>(`${this.baseURL}`,instructor);
   // }
 
-  public registerInstructorFromRemote(formData:FormData,instructor:User):Observable<User>{
-    return this.httpClient.post<User>(`${this.baseURL}/${formData}`,instructor);
+  public registerInstructorFromRemote(formData:FormData):Observable<User>{
+    return this.httpClient.post<User>(`${this.baseURL}`,formData);
   }
 
   public uploadProfileImage(id:number,formData:FormData):Observable<HttpEvent<string[]>>{

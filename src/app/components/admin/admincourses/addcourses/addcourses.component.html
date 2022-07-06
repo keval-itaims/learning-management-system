@@ -117,6 +117,7 @@
             matInput
             [matDatepicker]="myDatePicker"
             formControlName="courseDate"
+            [min] = "minDate"
           />
           <mat-datepicker-toggle
             [for]="myDatePicker"

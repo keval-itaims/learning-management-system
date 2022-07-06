@@ -30,6 +30,7 @@ import { AddcoursesComponent } from './components/admin/admincourses/addcourses/
 import { CoursesResolver } from './services/courses.resolver';
 import { CourseResolver } from './services/course.resolver';
 import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
+import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -54,7 +55,8 @@ const routes: Routes = [
     {path:'courses',component:AdmincoursesComponent,children:[
       {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'create',component:AddcoursesComponent},
-      {path:'detail',component:CoursesDetailsComponent}
+      {path:'detail',component:CoursesDetailsComponent},
+      {path:'update/:id',component:UpdateCourseComponent}
     ]},
   ]},
   {path:'homepage', component:HomepageComponent, children:[
