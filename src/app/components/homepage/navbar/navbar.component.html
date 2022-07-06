@@ -9,10 +9,6 @@
       width="200px"
       (click)="logoClick()"
     />
-    <p class="cursor-pointer hidden lg:block" [matMenuTriggerFor]="appMenu">
-      All Categories
-      <fa-icon [icon]="faAngleDown"></fa-icon>
-    </p>
     <div class="search px-3 py-1 rounded-sm hidden lg:block">
       <input
         type="search"
@@ -28,14 +24,14 @@
       ></fa-icon>
     </div>
   </div>
-  <div class="flex gap-3 xl:gap-8 items-center">
+  <div class="flex gap-3 md:gap-5 xl:gap-8 items-center">
     <fa-icon
       (click)="sidebar = !sidebar"
       [icon]="faBars"
-      class="cursor-pointer lg:hidden"
+      class="cursor-pointer md:hidden"
     >
     </fa-icon>
-    <ul class="hidden lg:flex gap-3 xl:gap-8">
+    <ul class="hidden md:flex gap-3 md:gap-5 xl:gap-8">
       <a routerLink="main" routerLinkActive="active"><li>Home</li></a>
       <a routerLink="courses" routerLinkActive="active"><li>Courses</li></a>
       <a routerLink="contact" routerLinkActive="active" class="w-max"
@@ -47,11 +43,6 @@
     </a>
   </div>
 </nav>
-<mat-menu #appMenu="matMenu" class="mt-3 rounded">
-  <button mat-menu-item>One</button>
-  <button mat-menu-item>two</button>
-</mat-menu>
-
 <div
   class="h-screen fixed top-0 w-64 bg-white py-5 px-3 md:px-5 z-50 lg:hidden md:w-80"
   [ngClass]="{ sidebarOpen: sidebar }"

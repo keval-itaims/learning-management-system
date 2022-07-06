@@ -27,8 +27,6 @@ import { FaqsComponent } from './components/pages/faqs/faqs.component';
 import { ReplycontactmessageComponent } from './components/admin/contact-us/replycontactmessage/replycontactmessage.component';
 import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
-import { CoursesResolver } from './services/courses.resolver';
-import { CourseResolver } from './services/course.resolver';
 import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
 import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
 
@@ -67,8 +65,8 @@ const routes: Routes = [
     {path:'faqs', component:FaqsComponent},
     {path:'error', component:ErrorComponent},
     {path:'signup', component:SignupComponent},
-    {path:'courses', component:CoursesComponent, resolve: {courses: CoursesResolver}},
-    {path:'course/:id', component:CourseDetailsComponent, resolve: {course: CourseResolver}},
+    {path:'courses', component:CoursesComponent},
+    {path:'course/:id', component:CourseDetailsComponent},
     {path:'login', component:LoginComponent},
     {path:'forgot-password', component:ForgotPasswordComponent},
     {path:'account', component:AccountComponent, children:[
