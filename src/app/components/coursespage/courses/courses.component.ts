@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseResponse } from 'src/app/classes/course-response';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -15,15 +16,26 @@ export class CoursesComponent implements OnInit {
   copy: CourseResponse[] = [];
 
   search = ''
+  isLoading = false;
   courseType = 'future'
   sortType = 'relevant'
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.allCourses = (<CourseResponse[]>(this.route.snapshot.data['courses']));
-    console.log(this.allCourses);
-    this.onCourseTypeChanged();
-    this.search = (history.state.search);
+    this.isLoading = true;
+    this.courseService.getAllCourses().subscribe(
+      (data) => {
+        this.isLoading = false;
+        this.allCourses = data;
+        this.onCourseTypeChanged();
+        this.search = (history.state.search);
+      },
+      (error) => {
+        this.isLoading = false;
+        console.log(error)
+      }
+    )
   }
   onCourseTypeChanged(){
     this.filterCourseType(this.courseType)

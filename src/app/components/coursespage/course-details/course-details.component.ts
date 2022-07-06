@@ -13,11 +13,25 @@ export class CourseDetailsComponent implements OnInit {
 
   clock = faClock;
   star = faStar;
+  isLoading = false;
   course: CourseResponse | any;
   
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.course = (<CourseResponse>(this.route.snapshot.data['course']));
+    this.isLoading = true;
+    console.log(this.route.params)
+    this.courseService.getSingleCourse(+this.route.params).subscribe(
+      (data) => {
+        this.isLoading = false;
+        this.course = data;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    )
   }
 }

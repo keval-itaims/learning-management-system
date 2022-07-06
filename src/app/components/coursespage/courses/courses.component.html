@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <section class="container mx-auto mt-5">
   <p class="text-red-500 text-center text-xl mb-3">Featured Courses</p>
   <Header
@@ -44,10 +45,16 @@
   </Header>
   <hr class="border border-red-200 rounded-full w-11/12 mx-auto mb-5" />
   <article
-    *ngIf="(courses | filter: search) == false"
+    *ngIf="(courses | filter: search) == false && search"
     class="w-max mx-auto font-semibold text-red-500 text-2xl my-16"
   >
     Your search doesn't match with any course...
+  </article>
+  <article
+    *ngIf="!courses"
+    class="w-max mx-auto font-semibold text-red-500 text-2xl my-16"
+  >
+    No results found, please checkout after sometime
   </article>
   <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
     <app-course
