@@ -15,8 +15,12 @@ export class InstructorService {
   baseURL:string = "http://localhost:8080/tutor";
 
 
-  public registerInstructorFromRemote(instructor:User):Observable<User>{
-    return this.httpClient.post<User>(`${this.baseURL}`,instructor);
+  // public registerInstructorFromRemote(instructor:User):Observable<User>{
+  //   return this.httpClient.post<User>(`${this.baseURL}`,instructor);
+  // }
+
+  public registerInstructorFromRemote(formData:FormData,instructor:User):Observable<User>{
+    return this.httpClient.post<User>(`${this.baseURL}/${formData}`,instructor);
   }
 
   public uploadProfileImage(id:number,formData:FormData):Observable<HttpEvent<string[]>>{

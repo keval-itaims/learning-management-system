@@ -60,6 +60,7 @@ import { ReplycontactmessageComponent } from './components/admin/contact-us/repl
 import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
 import { DisplayReviewComponent } from './components/coursespage/display-review/display-review.component';
 import { AddReviewComponent } from './components/coursespage/add-review/add-review.component';
 
@@ -110,6 +111,7 @@ import { AddReviewComponent } from './components/coursespage/add-review/add-revi
     ReplycontactmessageComponent,
     AdmincoursesComponent,
     AddcoursesComponent,
+    CoursesDetailsComponent,
     DisplayReviewComponent,
     AddReviewComponent,
 ],

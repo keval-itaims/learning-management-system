@@ -17,6 +17,7 @@ export class AddinstructorComponent implements OnInit {
 
   message=''
   profileImage!:File
+  isLoading:boolean = false
   instructor = new User()
   constructor(private instructorService : InstructorService,private router:Router) { }
 
@@ -39,48 +40,72 @@ export class AddinstructorComponent implements OnInit {
   }
 
   addInstructor(){
+    this.isLoading = true;
     this.message = ''
-    const formData = new FormData();
-    formData.append('profileImage',this.profileImage,this.profileImage.name);
+
     // alert(`${this.instructorForm.value.firstName} is added!`)
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
     console.log(this.instructor);
-    this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
-      data =>{
-        console.log("response received!");
-        console.log(data);
-        if(data!=null){
-          this.message = 'email is already registered!'
-          this.instructor = data;
-          console.log("id",this.instructor.user_id);
-          this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
-            // data => console.log("Data in upload image",data),
-            event =>{
-
-              if(event.type === HttpEventType.UploadProgress){
-                if(event.total){
-                  let progress = Math.round(event.loaded / event.total ?? 1) * 100;
-                  console.log("progress: ",progress)
-                }
-
-               }
-            },
-            error => console.log(error)
-
-          )
-
-        }
-        else{
-
-
-          // this.router.navigate(['admin/instructor/detail'])
-        }
-      },
-      error =>{
-        alert("error occured!")
-      }
+    const formData = new FormData();
+    formData.append('profileImage',this.profileImage,this.profileImage.name);
+    this.instructorService.registerInstructorFromRemote(formData,this.instructor).subscribe(
+      data => console.log(data),
+      error => console.log(error)
     )
+    // this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
+    //   data =>{
+    //     console.log("response received!");
+    //     console.log(data);
+    //     if(data!=null){
+    //       this.instructor = data;
+    //       console.log("id",this.instructor.user_id);
+    //       if(this.profileImage!==undefined){
+
+    //         const formData = new FormData();
+    //         formData.append('profileImage',this.profileImage,this.profileImage.name);
+    //         this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
+    //           // data => console.log("Data in upload image",data),
+    //           event =>{
+    //             if(event.type === HttpEventType.UploadProgress){
+    //               if(event.total){
+    //                 let progress = Math.round(event.loaded / event.total) * 100;
+    //                 console.log("progress: ",progress)
+    //                 if(progress===100){
+
+    //                   this.isLoading = false;
+    //                   this.router.navigate(['admin/instructor/detail'])
+    //                 }
+
+    //               }
+
+    //              }
+
+    //           },
+    //           error => {
+    //             console.log(error)
+    //             this.isLoading = false;
+
+    //           }
+
+    //         )
+
+    //       }
+    //      this.router.navigate(['admin/instructor/detail'])
+    //     }
+    //     else{
+
+    //       this.message = 'email is already registered!'
+    //       this.isLoading = false
+    //     }
+    //     this.isLoading = false;
+    //   },
+    //   error =>{
+    //     alert("error occured!")
+    //     this.isLoading = false;
+
+    //   }
+    // )
   }
 
   onAddInstructor(){
