@@ -28,6 +28,11 @@ import { ReplycontactmessageComponent } from './components/admin/contact-us/repl
 import { AdmincoursesComponent } from './components/admin/admincourses/admincourses.component';
 import { AddcoursesComponent } from './components/admin/admincourses/addcourses/addcourses.component';
 import { CoursesDetailsComponent } from './components/admin/admincourses/courses-detail/courses-detail.component';
+import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
+import { AdminchaptersComponent } from './components/admin/admincourses/adminchapters/adminchapters.component';
+import { AddchapterComponent } from './components/admin/admincourses/adminchapters/addchapter/addchapter.component';
+import { ViewcoursesComponent } from './components/admin/admincourses/adminchapters/viewcourses/viewcourses.component';
+import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -52,7 +57,14 @@ const routes: Routes = [
     {path:'courses',component:AdmincoursesComponent,children:[
       {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'create',component:AddcoursesComponent},
-      {path:'detail',component:CoursesDetailsComponent}
+      {path:'detail',component:CoursesDetailsComponent},
+      {path:'update/:id',component:UpdateCourseComponent},
+      {path:'chapter',component:AdminchaptersComponent,children:[
+        {path:'',redirectTo:'detail',pathMatch:'full'},
+        {path:'view',component:ViewcoursesComponent},
+        {path:'add/:id',component:AddchapterComponent},
+        {path:'detail/:id',component:ChapterDetailsComponent}
+      ]}
     ]},
   ]},
   {path:'homepage', component:HomepageComponent, children:[
