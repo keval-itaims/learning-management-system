@@ -1,85 +1,102 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
-  <main class="m-6">
-    <section class="m-auto">
-      <div class="lg:flex lg:justify-between">
-        <div class="w-full lg:flex lg:justify-center lg:items-center py-4 md:py-10">
-          <img src="./images/group.jpg" alt="Course Image" class="w-full lg:w-3/4 lg:h-full" />
+<main class="m-6">
+  <section class="m-auto">
+    <div class="lg:flex lg:justify-between">
+      <div
+        class="w-full lg:flex lg:justify-center lg:items-center py-4 md:py-10"
+      >
+        <img
+          src="{{ 'data:image/png;base64,' + course.courseImage }}"
+          alt="Course Image"
+          class="w-full lg:w-3/4 lg:h-full"
+        />
+      </div>
+      <div class="w-full px-2 py-4 md:py-8 md:px-8">
+        <p class="text-2xl font-bold tracking-wider md:text-4xl">
+          {{ course.courseName }}
+        </p>
+        <hr class="mt-4" />
+
+        <!-- Start of Instructor Image -->
+        <div class="flex items-center pt-2 md:pt-4">
+          <div class="text-center">
+            <img
+              src="{{ 'data:image/png;base64,' + course.tutorImage }}"
+              alt="Instructor Image"
+              class="w-12 h-12 md:w-14 md:h-14 rounded-full inline-block"
+            />
+          </div>
+          <div class="ml-4">
+            <span class="font-bold tracking-wider text-base md:text-xl">{{
+              course.tutorName | titlecase
+            }}</span>
+          </div>
         </div>
-        <div class="w-full px-2 py-4 md:py-8 md:px-8">
-          <p class="text-2xl font-bold tracking-wider md:text-4xl">
-            Course Title
+        <!-- End of Instructor Image -->
+
+        <div class="flex justify-between flex-wrap items-center pt-2 md:pt-4">
+          <div>
+            <span class="text-xl font-medium tracking-wide lg:text-2xl"
+              ><fa-icon [icon]="clock" class="text-blue-500"></fa-icon
+              >{{ course.courseDuration }} Weeks</span
+            >
+          </div>
+          <div>
+            <span class="text-xl font-medium tracking-wide lg:text-2xl"
+              >{{ course.courseRating }}/5<fa-icon
+                [icon]="star"
+                class="text-yellow-400"
+              ></fa-icon
+            ></span>
+          </div>
+        </div>
+
+        <div class="flex justify-between flex-wrap items-center">
+          <span class="pt-4 text-xl font-medium tracking-wide lg:text-2xl"
+            >Start Date: {{ course.courseDate }}</span
+          >
+          <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">
+            End Date:
           </p>
-          <hr class="mt-4" />
-          
-          <!-- Start of Instructor Image -->
-          <div class="flex items-center pt-2 md:pt-4">
-            <div class="text-center">
-              <img src="https://cdn.tuk.dev/assets/components/misc/doge-coin.png" alt="Instructor Image"
-                class="w-12 h-12 md:w-14 md:h-14 rounded-full" />
-            </div>
-            <div class="ml-4">
-              <span class="font-bold tracking-wider text-base md:text-xl">Instructor Name</span>
-            </div>
-          </div>
-          <!-- End of Instructor Image -->
-
-          <div class="flex justify-between flex-wrap items-center pt-2 md:pt-4">
-            <div>
-              <span class="text-xl font-medium tracking-wide lg:text-2xl">Duration: 3 Months</span>
-            </div>
-            <div>
-              <span class="text-xl font-medium tracking-wide lg:text-2xl">Rating: 4/5</span>
-            </div>
-          </div>
-
-          <div class="flex justify-between flex-wrap items-center">
-            <span class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">Start Date:</span>
-            <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">End Date:</p>
-          </div>
-          <div class="grid place-content-center">
-            <button
-              class="bg-red-500 p-2 md:p-4 mt-2 md:mt-4 text-white tracking-wide font-extrabold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer">
-              Enroll Now
-            </button>
-          </div>
-
-
+        </div>
+        <div class="grid place-content-center">
+          <button
+            class="bg-red-500 p-2 md:p-4 mt-2 md:mt-4 text-white tracking-wide font-extrabold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
+          >
+            Enroll Now
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Course Details OutLine -->
-    <section class="bg-gray-50 mt-4">
-      <div class="text-center py-4">
-        <p class="text-xl md:text-2xl font-bold">Course Description</p>
-      </div>
+  <!-- Course Details OutLine -->
+  <section class="bg-gray-50 mt-4">
+    <div class="text-center py-4">
+      <p class="text-xl md:text-2xl font-bold">Course Description</p>
+    </div>
 
-      <hr />
+    <hr />
 
-      <div class="flex flex-col items-center py-4 md:py-6">
-        <div class="px-4 md:px-10">
-          <div class="p-2">
-            <span class="text-base md:text-xl font-medium text-justify">
-              <i class="fas fa-circle text-red-400"></i>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-              placeat?Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Vel, minima.
-            </span>
-          </div>
+    <div class="flex flex-col items-center py-4 md:py-6">
+      <div class="px-4 md:px-10">
+        <div class="p-2">
+          <span class="text-base md:text-xl font-medium text-justify">
+            <i class="fas fa-circle text-red-400"></i>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+            placeat?Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Vel, minima.
+          </span>
+        </div>
 
-          <div class="p-2">
-            <p class="text-base md:text-xl font-medium">
-              <i class="fas fa-circle text-red-400"></i> Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Quae, placeat?
-            </p>
-          </div>
+        <div class="p-2">
+          <p class="text-base md:text-xl font-medium">
+            <i class="fas fa-circle text-red-400"></i> Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Quae, placeat?
+          </p>
         </div>
       </div>
-    </section>
-
-    <section class="mt-4">
-      <div class="bg-blue-400 rounded-lg p-8 text-white md:text-2xl font-extrabold">
-        Course Lesson Timings And Links
-      </div>
-    </section>
+    </div>
+  </section>
+  <app-chapters></app-chapters>
 </main>
