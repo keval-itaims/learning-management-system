@@ -1,3 +1,5 @@
+import { Chapters } from "./chapters";
+
 export class CourseResponse{
     courseId!: number;
     courseName!: string;
@@ -10,4 +12,5 @@ export class CourseResponse{
     courseImage!: string;
     tutorName!: string;
     tutorImage!: string;
+    chapters!: Chapters[]
 }
