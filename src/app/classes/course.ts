@@ -5,8 +5,8 @@ export class Course{
     coursePrice!: number;
     courseDuration!: number;
     courseDate!: Date;
-    courseTutorId!: number;
+    tutorId!: number;
     courseRating!: number;
     courseStatus!: string;
-    courseImage!: File;
+
 }

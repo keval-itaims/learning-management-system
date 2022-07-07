@@ -138,7 +138,7 @@
       <div class="w-full md:w-1/2 m-1">
         <mat-form-field class="w-full">
           <mat-label>Instructor</mat-label>
-          <mat-select formControlName="courseTutorId" required>
+          <mat-select formControlName="tutorId" required>
             <mat-option
               *ngFor="let instructor of instructorDetail"
               [value]="instructor.user_id"
