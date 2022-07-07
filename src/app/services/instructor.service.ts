@@ -15,13 +15,13 @@ export class InstructorService {
   baseURL:string = "http://localhost:8080/tutor";
 
 
-  // public registerInstructorFromRemote(instructor:User):Observable<User>{
-  //   return this.httpClient.post<User>(`${this.baseURL}`,instructor);
-  // }
-
-  public registerInstructorFromRemote(formData:FormData):Observable<User>{
-    return this.httpClient.post<User>(`${this.baseURL}`,formData);
+  public registerInstructorFromRemote(instructor:User):Observable<User>{
+    return this.httpClient.post<User>(`${this.baseURL}`,instructor);
   }
+
+  // public registerInstructorFromRemote(formData:FormData):Observable<User>{
+  //   return this.httpClient.post<User>(`${this.baseURL}`,formData);
+  // }
 
   public uploadProfileImage(id:number,formData:FormData):Observable<HttpEvent<string[]>>{
     console.log("Id in upload image service",id)
