@@ -14,6 +14,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class CoursesDetailsComponent implements OnInit {
 
   courseDetails!:CourseResponse[] | any
+  isLoading : boolean = true
   displayedColumns: string[] = ['courseImage', 'courseName','courseDate','courseDuration','coursePrice','courseDescription', 'action'];
   dataSource: MatTableDataSource<CourseResponse[]> | any;
 
@@ -21,7 +22,7 @@ export class CoursesDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.getAllCourses()
+    this.getAllCourses()
   }
 
   private getAllCourses(){
@@ -29,8 +30,13 @@ export class CoursesDetailsComponent implements OnInit {
       data =>{
         console.log(data)
         this.courseDetails = data;
+        this.dataSource = new MatTableDataSource(this.courseDetails);
+        this.isLoading = false
       },
-      error => console.log(error)
+      error => {
+        this.isLoading = false
+        console.log(error)
+      }
     )
   }
 
