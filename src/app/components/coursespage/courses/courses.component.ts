@@ -26,6 +26,7 @@ export class CoursesComponent implements OnInit {
     this.isLoading = true;
     this.courseService.getAllCourses().subscribe(
       (data) => {
+        console.log(data);
         this.isLoading = false;
         this.allCourses = data;
         this.onCourseTypeChanged();
