@@ -1,8 +1,8 @@
-<article class="bg-white rounded-2xl cursor-pointer" (click)="courseClick()">
+<article class="rounded-2xl bg-white cursor-pointer" (click)="courseClick()">
   <img
     src="{{ 'data:image/png;base64,' + course.courseImage }}"
     alt="course"
-    class="rounded-t-2xl"
+    class="rounded-t-2xl block max-h-52"
   />
   <div class="p-5">
     <p class="hover:text-blue-600 text-lg">
@@ -25,7 +25,7 @@
         ${{ course.coursePrice }}
       </div>
       <div *ngIf="course.courseStatus == 'past'">
-        {{ course.courseRating
+        {{ course.courseRating == 0 ? "N/A" : course.courseRating
         }}<fa-icon [icon]="faStar" class="text-yellow-400"></fa-icon>
       </div>
     </div>
