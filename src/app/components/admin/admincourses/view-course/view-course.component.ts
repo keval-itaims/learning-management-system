@@ -12,6 +12,7 @@ export class ViewCourseComponent implements OnInit {
 
   courseDetail: CourseResponse | any = new CourseResponse()
   isLoading: boolean = true
+  id:number  = 0
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit(): void {
@@ -19,8 +20,8 @@ export class ViewCourseComponent implements OnInit {
   }
 
   private getCourse() {
-    const id = this.activatedRouter.snapshot.params['id']
-    this.courseService.getSingleCourse(id).subscribe(
+    this.id = this.activatedRouter.snapshot.params['id']
+    this.courseService.getSingleCourse(this.id).subscribe(
       data => {
         console.log(data)
         this.courseDetail = data
@@ -35,7 +36,7 @@ export class ViewCourseComponent implements OnInit {
   }
 
   onViewChapters() {
-
+    this.router.navigate(['/admin/courses/chapter/detail',this.id])
   }
 
   onDeleteCourse() {

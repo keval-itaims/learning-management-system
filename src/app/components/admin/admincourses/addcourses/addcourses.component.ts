@@ -32,7 +32,7 @@ export class AddcoursesComponent implements OnInit {
       // "endDate" : new FormControl('',[Validators.required]),
       "courseDate" : new FormControl('',[Validators.required]),
       // "courseLink" : new FormControl('',[Validators.required]),
-      "tutorId" : new FormControl('',[Validators.required]),
+      "userId" : new FormControl('',[Validators.required]),
       "courseImages" : new FormControl('',[Validators.required]),
       "courseStatus" : new FormControl('future')
     })
@@ -126,7 +126,7 @@ export class AddcoursesComponent implements OnInit {
   get courseprice(){return this.addCourseForm.get('coursePrice')}
   get courseduration(){return this.addCourseForm.get('courseDuration')}
   get coursedate(){return this.addCourseForm.get('courseDate')}
-  get courseinstructor(){return this.addCourseForm.get('tutorId')}
+  get courseinstructor(){return this.addCourseForm.get('userId')}
   get courseimage(){return this.addCourseForm.get('courseImages')}
   get startdate(){return this.addCourseForm.get('startDate')}
   get enddate(){return this.addCourseForm.get('endDate')}

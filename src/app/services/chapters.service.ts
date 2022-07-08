@@ -14,7 +14,11 @@ export class ChapterServices{
   baseUrl = environment.url + '/chapters'
 
   public addChapter(chapter:Chapters):Observable<Chapters>{
-    console.log("URL : ",this.baseUrl)
-    return this.httpClient.post<Chapters>(`${this.baseUrl}`,chapter);
+
+    return this.httpClient.post<Chapters>(this.baseUrl,chapter);
+  }
+
+  public getChaptersByCourseId(id:number):Observable<Chapters[]>{
+    return this.httpClient.get<Chapters[]>(`${this.baseUrl}/id`)
   }
 }

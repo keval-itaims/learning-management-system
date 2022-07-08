@@ -1,1 +1,64 @@
-<p>chapter-details works!</p>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Chapters</h1>
+</div>
+
+<div class="m-2 w-auto">
+  <div class="flex justify-between items-center mt-1">
+    <a routerLink="/admin/courses/chapter/add/{{ id }}"
+      ><button mat-raised-button color="primary">
+        <mat-icon>add</mat-icon>Add
+      </button>
+    </a>
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. ium"
+        #input
+      />
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Chapter Name Column -->
+    <ng-container matColumnDef="chapterName">
+      <th mat-header-cell *matHeaderCellDef>Chapter Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.chapterName }}</td>
+    </ng-container>
+
+    <!-- Chapter Date Column -->
+    <ng-container matColumnDef="chapterDate">
+      <th mat-header-cell *matHeaderCellDef>Meeting Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.chapterDate }}</td>
+    </ng-container>
+
+    <!-- Chapter Time Column -->
+    <ng-container matColumnDef="chapterTime">
+      <th mat-header-cell *matHeaderCellDef>Metting Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.chapterTime }}</td>
+    </ng-container>
+
+    <!-- Chapter Link Column -->
+    <ng-container matColumnDef="chapterlink">
+      <th mat-header-cell *matHeaderCellDef>Contact No</th>
+      <td mat-cell *matCellDef="let element">{{ element.chapterlink }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onUpdateChapter(element)">
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onDeleteChapter(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
