@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <main class="bg-gray-200 py-10 px-8 pb-20">
   <div class="container mx-auto mb-5">
     <p class="text-red-500 lg:text-xl">Featured Courses</p>
@@ -6,7 +7,7 @@
     </p>
   </div>
   <section
-    class="container mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center"
+    class="container mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-4 place-items-center"
   >
     <app-testcourse
       *ngFor="let course of testcourses"

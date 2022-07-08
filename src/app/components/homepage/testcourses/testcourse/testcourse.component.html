@@ -1,36 +1,35 @@
-<article class="bg-white rounded-2xl">
+<article class="bg-gray-50 rounded-2xl cursor-pointer" (click)="courseClick()">
   <img
-    src="{{ course.image }}"
+    src="{{ 'data:image/png;base64,' + course.courseImage }}"
     loading="lazy"
     alt="course"
-    class="rounded-t-2xl"
+    class="rounded-t-2xl block max-h-52 mx-auto"
   />
   <div class="p-5">
     <p class="cursor-pointer hover:text-blue-600">
-      {{ course.title | titlecase }}
+      {{ course.courseName | titlecase }}
     </p>
     <img
-      src="{{ course.instructor_image }}"
+      src="{{ 'data:image/png;base64,' + course.tutorImage }}"
       alt="instructor"
-      width="45px"
       loading="lazy"
-      class="rounded-full inline-block mr-3"
+      class="inline-block mr-3 rounded-full w-10 h-10"
     />
-    <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
+    <span class="text-gray-600"> {{ course.tutorName | titlecase }}</span>
     <div class="flex justify-between items-center">
       <div>
         <fa-icon [icon]="faClock" class="text-blue-500"></fa-icon
-        >{{ course.duration }} weeks
+        >{{ course.courseDuration }} weeks
       </div>
       <div
         class="rounded-full bg-red-500 text-white grid place-items-center h-14 w-14"
       >
-        ${{ course.price }}
+        ${{ course.coursePrice }}
       </div>
-      <!-- <div>
-        {{ course.rating
+      <div *ngIf="course.courseStatus == 'past'">
+        {{ course.courseRating == 0 ? "N/A" : course.courseRating
         }}<fa-icon [icon]="faStar" class="text-yellow-400"></fa-icon>
-      </div> -->
+      </div>
     </div>
   </div>
 </article>

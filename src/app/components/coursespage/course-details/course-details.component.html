@@ -8,11 +8,11 @@
         <img
           src="{{ 'data:image/png;base64,' + course.courseImage }}"
           alt="Course Image"
-          class="w-full lg:w-3/4 lg:h-full"
+          class="w-full lg:w-3/4 lg:h-full rounded-md"
         />
       </div>
       <div class="w-full px-2 py-4 md:py-8 md:px-8">
-        <p class="text-2xl font-bold tracking-wider md:text-4xl">
+        <p class="text-xl font-bold md:text-2xl">
           {{ course.courseName }}
         </p>
         <hr class="mt-4" />
@@ -23,7 +23,7 @@
             <img
               src="{{ 'data:image/png;base64,' + course.tutorImage }}"
               alt="Instructor Image"
-              class="w-12 h-12 md:w-14 md:h-14 rounded-full inline-block"
+              class="w-11 h-11 md:w-12 md:h-12 rounded-full inline-block"
             />
           </div>
           <div class="ml-4">
@@ -36,28 +36,26 @@
 
         <div class="flex justify-between flex-wrap items-center pt-2 md:pt-4">
           <div>
-            <span class="text-xl font-medium tracking-wide lg:text-2xl"
+            <span class="text-xl font-medium"
               ><fa-icon [icon]="clock" class="text-blue-500"></fa-icon
               >{{ course.courseDuration }} Weeks</span
             >
           </div>
           <div>
-            <span class="text-xl font-medium tracking-wide lg:text-2xl"
-              >{{ course.courseRating }}/5<fa-icon
-                [icon]="star"
-                class="text-yellow-400"
-              ></fa-icon
+            <span class="text-xl font-medium"
+              >{{ course.courseRating == 0 ? "N/A" : course.courseRating / 5
+              }}<fa-icon [icon]="star" class="text-yellow-400"></fa-icon
             ></span>
           </div>
         </div>
 
         <div class="flex justify-between flex-wrap items-center">
-          <span class="pt-4 text-xl font-medium tracking-wide lg:text-2xl"
-            >Start Date: {{ course.courseDate }}</span
+          <span class="pt-4 text-xl font-medium"
+            >Starts from: {{ course.courseDate | date }}</span
           >
-          <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">
-            End Date:
-          </p>
+          <!-- <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">
+            Ends at:
+          </p> -->
         </div>
         <div class="grid place-content-center">
           <button
@@ -99,4 +97,6 @@
     </div>
   </section>
   <app-chapters></app-chapters>
+  <app-add-review></app-add-review>
+  <app-display-review></app-display-review>
 </main>
