@@ -35,10 +35,12 @@
         alt="instructor image"
         class="h-12 w-12 rounded-full ml-2 block mr-2"
       />
-      <span>Parth Shah</span>
+      <span>{{ courseDetail.tutorName }}</span>
     </div>
     <div class="flex justify-center items-center mt-2 w-auto grow">
-      <button mat-raised-button color="primary" (click) = "onViewChapters()">Chapters</button>
+      <button mat-raised-button color="primary" (click)="onViewChapters()">
+        Chapters
+      </button>
       <button mat-raised-button color="accent">Edit</button>
       <button mat-raised-button color="warn" (click)="onDeleteCourse()">
         Delete
