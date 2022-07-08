@@ -31,8 +31,9 @@ import { CoursesDetailsComponent } from './components/admin/admincourses/courses
 import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
 import { AdminchaptersComponent } from './components/admin/admincourses/adminchapters/adminchapters.component';
 import { AddchapterComponent } from './components/admin/admincourses/adminchapters/addchapter/addchapter.component';
-import { ViewcoursesComponent } from './components/admin/admincourses/adminchapters/viewcourses/viewcourses.component';
+
 import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
+import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -57,11 +58,11 @@ const routes: Routes = [
     {path:'courses',component:AdmincoursesComponent,children:[
       {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'create',component:AddcoursesComponent},
+      {path:'view/:id',component:ViewCourseComponent},
       {path:'detail',component:CoursesDetailsComponent},
       {path:'update/:id',component:UpdateCourseComponent},
       {path:'chapter',component:AdminchaptersComponent,children:[
         {path:'',redirectTo:'detail',pathMatch:'full'},
-        {path:'view',component:ViewcoursesComponent},
         {path:'add/:id',component:AddchapterComponent},
         {path:'detail/:id',component:ChapterDetailsComponent}
       ]}

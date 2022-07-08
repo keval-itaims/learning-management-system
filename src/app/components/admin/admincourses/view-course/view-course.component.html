@@ -1,0 +1,48 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div
+  class="m-2 border-2 border-red-200 flex flex-col justify-around lg:flex-row flex-grow"
+>
+  <div class="w-full lg:w-1/2 p-3">
+    <img
+      [src]="'data:image/png;base64,' + courseDetail.courseImage"
+      alt="course image"
+      class="block h-56 w-full"
+    />
+  </div>
+  <div class="w-full lg:w-1/2 p-3">
+    <h1>{{ courseDetail.courseName }}</h1>
+    <p>
+      <span class="font-bold">Date : </span>
+      <span>{{ courseDetail.courseDate | date }}</span>
+    </p>
+    <p>
+      <span class="font-bold">Price : </span>
+      <span>{{ courseDetail.coursePrice }}</span>
+    </p>
+    <p>
+      <span class="font-bold">Description : </span>
+      <span>{{ courseDetail.courseDescription }}</span>
+    </p>
+
+    <div class="flex justify-items-start items-center">
+      <span class="font-bold">Instructor:</span>
+      <img
+        [src]="
+          courseDetail.tutorImage
+            ? 'data:image/png;base64,' + courseDetail.tutorImage
+            : '../assets/images/tutor 1.png'
+        "
+        alt="instructor image"
+        class="h-12 w-12 rounded-full ml-2 block mr-2"
+      />
+      <span>Parth Shah</span>
+    </div>
+    <div class="flex justify-center items-center mt-2 w-auto grow">
+      <button mat-raised-button color="primary" (click) = "onViewChapters()">Chapters</button>
+      <button mat-raised-button color="accent">Edit</button>
+      <button mat-raised-button color="warn" (click)="onDeleteCourse()">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

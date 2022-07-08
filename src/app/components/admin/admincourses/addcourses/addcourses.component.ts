@@ -74,6 +74,7 @@ export class AddcoursesComponent implements OnInit {
 
   onAddCourse(){
     if(this.addCourseForm.invalid) return;
+    this.isLoading = true
     const formData = new FormData();
     formData.append('courseImage',this.courseImage,this.courseImage.name);
     alert("method called!")
@@ -99,15 +100,20 @@ export class AddcoursesComponent implements OnInit {
             if(event.type === HttpEventType.UploadProgress){
               if(event.total){
                 let progress = Math.round(event.loaded / event.total ?? 1) * 100;
+                this.isLoading = false
                 console.log("progress: ",progress)
               }
 
              }
           },
-          error => console.log(error)
+          error => {
+            this.isLoading = false
+            console.log(error)
+          }
         )
       },
       error => {
+        this.isLoading = false
         console.log("Error",error)
       }
     )

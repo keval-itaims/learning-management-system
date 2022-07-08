@@ -66,8 +66,9 @@ import { AddReviewComponent } from './components/coursespage/add-review/add-revi
 import { UpdateCourseComponent } from './components/admin/admincourses/update-course/update-course.component';
 import { AdminchaptersComponent } from './components/admin/admincourses/adminchapters/adminchapters.component';
 import { AddchapterComponent } from './components/admin/admincourses/adminchapters/addchapter/addchapter.component';
-import { ViewcoursesComponent } from './components/admin/admincourses/adminchapters/viewcourses/viewcourses.component';
+
 import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
+import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 
 @NgModule({
   declarations: [
@@ -122,8 +123,9 @@ import { ChapterDetailsComponent } from './components/admin/admincourses/adminch
     UpdateCourseComponent,
     AdminchaptersComponent,
     AddchapterComponent,
-    ViewcoursesComponent,
+
     ChapterDetailsComponent,
+      ViewCourseComponent,
 ],
   imports: [
     BrowserModule,

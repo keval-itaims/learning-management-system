@@ -15,7 +15,7 @@ export class CoursesDetailsComponent implements OnInit {
 
   courseDetails!:CourseResponse[] | any
   isLoading : boolean = true
-  displayedColumns: string[] = ['courseImage', 'courseName','courseDate','courseDuration','coursePrice','courseDescription', 'action'];
+  displayedColumns: string[] = ['courseImage', 'courseDate','courseName','coursePrice', 'action'];
   dataSource: MatTableDataSource<CourseResponse[]> | any;
 
   constructor(private courseService:CourseService,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService,private router:Router) { }
@@ -30,6 +30,9 @@ export class CoursesDetailsComponent implements OnInit {
       data =>{
         console.log(data)
         this.courseDetails = data;
+        // console.log(this.courseDetails.courseDate)
+        // this.courseDetails.courseDate = this.courseDetails.courseDate.split(0,9)
+        console.log(this.courseDetails)
         this.dataSource = new MatTableDataSource(this.courseDetails);
         this.isLoading = false
       },
@@ -40,10 +43,9 @@ export class CoursesDetailsComponent implements OnInit {
     )
   }
 
-  onUpdateCourse(element:any){
+  onViewCourse(element:any){
     let id = element.courseId;
-    this.router.navigate(['admin/courses/update',id])
-
+    this.router.navigate(['/admin/courses/view',id])
   }
 
   onDeleteCourse(element:any){
