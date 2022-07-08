@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseResponse } from 'src/app/classes/course-response';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CourseService } from 'src/app/services/course.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-view-course',
@@ -13,7 +15,7 @@ export class ViewCourseComponent implements OnInit {
   courseDetail: CourseResponse | any = new CourseResponse()
   isLoading: boolean = true
   id:number  = 0
-  constructor(private router: Router, private activatedRouter: ActivatedRoute, private courseService: CourseService) { }
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private courseService: CourseService,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService) { }
 
   ngOnInit(): void {
     this.getCourse()
@@ -39,15 +41,25 @@ export class ViewCourseComponent implements OnInit {
     this.router.navigate(['/admin/courses/chapter/detail',this.id])
   }
 
-  onDeleteCourse() {
-    console.log("inside delete method!")
-    this.courseService.deleteCourse(this.courseDetail.courseId).subscribe(
-      data => {
-        console.log(data),
-          this.router.navigate(['/admin/courses/detail'])
-      },
-      error => {
-        console.log(error)
+  onDeleteCourse(){
+    this.confirmDialogService.openConfirmDialog({
+      title: 'Delete Course',
+      message: 'Are you sure?',
+      confirmText: 'Delete',
+      cancleText: 'Cancle'
+    }).subscribe(
+      result => {
+        if (result) {
+          this.courseService.deleteCourse(this.id).subscribe(
+            data => {
+              console.log(data)
+              this.utilityService.openSnackBar("Course deleted!", "close")
+              this.router.navigate(['/admin/courses/detail'])
+            },
+            error => console.log(error)
+          )
+        }
+
       }
     )
   }

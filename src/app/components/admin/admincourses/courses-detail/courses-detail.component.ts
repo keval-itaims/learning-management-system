@@ -48,32 +48,7 @@ export class CoursesDetailsComponent implements OnInit {
     this.router.navigate(['/admin/courses/view',id])
   }
 
-  onDeleteCourse(element:any){
-    let id = element.courseId;
-    alert("course Id : " + id)
-    this.confirmDialogService.openConfirmDialog({
-      title: 'Delete Course',
-      message: 'Are you sure?',
-      confirmText: 'Delete',
-      cancleText: 'Cancle'
-    }).subscribe(
-      result => {
-        if (result) {
-          this.courseService.deleteCourse(id).subscribe(
-            data => {
-              console.log(data)
-              this.utilityService.openSnackBar("Instructor deleted!", "close");
-              this.getAllCourses()
 
-            },
-            error => console.log(error)
-          )
-        }
-
-
-      }
-    )
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -19,7 +19,8 @@ export class AddchapterComponent implements OnInit {
     this.addChapterForm = new FormGroup({
       "chapterName" : new FormControl('',[Validators.required]),
       "chapterlink" : new FormControl('',[Validators.required]),
-      "chapterDate" : new FormControl('',[Validators.required])
+      "chapterDate" : new FormControl('',[Validators.required]),
+      "meetingTime" : new FormControl('',[Validators.required])
     })
   }
 
@@ -27,15 +28,15 @@ export class AddchapterComponent implements OnInit {
     this.chapterDetail = this.addChapterForm.value;
     this.chapterDetail.courseId = this.activatedRouter.snapshot.params['id'];
     console.log("Chapter detail : ",this.chapterDetail)
-    this.chapterService.addChapter(this.chapterDetail).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    )
+    // this.chapterService.addChapter(this.chapterDetail).subscribe(
+    //   data => console.log(data),
+    //   error => console.log(error)
+    // )
 
   }
 
   get chaptername(){return this.addChapterForm.get('chapterName')}
   get chapterlink(){return this.addChapterForm.get('chapterlink')}
   get chapterdate(){return this.addChapterForm.get('chapterDate')}
-
+  get meetingtime(){return this.addChapterForm.get('meetingTime')}
 }

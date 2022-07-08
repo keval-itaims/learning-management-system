@@ -5,6 +5,7 @@ import { Course } from 'src/app/classes/course';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { CourseService } from 'src/app/services/course.service';
 import { HttpEventType } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addcourses',
@@ -19,7 +20,7 @@ export class AddcoursesComponent implements OnInit {
   instructorDetail !: User[]
   courseDetail!:Course
   minDate : Date = new Date()
-  constructor(private instructorService:InstructorService,private courseService:CourseService) { }
+  constructor(private instructorService:InstructorService,private courseService:CourseService,private router:Router) { }
 
   ngOnInit(): void {
     this.addCourseForm = new FormGroup({
@@ -60,28 +61,18 @@ export class AddcoursesComponent implements OnInit {
     console.log(this.courseImage);
   }
 
-  formateDate(date:Date){
-    console.log("Date tostring: ",date.toDateString())
-    // const dateObj =  new Date(date)
-    const d  = date.getDate()
-    // console.log("to locale string : ",d.toLocaleString())
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    console.log(`date in fun : ${year}-${month}-${d}`)
-    return `${year}-${month}-${d}`;
 
-  }
 
   onAddCourse(){
     if(this.addCourseForm.invalid) return;
     this.isLoading = true
     const formData = new FormData();
     formData.append('courseImage',this.courseImage,this.courseImage.name);
-    alert("method called!")
+
     console.log("Form Data:",this.addCourseForm.value);
     // console.log("Date",this.addCourseForm.value.courseDate);
 
-    let date=this.formateDate(this.addCourseForm.value.courseDate);
+
     // console.log("Formatted Date: ",date)
     this.courseDetail = this.addCourseForm.value;
     // this.courseDetail.courseImage = '';
@@ -102,6 +93,7 @@ export class AddcoursesComponent implements OnInit {
                 let progress = Math.round(event.loaded / event.total ?? 1) * 100;
                 this.isLoading = false
                 console.log("progress: ",progress)
+                this.router.navigate(['/admin/courses/detail'])
               }
 
              }

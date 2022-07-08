@@ -6,7 +6,7 @@
     <div class="flex w-full justify-between md:mt-3">
       <div class="w-full m-1">
         <label class="mb-2"
-          >Chapter Title:<small class="text-red-500">*</small></label
+          >Course Title:<small class="text-red-500">*</small></label
         >
 
         <input
@@ -53,10 +53,11 @@
         </div>
       </div>
     </div>
-    <div class="flex w-full justify-between md:mt-3">
-      <div class="w-full m-1">
+
+    <div class="flex flex-col lg:flex-row w-full justify-between lg:mt-3">
+      <div class="w-full lg:w-1/2 m-1">
         <mat-form-field class="w-full">
-          <mat-label>Date</mat-label>
+          <mat-label>Meeting Date</mat-label>
           <input
             matInput
             [matDatepicker]="myDatePicker"
@@ -78,7 +79,31 @@
           >
         </mat-form-field>
       </div>
+      <div class="w-full lg:w-1/2 m-1">
+        <label class="mb-2"
+          >Meeting Time:<small class="text-red-500">*</small></label
+        >
+
+        <input
+          type="time"
+          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+          placeholder="select time"
+          formControlName="meetingTime"
+        />
+
+        <div
+          *ngIf="
+            meetingtime.invalid && (meetingtime.touched || meetingtime.dirty)
+          "
+          class="mt-1"
+        >
+          <p *ngIf="meetingtime.errors.required" class="text-red-600 text-xs">
+            *meeting time is required!
+          </p>
+        </div>
+      </div>
     </div>
+
     <div class="text-center mt-3 mb-3">
       <button
         type="submit"

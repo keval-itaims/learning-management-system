@@ -21,4 +21,8 @@ export class ChapterServices{
   public getChaptersByCourseId(id:number):Observable<Chapters[]>{
     return this.httpClient.get<Chapters[]>(`${this.baseUrl}/id`)
   }
+
+  public deleteChapter(id:number):Observable<any>{
+    return this.httpClient.delete(`${this.baseUrl}/${id}`)
+  }
 }
