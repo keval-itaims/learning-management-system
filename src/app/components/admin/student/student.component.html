@@ -5,7 +5,10 @@
 
 <div class="m-2 w-auto">
   <div class="flex justify-between items-center mt-1 lg:ml-32 ml-0">
-    <mat-form-field appearance="standard">
+    <mat-form-field
+      appearance="standard"
+      *ngIf="studentDetail.length > 0 && !isLoading"
+    >
       <mat-label>Search</mat-label>
       <input
         matInput

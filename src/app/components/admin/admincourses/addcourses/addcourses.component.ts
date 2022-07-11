@@ -6,6 +6,7 @@ import { InstructorService } from 'src/app/services/instructor.service';
 import { CourseService } from 'src/app/services/course.service';
 import { HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-addcourses',
@@ -20,7 +21,7 @@ export class AddcoursesComponent implements OnInit {
   instructorDetail : User[] = []
   courseDetail!:Course
   minDate : Date = new Date()
-  constructor(private instructorService:InstructorService,private courseService:CourseService,private router:Router) { }
+  constructor(private instructorService:InstructorService,private courseService:CourseService,private router:Router,private utilityService:UtilityService) { }
 
   ngOnInit(): void {
     this.addCourseForm = new FormGroup({
@@ -93,6 +94,7 @@ export class AddcoursesComponent implements OnInit {
                 let progress = Math.round(event.loaded / event.total ?? 1) * 100;
                 this.isLoading = false
                 console.log("progress: ",progress)
+                this.utilityService.openSnackBar("Course added!","close")
                 this.router.navigate(['/admin/courses/detail'])
               }
 

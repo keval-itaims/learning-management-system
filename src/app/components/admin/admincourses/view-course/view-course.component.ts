@@ -41,6 +41,10 @@ export class ViewCourseComponent implements OnInit {
     this.router.navigate(['/admin/courses/chapter/detail',this.id])
   }
 
+  onUpdateChapter(){
+    this.router.navigate(['/admin/courses/update/',this.id])
+  }
+
   onDeleteCourse(){
     this.confirmDialogService.openConfirmDialog({
       title: 'Delete Course',

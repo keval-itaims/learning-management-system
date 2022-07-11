@@ -33,7 +33,7 @@ export class UpdateCourseComponent implements OnInit {
       "courseImage" : new FormControl('',[Validators.required]),
       "courseStatus" : new FormControl('future')
     })
-    // this.getCourse();
+    this.getCourse();
   }
 
   onSelectFile(event:any){

@@ -104,7 +104,7 @@
             matSuffix
           ></mat-datepicker-toggle>
           <mat-datepicker #myDatePicker></mat-datepicker>
-          <mat-error
+          <!-- <mat-error
             *ngIf="
               (coursedate.invalid &&
                 (coursedate.touched || coursedate.dirty)) ||
@@ -112,7 +112,7 @@
             "
             class="text-red-600 text-xs"
             >*date is required</mat-error
-          >
+          > -->
         </mat-form-field>
       </div>
       <div class="w-full md:w-1/2 m-1">
@@ -125,11 +125,11 @@
               >{{ instructor.firstName }} {{ instructor.lastName }}</mat-option
             >
           </mat-select>
-          <mat-error
+          <!-- <mat-error
             *ngIf="courseinstructor.hasError('required')"
             class="text-red-600 text-xs"
             >instructor is required</mat-error
-          >
+          > -->
         </mat-form-field>
       </div>
     </div>
