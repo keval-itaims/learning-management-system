@@ -37,6 +37,7 @@ export class AddchapterComponent implements OnInit {
       data => {
         console.log(data)
         this.utilityService.openSnackBar("Chapter added!","close")
+        this.router.navigate(['/admin/courses/chapter/detail',this.chapterDetail.courseId])
       },
       error => console.log(error)
     )
