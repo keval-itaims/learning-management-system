@@ -12,7 +12,7 @@
     </a>
     <mat-form-field
       appearance="standard"
-      *ngIf="instructorDetail !== undefined"
+      *ngIf="instructorDetail.length > 0 && !isLoading"
     >
       <mat-label>Search</mat-label>
       <input

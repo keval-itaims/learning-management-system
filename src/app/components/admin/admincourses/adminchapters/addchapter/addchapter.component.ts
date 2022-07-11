@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chapters } from 'src/app/classes/chapters';
 import { ChapterServices } from 'src/app/services/chapters.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-addchapter',
@@ -11,7 +12,7 @@ import { ChapterServices } from 'src/app/services/chapters.service';
 })
 export class AddchapterComponent implements OnInit {
 
-  constructor(private chapterService:ChapterServices,private router:Router,private activatedRouter:ActivatedRoute) { }
+  constructor(private chapterService:ChapterServices,private router:Router,private activatedRouter:ActivatedRoute,private utilityService:UtilityService) { }
   chapterDetail !: Chapters
   addChapterForm !: FormGroup | any
 
@@ -27,11 +28,18 @@ export class AddchapterComponent implements OnInit {
   onAddChapter(){
     this.chapterDetail = this.addChapterForm.value;
     this.chapterDetail.courseId = this.activatedRouter.snapshot.params['id'];
+    const splitTime:any[] = this.chapterDetail.meetingTime.split(":");
+    this.chapterDetail.chapterDate.setHours(splitTime[0])
+    this.chapterDetail.chapterDate.setMinutes(splitTime[1])
+    this.chapterDetail.chapterDate.setSeconds(0)
     console.log("Chapter detail : ",this.chapterDetail)
-    // this.chapterService.addChapter(this.chapterDetail).subscribe(
-    //   data => console.log(data),
-    //   error => console.log(error)
-    // )
+    this.chapterService.addChapter(this.chapterDetail).subscribe(
+      data => {
+        console.log(data)
+        this.utilityService.openSnackBar("Chapter added!","close")
+      },
+      error => console.log(error)
+    )
 
   }
 

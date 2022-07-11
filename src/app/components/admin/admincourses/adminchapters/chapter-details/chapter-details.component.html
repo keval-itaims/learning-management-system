@@ -10,7 +10,7 @@
         <mat-icon>add</mat-icon>Add
       </button>
     </a>
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="standard" *ngIf="chaptersDetails.length > 0">
       <mat-label>Search</mat-label>
       <input
         matInput
@@ -21,7 +21,7 @@
     </mat-form-field>
   </div>
   <div *ngIf="chaptersDetails.length === 0 && !isLoading" class="text-center">
-    <h2>Student data not found!</h2>
+    <h2>Chapter data not found!</h2>
   </div>
   <table
     mat-table

@@ -23,11 +23,13 @@ export class ChapterDetailsComponent implements OnInit {
   dataSource: MatTableDataSource<Chapters[]> | any;
 
   ngOnInit(): void {
-    // this.getChapters()
+    this.getChapters()
   }
 
   private getChapters(){
     this.id = this.activatedRouter.snapshot.params['id']
+    console.log("id : ",this.id)
+    console.log("Inside get method!")
     this.chapterService.getChaptersByCourseId(this.id).subscribe(
       data =>{
         console.log(data)

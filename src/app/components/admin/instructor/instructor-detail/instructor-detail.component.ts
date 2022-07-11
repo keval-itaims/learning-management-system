@@ -58,9 +58,7 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onUpdateInstructor(element: any) {
-    alert("method called!")
     let id = element.user_id;
-    alert(id)
     this.router.navigate(['/admin/instructor/update/', id]);
 
   }

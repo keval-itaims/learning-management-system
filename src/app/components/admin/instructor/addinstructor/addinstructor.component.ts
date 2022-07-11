@@ -6,6 +6,7 @@ import { Instructor } from 'src/app/classes/instructor';
 import { User } from 'src/app/classes/user';
 import { InstructorService } from 'src/app/services/instructor.service';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-addinstructor',
@@ -24,7 +25,7 @@ export class AddinstructorComponent implements OnInit {
   show_conpass : boolean = false;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
-  constructor(private instructorService : InstructorService,private router:Router) { }
+  constructor(private instructorService : InstructorService,private router:Router,private utilityService:UtilityService) { }
 
   ngOnInit(): void {
     this.instructorForm = new FormGroup({
@@ -85,6 +86,7 @@ export class AddinstructorComponent implements OnInit {
                     if(progress===100){
 
                       this.isLoading = false;
+                      this.utilityService.openSnackBar("Instructor added!","close")
                       this.router.navigate(['admin/instructor/detail'])
                     }
 
@@ -102,7 +104,8 @@ export class AddinstructorComponent implements OnInit {
             )
 
           }
-         this.router.navigate(['admin/instructor/detail'])
+          this.utilityService.openSnackBar("Instructor added!","close")
+          this.router.navigate(['admin/instructor/detail'])
         }
         else{
 

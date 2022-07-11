@@ -4,6 +4,7 @@ import { Instructor } from 'src/app/classes/instructor';
 import { InstructorService } from 'src/app/services/instructor.service';
 import { User } from 'src/app/classes/user';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-update-instructor',
@@ -15,7 +16,7 @@ export class UpdateInstructorComponent implements OnInit {
   instructorForm : any | FormGroup
   instructor:User = new User();
 
-  constructor(private instructorService:InstructorService,private activetedRoute:ActivatedRoute,private router:Router) {
+  constructor(private instructorService:InstructorService,private activetedRoute:ActivatedRoute,private router:Router,private utilityService:UtilityService) {
 
   }
 
@@ -80,7 +81,13 @@ export class UpdateInstructorComponent implements OnInit {
     console.log(this.instructor.user_id)
     console.log(this.instructor)
     this.instructorService.updateInstructor(this.instructor).subscribe(
-      data => this.router.navigate(['/admin/instructor/detail'])
+      data => {
+        this.utilityService.openSnackBar("Instructor updated!","close")
+        this.router.navigate(['/admin/instructor/detail'])
+      },
+      error =>{
+        console.log("error accured!")
+      }
     )
 
   }

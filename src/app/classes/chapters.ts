@@ -5,6 +5,6 @@ export class Chapters{
   chapterName !: string
   chapterlink !: string
   chapterDate !: Date
-  chapterTime !: Time
+  meetingTime !: string
   courseId !: string
 }
