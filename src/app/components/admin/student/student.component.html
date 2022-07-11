@@ -15,11 +15,14 @@
       />
     </mat-form-field>
   </div>
-
+  <div *ngIf="studentDetail.length === 0 && !isLoading" class="text-center">
+    <h2>Student data not found!</h2>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8 w-full lg:w-3/4 mx-auto"
+    *ngIf="studentDetail.length > 0"
   >
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

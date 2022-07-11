@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Instructor } from 'src/app/classes/instructor';
 import { User } from 'src/app/classes/user';
 import { InstructorService } from 'src/app/services/instructor.service';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-addinstructor',
@@ -19,6 +20,10 @@ export class AddinstructorComponent implements OnInit {
   profileImage!:File
   isLoading:boolean = false
   instructor = new User()
+  show_pass : boolean = false;
+  show_conpass : boolean = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
   constructor(private instructorService : InstructorService,private router:Router) { }
 
   ngOnInit(): void {

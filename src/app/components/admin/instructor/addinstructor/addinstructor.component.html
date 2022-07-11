@@ -92,13 +92,20 @@
     <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
       <div class="md:w-1/2 w-full m-1 relative">
         <p>Password:<small class="text-red-500">*</small></p>
-
-        <input
-          type="password"
-          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
-          placeholder="Password"
-          formControlName="password"
-        />
+        <div class="relative flex items-center justify-center">
+          <input
+            [type]="show_pass ? 'text' : 'password'"
+            class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <div
+            class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
+            (click)="show_pass = !show_pass"
+          >
+            <fa-icon [icon]="show_pass ? faEye : faEyeSlash"></fa-icon>
+          </div>
+        </div>
 
         <div
           *ngIf="
@@ -120,12 +127,20 @@
       </div>
       <div class="md:w-1/2 w-full m-1">
         <p>Confirm Password:<small class="text-red-500">*</small></p>
-        <input
-          type="password"
-          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
-          placeholder="Confirm Password"
-          formControlName="confirmPassword"
-        />
+        <div class="relative flex items-center justify-center">
+          <input
+            [type]="show_conpass ? 'text' : 'password'"
+            class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+          <div
+            class="absolute right-0 mt-2 mr-3 cursor-pointer text-gray-800"
+            (click)="show_conpass = !show_conpass"
+          >
+            <fa-icon [icon]="show_conpass ? faEye : faEyeSlash"></fa-icon>
+          </div>
+        </div>
         <div
           *ngIf="
             confirmpassword.invalid &&
@@ -155,6 +170,7 @@
       <input
         type="file"
         class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+        accept="image/*"
         (change)="onFileSelected($event)"
       />
     </div>

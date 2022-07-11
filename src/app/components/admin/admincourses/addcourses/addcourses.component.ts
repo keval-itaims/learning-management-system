@@ -17,7 +17,7 @@ export class AddcoursesComponent implements OnInit {
   addCourseForm : any
   isLoading:boolean = true;
   courseImage!: File
-  instructorDetail !: User[]
+  instructorDetail : User[] = []
   courseDetail!:Course
   minDate : Date = new Date()
   constructor(private instructorService:InstructorService,private courseService:CourseService,private router:Router) { }

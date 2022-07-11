@@ -10,7 +10,10 @@
         <mat-icon>add</mat-icon>Add
       </button>
     </a>
-    <mat-form-field appearance="standard">
+    <mat-form-field
+      appearance="standard"
+      *ngIf="instructorDetail !== undefined"
+    >
       <mat-label>Search</mat-label>
       <input
         matInput
@@ -20,7 +23,15 @@
       />
     </mat-form-field>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div *ngIf="instructorDetail.length === 0 && !isLoading" class="text-center">
+    <h2>Instructor data not found!</h2>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    *ngIf="instructorDetail.length > 0"
+  >
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 

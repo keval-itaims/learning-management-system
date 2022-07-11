@@ -1,1 +1,188 @@
-<p>update-course works!</p>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Update Course</h1>
+</div>
+<div class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2">
+  <form
+    class="p-2"
+    [formGroup]="updateCourseForm"
+    (ngSubmit)="onUpdateCourse()"
+  >
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <label class="mb-2"
+          >Course Title:<span class="text-red-500">*</span></label
+        >
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 mt-1 w-full"
+          placeholder="Title"
+          formControlName="courseName"
+        />
+        <div
+          *ngIf="coursename.invalid && (coursename.touched || coursename.dirty)"
+          class="mt-1"
+        >
+          <p *ngIf="coursename.errors.required" class="text-red-600 text-xs">
+            *name is required!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col md:flex-row w-full justify-between md:mt-3 items-center"
+    >
+      <div class="w-full md:w-1/2 m-1">
+        <p>
+          Course Price<small>(in rupees)</small>:<small class="text-red-500"
+            >*</small
+          >
+        </p>
+        <input
+          type="text"
+          class="leading-8 outline-blue-500 rounded-md p-1 w-full"
+          placeholder="Price"
+          formControlName="coursePrice"
+        />
+        <div
+          *ngIf="
+            courseprice.invalid && (courseprice.touched || courseprice.dirty)
+          "
+          class="mt-1"
+        >
+          <p *ngIf="courseprice.errors.required" class="text-red-600 text-xs">
+            *price is required!
+          </p>
+          <p *ngIf="courseprice.errors.pattern" class="text-red-600 text-xs">
+            *please enter only digit!
+          </p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 m-1">
+        <p>
+          Course Duration<small>(in weeeks)</small>:<small class="text-red-500"
+            >*</small
+          >
+        </p>
+        <input
+          type="text"
+          class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+          placeholder="Duration"
+          formControlName="courseDuration"
+        />
+        <div
+          *ngIf="
+            courseduration.invalid &&
+            (courseduration.touched || courseduration.dirty)
+          "
+          class="mt-1"
+        >
+          <p
+            *ngIf="courseduration.errors.required"
+            class="text-red-600 text-xs"
+          >
+            *duration is required!
+          </p>
+          <p *ngIf="courseduration.errors.pattern" class="text-red-600 text-xs">
+            *please enter only digit!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
+      <div class="w-full md:w-1/2 m-1">
+        <mat-form-field class="w-full">
+          <mat-label>Starting date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="myDatePicker"
+            formControlName="courseDate"
+            [min]="minDate"
+          />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+          <mat-error
+            *ngIf="
+              (coursedate.invalid &&
+                (coursedate.touched || coursedate.dirty)) ||
+              coursedate.hasError('required')
+            "
+            class="text-red-600 text-xs"
+            >*date is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 m-1">
+        <mat-form-field class="w-full">
+          <mat-label>Instructor</mat-label>
+          <mat-select formControlName="userId" required>
+            <mat-option
+              *ngFor="let instructor of instructorDetail"
+              [value]="instructor.user_id"
+              >{{ instructor.firstName }} {{ instructor.lastName }}</mat-option
+            >
+          </mat-select>
+          <mat-error
+            *ngIf="courseinstructor.hasError('required')"
+            class="text-red-600 text-xs"
+            >instructor is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex w-full justify-between md:mt-3">
+      <div class="w-full m-1">
+        <label class="mb-2"
+          >Course Description:<span class="text-red-500">*</span></label
+        >
+        <textarea
+          rows="3"
+          class="outline-blue-500 leading-8 rounded-md p-1 mt-1 w-full"
+          placeholder="Description"
+          formControlName="courseDescription"
+        ></textarea>
+        <div
+          *ngIf="coursedesc.invalid && (coursedesc.touched || coursedesc.dirty)"
+          class="mt-1"
+        >
+          <p *ngIf="coursedesc.errors.required" class="text-red-600 text-xs">
+            *description is required!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="md:w-1/2 w-full m-1">
+      <p>Course Image:</p>
+      <img
+        alt="profile"
+        class="block rounded-md w-24 h-24 p-1"
+        [src]="'data:image/png;base64,' + courseDetail.courseImage"
+      />
+      <p>Change Course Image:<small class="text-red-500">*</small></p>
+      <input
+        type="file"
+        class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+        accept="image/*"
+        (change)="onSelectFile($event)"
+        formControlName="courseImages"
+      />
+      <div
+        *ngIf="
+          courseimage.invalid && (courseimage.touched || courseimage.dirty)
+        "
+        class="mt-1"
+      >
+        <p *ngIf="courseimage.errors.required" class="text-red-600 text-xs">
+          *image is required!
+        </p>
+      </div>
+    </div>
+    <div class="text-center mt-1 mb-1">
+      <button type="submit" mat-raised-button color="primary">Add</button>
+    </div>
+  </form>
+</div>

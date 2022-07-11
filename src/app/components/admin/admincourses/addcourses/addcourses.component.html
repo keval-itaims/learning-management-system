@@ -29,7 +29,11 @@
       class="flex flex-col md:flex-row w-full justify-between md:mt-3 items-center"
     >
       <div class="w-full md:w-1/2 m-1">
-        <p>Course Price:<small class="text-red-500">*</small></p>
+        <p>
+          Course Price<small>(in rupees)</small>:<small class="text-red-500"
+            >*</small
+          >
+        </p>
         <input
           type="text"
           class="leading-8 outline-blue-500 rounded-md p-1 w-full"
@@ -51,7 +55,11 @@
         </div>
       </div>
       <div class="w-full md:w-1/2 m-1">
-        <p>Course Duration:<small class="text-red-500">*</small></p>
+        <p>
+          Course Duration<small>(in weeeks)</small>:<small class="text-red-500"
+            >*</small
+          >
+        </p>
         <input
           type="text"
           class="outline-blue-500 leading-8 rounded-md p-1 w-full"
@@ -75,38 +83,6 @@
             *please enter only digit!
           </p>
         </div>
-        <!-- <mat-form-field>
-          <mat-label>Course duration</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input
-              matStartDate
-              formControlName="startDate"
-              placeholder="Start date"
-            />
-            <input
-              matEndDate
-              formControlName="endDate"
-              placeholder="End date"
-            />
-          </mat-date-range-input>
-          <mat-datepicker-toggle
-            [for]="picker"
-            matSuffix
-          ></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-          <mat-error
-            *ngIf="
-              addCourseForm.controls.startDate.hasError('matStartDateInvalid')
-            "
-            >Invalid start date</mat-error
-          >
-          <mat-error
-            *ngIf="
-              addCourseForm.controls.endDate.hasError('matStartDateInvalid')
-            "
-            >Invalid start date</mat-error
-          >
-        </mat-form-field> -->
       </div>
     </div>
     <div class="flex flex-col md:flex-row w-full justify-between md:mt-3">
@@ -153,18 +129,7 @@
         </mat-form-field>
       </div>
     </div>
-    <!-- <div class="flex w-full justify-between md:mt-0">
-      <div class="w-full m-1">
-        <label class="mb-2"
-          >Meeting Link:<span class="text-red-500">*</span></label
-        >
-        <input
-          type="text"
-          class="outline-blue-500 leading-8 rounded-md p-1 mt-1 w-full"
-          placeholder="Link"
-        />
-      </div>
-    </div> -->
+
     <div class="flex w-full justify-between md:mt-3">
       <div class="w-full m-1">
         <label class="mb-2"
@@ -191,6 +156,7 @@
       <input
         type="file"
         class="outline-blue-500 leading-8 rounded-md p-1 w-full"
+        accept="image/*"
         (change)="onSelectFile($event)"
         formControlName="courseImages"
       />

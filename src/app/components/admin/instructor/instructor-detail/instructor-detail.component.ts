@@ -27,7 +27,7 @@ export class InstructorDetailComponent implements OnInit {
   //   {tutor_id:5,firstName:'Keval',lastName:'shah',email:'abc@gmail.com',phoneNo:'7685958050',password:'abc@123'},
   // ];
 
-  instructorDetail !: User[];
+  instructorDetail : User[] = [];
   isLoading: boolean = true;
 
 

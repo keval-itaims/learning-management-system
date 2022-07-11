@@ -20,7 +20,15 @@
       />
     </mat-form-field>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div *ngIf="chaptersDetails.length === 0 && !isLoading" class="text-center">
+    <h2>Student data not found!</h2>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    *ngIf="chaptersDetails.length > 0"
+  >
     <!-- Chapter Name Column -->
     <ng-container matColumnDef="chapterName">
       <th mat-header-cell *matHeaderCellDef>Chapter Name</th>

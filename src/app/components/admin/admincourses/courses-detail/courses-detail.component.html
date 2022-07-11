@@ -20,7 +20,15 @@
       />
     </mat-form-field>
   </div>
-  <table mat-table [dataSource]="dataSource" class="w-full mx-auto md:w-4/6">
+  <div *ngIf="courseDetails.length === 0 && !isLoading" class="text-center">
+    <h2>Student data not found!</h2>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="w-full mx-auto md:w-4/6"
+    *ngIf="courseDetails.length > 0"
+  >
     <!--- Note that these columns can be defined in any order. The actual rendered columns are set as a property on the row definition"
 
   >

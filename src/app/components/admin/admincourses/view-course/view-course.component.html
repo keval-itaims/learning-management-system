@@ -1,5 +1,9 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
+<div class="text-center m-3" *ngIf="courseDetail === null && !isLoading">
+  <h2>Course detail not found!</h2>
+</div>
 <div
+  *ngIf="courseDetail !== null && !isLoading"
   class="m-2 border-2 border-red-200 flex flex-col justify-around lg:flex-row flex-grow"
 >
   <div class="w-full lg:w-1/2 p-3">
@@ -27,6 +31,7 @@
     <div class="flex justify-items-start items-center">
       <span class="font-bold">Instructor:</span>
       <img
+        *ngIf="!isLoading"
         [src]="
           courseDetail.tutorImage
             ? 'data:image/png;base64,' + courseDetail.tutorImage

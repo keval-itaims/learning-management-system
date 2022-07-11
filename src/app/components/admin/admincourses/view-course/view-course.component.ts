@@ -12,7 +12,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class ViewCourseComponent implements OnInit {
 
-  courseDetail: CourseResponse | any = new CourseResponse()
+  courseDetail: CourseResponse  = new CourseResponse()
   isLoading: boolean = true
   id:number  = 0
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private courseService: CourseService,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService) { }

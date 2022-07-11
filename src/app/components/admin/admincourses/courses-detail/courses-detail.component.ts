@@ -13,7 +13,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class CoursesDetailsComponent implements OnInit {
 
-  courseDetails!:CourseResponse[] | any
+  courseDetails:CourseResponse[]  = []
   isLoading : boolean = true
   displayedColumns: string[] = ['courseImage', 'courseDate','courseName','coursePrice', 'action'];
   dataSource: MatTableDataSource<CourseResponse[]> | any;

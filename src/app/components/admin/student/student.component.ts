@@ -17,7 +17,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class StudentComponent implements OnInit {
 
-  studentDetail!:User[]
+  studentDetail:User[] = []
   isLoading:boolean = true;
 
   displayedColumns: string[] = ['firstName', 'lastName', 'emailId','action'];
