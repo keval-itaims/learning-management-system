@@ -34,6 +34,7 @@ import { AddchapterComponent } from './components/admin/admincourses/adminchapte
 
 import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
+import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { HomepageResolver } from './services/homepage.resolver';
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
       {path:'chapter',component:AdminchaptersComponent,children:[
         {path:'',redirectTo:'detail',pathMatch:'full'},
         {path:'add/:id',component:AddchapterComponent},
+        {path:'update/:id',component:UpdateChapterComponent},
         {path:'detail/:id',component:ChapterDetailsComponent}
       ]}
     ]},
