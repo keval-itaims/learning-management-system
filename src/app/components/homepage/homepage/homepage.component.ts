@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -7,10 +7,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit{
   hasLoaded: boolean = false;
-  constructor(private cdref: ChangeDetectorRef) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.cdref.detectChanges();
-  }
+  ngOnInit(): void {}
 
 }

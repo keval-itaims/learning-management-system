@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {faBars, faUser, faXmark, faAngleDown, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faUser, faXmark, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,12 +8,11 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent implements OnInit {
   sidebar = false;
   faBars = faBars;
   faUser = faUser;
   faXmark = faXmark;
-  faAngleDown = faAngleDown;
   faGlass = faMagnifyingGlass;
   search = '';
   constructor(private router: Router,
@@ -21,11 +20,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     private loginService: LoginService) { }
 
   ngOnInit(): void {}
-  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  ngAfterViewInit() {
-   this.finishedLoading.emit(true);
-  }
 
   onClick(){
     if(this.loginService.isLoggedIn())    

@@ -27,7 +27,6 @@ import { MatListModule } from '@angular/material/list';
 import { HomepageComponent } from './components/homepage/homepage/homepage.component';
 import { MainComponent } from './components/homepage/main/main.component';
 import { TestcoursesComponent } from './components/homepage/testcourses/testcourses.component';
-import { TestcourseComponent } from './components/homepage/testcourses/testcourse/testcourse.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { ReviewComponent } from './components/homepage/testimonials/review/review.component';
@@ -38,8 +37,6 @@ import { SignupComponent } from './components/pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InstructorDetailComponent } from './components/admin/instructor/instructor-detail/instructor-detail.component';
 import { UpdateInstructorComponent } from './components/admin/instructor/update-instructor/update-instructor.component';
-
-
 import { CourseComponent } from './components/coursespage/courses/course/course.component';
 import { AccountComponent } from './components/pages/account/account.component';
 import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
@@ -90,7 +87,6 @@ import { CourseReviewComponent } from './components/admin/course-review/course-r
     HomepageComponent,
     MainComponent,
     TestcoursesComponent,
-    TestcourseComponent,
     DashboardComponent,
     LoginComponent,
     SignupComponent,
@@ -125,11 +121,11 @@ import { CourseReviewComponent } from './components/admin/course-review/course-r
     UpdateCourseComponent,
     AdminchaptersComponent,
     AddchapterComponent,
-
     ChapterDetailsComponent,
-      ViewCourseComponent,
-      UpdateChapterComponent,
-      CourseReviewComponent,
+    ViewCourseComponent,
+    UpdateChapterComponent,
+    CourseReviewComponent,
+    // ViewCourseComponent,
 ],
   imports: [
     BrowserModule,
