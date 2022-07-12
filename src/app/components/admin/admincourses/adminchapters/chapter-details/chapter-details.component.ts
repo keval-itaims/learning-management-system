@@ -19,7 +19,7 @@ export class ChapterDetailsComponent implements OnInit {
 
   constructor(private activatedRouter:ActivatedRoute,private chapterService:ChapterServices,private confirmDialogService : ConfirmDialogService,private utilityService:UtilityService) { }
 
-  displayedColumns: string[] = ['chapterName', 'chapterDate','chapterTime', 'chapterlink'];
+  displayedColumns: string[] = ['chapterName', 'chapterDate','chapterTime', 'chapterlink','action'];
   dataSource: MatTableDataSource<Chapters[]> | any;
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class ChapterDetailsComponent implements OnInit {
   private getChapters(){
     this.id = this.activatedRouter.snapshot.params['id']
     console.log("id : ",this.id)
-    console.log("Inside get method!")
+
     this.chapterService.getChaptersByCourseId(this.id).subscribe(
       data =>{
         console.log(data)
@@ -50,6 +50,7 @@ export class ChapterDetailsComponent implements OnInit {
   onDeleteChapter(element:any){
 
     let id = element.chapterId;
+    console.log("Chapter Id : ",id)
     this.confirmDialogService.openConfirmDialog({
       title: 'Delete Chapter',
       message: 'Are you sure?',
