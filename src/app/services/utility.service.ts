@@ -39,9 +39,12 @@ export class UtilityService {
   }
   contactAdmin(contact: Contact){
     this.http.post<Contact>(`${this.url}/contact`, contact).subscribe(
-      data => {},
+      _ => {},
       error => console.log(error)
     );
+  }
+  registerNewsletter(email: string): any{
+    return this.http.get<any>(`${this.url}/news-letter/${email}`);
   }
   openSnackBar(message:string, action:string){
     this.snack.open(message, action, {duration:3000})

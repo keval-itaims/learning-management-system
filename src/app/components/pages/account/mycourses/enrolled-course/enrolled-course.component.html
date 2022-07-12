@@ -1,5 +1,9 @@
-<article class="bg-white rounded-2xl lg:max-w-xs">
-  <img src="{{ course.image }}" alt="course" class="rounded-t-2xl" />
+<article class="bg-white rounded-2xl lg:max-w-xs" (click)="onClick()">
+  <img
+    src="{{ course.image }}"
+    alt="course"
+    class="rounded-t-2xl block max-h-52 mx-auto"
+  />
   <div class="px-5 py-3">
     <p class="cursor-pointer hover:text-blue-600">
       {{ course.title | titlecase }}
@@ -8,7 +12,7 @@
       src="{{ course.instructor_image }}"
       alt="instructor"
       width="45px"
-      class="rounded-full inline-block mr-3"
+      class="inline-block mr-3 rounded-full w-10 h-10"
     />
     <span class="text-gray-600"> {{ course.instructor | titlecase }}</span>
     <div class="flex justify-between items-center">

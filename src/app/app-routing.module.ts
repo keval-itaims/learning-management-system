@@ -34,6 +34,7 @@ import { AddchapterComponent } from './components/admin/admincourses/adminchapte
 
 import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
+import { HomepageResolver } from './services/homepage.resolver';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -70,7 +71,7 @@ const routes: Routes = [
   ]},
   {path:'homepage', component:HomepageComponent, children:[
     {path: '', redirectTo: 'main', pathMatch: 'full'},
-    {path: 'main', component:MainComponent},
+    {path: 'main', component:MainComponent, resolve:{courses: HomepageResolver}},
     {path:'about', component:AboutComponent},
     {path:'contact', component:ContactComponent},
     {path:'faqs', component:FaqsComponent},

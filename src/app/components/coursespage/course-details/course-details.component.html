@@ -17,7 +17,7 @@
         <p class="text-xl font-bold md:text-2xl">
           {{ course ? course.courseName : "" }}
         </p>
-        <hr class="mt-4" />
+        <hr class="mt-4 border border-red-500" />
 
         <!-- Start of Instructor Image -->
         <div class="flex items-center pt-2 md:pt-4">
@@ -41,11 +41,11 @@
         <div class="flex justify-between flex-wrap items-center pt-2 md:pt-4">
           <div>
             <span class="text-xl font-medium"
-              ><fa-icon [icon]="clock" class="text-blue-500"></fa-icon
+              ><fa-icon [icon]="clock" class="text-blue-500 mr-1"></fa-icon
               >{{ course ? course.courseDuration : "" }} Weeks</span
             >
           </div>
-          <div>
+          <div *ngIf="course && course.courseStatus === 'past'">
             <span class="text-xl font-medium"
               >{{
                 course
@@ -53,12 +53,12 @@
                     ? "N/A"
                     : course.courseRating / 5
                   : ""
-              }}<fa-icon [icon]="star" class="text-yellow-400"></fa-icon
+              }}<fa-icon [icon]="star" class="text-yellow-400 ml-1"></fa-icon
             ></span>
           </div>
         </div>
 
-        <div class="flex justify-between flex-wrap items-center">
+        <div>
           <span class="pt-4 text-xl font-medium"
             >Starts from: {{ course ? (course.courseDate | date) : "" }}</span
           >
@@ -66,7 +66,7 @@
             Ends at:
           </p> -->
         </div>
-        <div class="grid place-content-center">
+        <div *ngIf="!isEnrolled" class="mx-auto w-max">
           <button
             class="bg-red-500 p-2 md:p-4 mt-2 md:mt-4 text-white tracking-wide font-extrabold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
           >
@@ -86,21 +86,11 @@
     <hr />
 
     <div class="flex flex-col items-center py-4 md:py-6">
-      <div class="px-4 md:px-10">
-        <div class="p-2">
+      <div class="px-4 md:px-10 p-2">
+        <div class="">
           <span class="text-base md:text-xl font-medium text-justify">
-            <i class="fas fa-circle text-red-400"></i>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-            placeat?Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Vel, minima.
+            {{ course ? course.courseDescription : "" }}
           </span>
-        </div>
-
-        <div class="p-2">
-          <p class="text-base md:text-xl font-medium">
-            <i class="fas fa-circle text-red-400"></i> Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Quae, placeat?
-          </p>
         </div>
       </div>
     </div>
