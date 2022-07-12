@@ -30,7 +30,7 @@ export class UpdateCourseComponent implements OnInit {
       "courseDuration" : new FormControl('',[Validators.required,Validators.pattern('[0-9]*')]),
       "courseDate" : new FormControl('',[Validators.required]),
       "courseTutorId" : new FormControl('',[Validators.required]),
-      "courseImage" : new FormControl('',[Validators.required]),
+      "courseImage" : new FormControl(''),
       "courseStatus" : new FormControl('future')
     })
     this.getCourse();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chapters } from 'src/app/classes/chapters';
 import { ChapterServices } from 'src/app/services/chapters.service';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
@@ -16,8 +16,10 @@ export class ChapterDetailsComponent implements OnInit {
   id:number = 0
   chaptersDetails : Chapters[] = []
   isLoading : boolean = true
+  todayDate: Date = new Date()
 
-  constructor(private activatedRouter:ActivatedRoute,private chapterService:ChapterServices,private confirmDialogService : ConfirmDialogService,private utilityService:UtilityService) { }
+
+  constructor(private activatedRouter:ActivatedRoute,private chapterService:ChapterServices,private confirmDialogService : ConfirmDialogService,private utilityService:UtilityService,private router:Router) { }
 
   displayedColumns: string[] = ['chapterName', 'chapterDate','chapterTime', 'chapterlink','action'];
   dataSource: MatTableDataSource<Chapters[]> | any;
@@ -36,6 +38,7 @@ export class ChapterDetailsComponent implements OnInit {
         this.chaptersDetails = data
         this.isLoading = false
         this.dataSource = new MatTableDataSource(this.chaptersDetails)
+
       },
       error =>{
         console.log(error)
@@ -44,13 +47,16 @@ export class ChapterDetailsComponent implements OnInit {
     )
   }
 
-  onUpdateChapter(element:any){
 
+
+  onUpdateChapter(element:any){
+    this.id = element.chapterId;
+    this.router.navigate(['/admin/courses/chapter/update/',this.id])
   }
   onDeleteChapter(element:any){
 
-    let id = element.chapterId;
-    console.log("Chapter Id : ",id)
+    this.id = element.chapterId;
+    console.log("Chapter Id : ",this.id)
     this.confirmDialogService.openConfirmDialog({
       title: 'Delete Chapter',
       message: 'Are you sure?',
@@ -59,7 +65,7 @@ export class ChapterDetailsComponent implements OnInit {
     }).subscribe(
       result => {
         if (result) {
-          this.chapterService.deleteChapter(id).subscribe(
+          this.chapterService.deleteChapter(this.id).subscribe(
             data => {
               console.log(data)
               this.utilityService.openSnackBar("Chapter deleted!", "close")
@@ -73,6 +79,16 @@ export class ChapterDetailsComponent implements OnInit {
     )
 
 
+  }
+
+  compareDate(element:any){
+    let d = new Date(element.chapterDate)
+    if(this.todayDate.getTime() < d.getTime()){
+      return false
+    }
+    else{
+      return true
+    }
   }
 
   applyFilter(event: Event) {

@@ -1,19 +1,20 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="flex justify-center pt-4 w-full items-center">
-  <h1 class="border-b-4 border-blue-600 p-1">Add Chapter</h1>
-</div>
-<div *ngIf="courseDetail !== null" class="text-center m-2">
-  <h1 class="font-bold underline m-2">{{ courseDetail.courseName }}</h1>
+  <h1 class="border-b-4 border-blue-600 p-1">Update Chapter</h1>
 </div>
 <div
   class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2"
-  *ngIf="courseDetail !== null"
+  *ngIf="chapterDetail !== null && !isLoading"
 >
-  <form class="p-2" [formGroup]="addChapterForm" (ngSubmit)="onAddChapter()">
+  <form
+    class="p-2"
+    [formGroup]="updateChapterForm"
+    (ngSubmit)="onUpdateChapter()"
+  >
     <div class="flex w-full justify-between md:mt-3">
       <div class="w-full m-1">
         <label class="mb-2"
-          >Chapter Title:<small class="text-red-500">*</small></label
+          >Course Title:<small class="text-red-500">*</small></label
         >
 
         <input
@@ -68,7 +69,6 @@
           <input
             matInput
             [matDatepicker]="myDatePicker"
-            [min]="minDate"
             formControlName="chapterDate"
           />
           <mat-datepicker-toggle
@@ -117,9 +117,9 @@
         type="submit"
         mat-raised-button
         color="primary"
-        [disabled]="addChapterForm.invalid"
+        [disabled]="updateChapterForm.invalid"
       >
-        Add
+        Update
       </button>
     </div>
   </form>

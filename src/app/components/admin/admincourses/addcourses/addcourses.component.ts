@@ -94,8 +94,11 @@ export class AddcoursesComponent implements OnInit {
                 let progress = Math.round(event.loaded / event.total ?? 1) * 100;
                 this.isLoading = false
                 console.log("progress: ",progress)
-                this.utilityService.openSnackBar("Course added!","close")
-                this.router.navigate(['/admin/courses/detail'])
+                if(progress === 100){
+
+                  this.utilityService.openSnackBar("Course added!","close")
+                  this.router.navigate(['/admin/courses/detail'])
+                }
               }
 
              }

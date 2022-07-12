@@ -69,6 +69,8 @@ import { AddchapterComponent } from './components/admin/admincourses/adminchapte
 
 import { ChapterDetailsComponent } from './components/admin/admincourses/adminchapters/chapter-details/chapter-details.component';
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
+import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
+import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +128,8 @@ import { ViewCourseComponent } from './components/admin/admincourses/view-course
 
     ChapterDetailsComponent,
       ViewCourseComponent,
+      UpdateChapterComponent,
+      CourseReviewComponent,
 ],
   imports: [
     BrowserModule,

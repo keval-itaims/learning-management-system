@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chapters } from 'src/app/classes/chapters';
+import { CourseResponse } from 'src/app/classes/course-response';
 import { ChapterServices } from 'src/app/services/chapters.service';
+import { CourseService } from 'src/app/services/course.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
@@ -12,9 +14,12 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class AddchapterComponent implements OnInit {
 
-  constructor(private chapterService:ChapterServices,private router:Router,private activatedRouter:ActivatedRoute,private utilityService:UtilityService) { }
+  constructor(private chapterService:ChapterServices,private router:Router,private activatedRouter:ActivatedRoute,private utilityService:UtilityService,private courseService:CourseService) { }
   chapterDetail !: Chapters
+  courseDetail:CourseResponse = new CourseResponse()
   addChapterForm !: FormGroup | any
+  isLoading: boolean = true
+  minDate!: Date
 
   ngOnInit(): void {
     this.addChapterForm = new FormGroup({
@@ -23,6 +28,30 @@ export class AddchapterComponent implements OnInit {
       "chapterDate" : new FormControl('',[Validators.required]),
       "meetingTime" : new FormControl('',[Validators.required])
     })
+    this.getCourseDetail()
+  }
+
+  private getCourseDetail(){
+    let id = this.activatedRouter.snapshot.params['id']
+    this.courseService.getSingleCourse(id).subscribe(
+      data =>{
+        this.courseDetail = data
+        this.isLoading = false
+        this.compareDate(this.courseDetail.courseDate)
+      },
+      error =>{
+        console.log(error)
+        this.isLoading = false
+      }
+    )
+  }
+
+  private compareDate(date:Date){
+    let d = new Date(date)
+    console.log("Date : ",d)
+    console.log("Condition : ",d.getTime() > new Date().getTime() )
+    this.minDate = d.getTime() > new Date().getTime() ? d : new Date()
+    console.log("Minimum Date :",this.minDate)
   }
 
   onAddChapter(){
