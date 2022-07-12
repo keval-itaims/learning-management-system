@@ -6,14 +6,16 @@
         class="w-full lg:flex lg:justify-center lg:items-center py-4 md:py-10"
       >
         <img
-          src="{{ 'data:image/png;base64,' + course.courseImage }}"
+          src="{{
+            course ? 'data:image/png;base64,' + course.courseImage : ''
+          }}"
           alt="Course Image"
           class="w-full lg:w-3/4 lg:h-full rounded-md"
         />
       </div>
       <div class="w-full px-2 py-4 md:py-8 md:px-8">
         <p class="text-xl font-bold md:text-2xl">
-          {{ course.courseName }}
+          {{ course ? course.courseName : "" }}
         </p>
         <hr class="mt-4" />
 
@@ -21,14 +23,16 @@
         <div class="flex items-center pt-2 md:pt-4">
           <div class="text-center">
             <img
-              src="{{ 'data:image/png;base64,' + course.tutorImage }}"
+              src="{{
+                course ? 'data:image/png;base64,' + course.tutorImage : ''
+              }}"
               alt="Instructor Image"
               class="w-11 h-11 md:w-12 md:h-12 rounded-full inline-block"
             />
           </div>
           <div class="ml-4">
             <span class="font-bold tracking-wider text-base md:text-xl">{{
-              course.tutorName | titlecase
+              course ? (course.tutorName | titlecase) : ""
             }}</span>
           </div>
         </div>
@@ -38,12 +42,17 @@
           <div>
             <span class="text-xl font-medium"
               ><fa-icon [icon]="clock" class="text-blue-500"></fa-icon
-              >{{ course.courseDuration }} Weeks</span
+              >{{ course ? course.courseDuration : "" }} Weeks</span
             >
           </div>
           <div>
             <span class="text-xl font-medium"
-              >{{ course.courseRating == 0 ? "N/A" : course.courseRating / 5
+              >{{
+                course
+                  ? course.courseRating == 0
+                    ? "N/A"
+                    : course.courseRating / 5
+                  : ""
               }}<fa-icon [icon]="star" class="text-yellow-400"></fa-icon
             ></span>
           </div>
@@ -51,7 +60,7 @@
 
         <div class="flex justify-between flex-wrap items-center">
           <span class="pt-4 text-xl font-medium"
-            >Starts from: {{ course.courseDate | date }}</span
+            >Starts from: {{ course ? (course.courseDate | date) : "" }}</span
           >
           <!-- <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">
             Ends at:
@@ -96,7 +105,7 @@
       </div>
     </div>
   </section>
-  <app-chapters [course]="course"></app-chapters>
+  <app-chapters *ngIf="course" [course]="course"></app-chapters>
   <app-add-review></app-add-review>
   <app-display-review></app-display-review>
 </main>

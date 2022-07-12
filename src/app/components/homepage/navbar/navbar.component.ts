@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {faBars, faUser, faXmark, faAngleDown, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/services/login.service';
@@ -8,21 +8,25 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
+  sidebar = false;
   faBars = faBars;
   faUser = faUser;
   faXmark = faXmark;
   faAngleDown = faAngleDown;
   faGlass = faMagnifyingGlass;
-  sidebar = false;
   search = '';
   constructor(private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  ngAfterViewInit() {
+   this.finishedLoading.emit(true);
   }
+
   onClick(){
     if(this.loginService.isLoggedIn())    
       this.router.navigate(['homepage/account']);
