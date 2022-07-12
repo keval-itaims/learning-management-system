@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { config, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Contact } from '../classes/contact';
 import { ContactDetails } from '../classes/contact-details'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-
-
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,7 @@
 export class ReviewResponse{
-  userName!:string
+  reviewId!: number;
+  userName!: string;
+  reviewDate!: string;
+  courseRating!: number;
   reviewDescription!:string
 }

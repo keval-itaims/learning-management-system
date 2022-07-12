@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {faStar, faClock} from '@fortawesome/free-solid-svg-icons';
 import { CourseResponse } from 'src/app/classes/course-response';
+import { User } from 'src/app/classes/user';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
-import {LoginResponse} from 'src/app/classes/login-response'
 
 @Component({
   selector: 'app-course-details',
@@ -18,7 +18,7 @@ export class CourseDetailsComponent implements OnInit {
   isEnrolled = false;
   isLoading = false;
   course: CourseResponse | any;
-  user: LoginResponse | any;
+  user: User | any;
   
   constructor(private router: Router,
     private route: ActivatedRoute,

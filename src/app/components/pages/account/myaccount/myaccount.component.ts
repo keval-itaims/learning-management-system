@@ -28,7 +28,23 @@ export class MyaccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
-    this.userForm = this.fb.group({
+    if(this.user.role === 'student'){
+      this.userForm = this.fb.group({
+      firstName: [
+        this.user.firstName,
+        [Validators.required, Validators.pattern(this.name_pattern)],
+      ],
+      lastName: [
+        this.user.lastName,
+        [Validators.required, Validators.pattern(this.name_pattern)],
+      ],
+      emailId: [this.user.emailId],
+      password: [
+        this.user.password]
+    });
+    }
+    else{
+      this.userForm = this.fb.group({
       firstName: [
         this.user.firstName,
         [Validators.required, Validators.pattern(this.name_pattern)],
@@ -42,14 +58,15 @@ export class MyaccountComponent implements OnInit {
         this.user.password],
       phoneNum: [this.user.phoneNum, [Validators.required, Validators.pattern('^[6789][0-9]{9}$')]]
     });
+    }
   }
   onSubmit(){
-    if(this.userForm.invalid)return;
     if(!this.userForm.dirty) return;
     this.isLoading = true;
     this.user.firstName = this.userForm.get("firstName").value;
     this.user.lastName = this.userForm.get("lastName").value;
-    this.user.phoneNum = this.userForm.get("phoneNum").value;
+    if(this.user.role === 'tutor')
+      this.user.phoneNum = this.userForm.get("phoneNum").value;
     this.userService.updateUser(this.user).subscribe(
       (data) => {
         this.isLoading = false;

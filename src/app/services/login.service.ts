@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginResponse } from '../classes/login-response';
 import { User } from '../classes/user';
 import { UserLogin } from '../classes/user-login';
 
@@ -12,8 +11,8 @@ import { UserLogin } from '../classes/user-login';
 export class LoginService {
   url = environment.url;
   constructor(private http: HttpClient) { }
-  login(userLogin:UserLogin): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(`${this.url}/login`, userLogin);
+  login(userLogin:UserLogin): Observable<User>{
+    return this.http.post<User>(`${this.url}/login`, userLogin);
   }
   isLoggedIn(){
     return !!localStorage.getItem('user');

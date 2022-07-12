@@ -11,6 +11,7 @@ export class CourseResponse{
     courseRating!: number;
     courseStatus!: string;
     courseImage!: string;
+    userId!: number;
     tutorName!: string;
     tutorImage!: string;
     chapters!: Chapters[]

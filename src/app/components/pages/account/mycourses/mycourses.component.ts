@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/classes/course';
 import { CourseResponse } from 'src/app/classes/course-response';
-import { LoginResponse } from 'src/app/classes/login-response';
+import { User } from 'src/app/classes/user';
 import { CourseService } from 'src/app/services/course.service';
-import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class MycoursesComponent implements OnInit {
   enrolledCourses: number[] | any;
   myCourses: CourseResponse[]|any;
-  user: LoginResponse|any;
+  user: User|any;
   isLoading = false;
 
   constructor(private userService: UserService,

@@ -8,6 +8,7 @@ export class User {
     phoneNum!: string;
     profileImage!: File|string;
     role!: string;
+    myCourses!: number[]
     emailError!: boolean;
     passwordError!: boolean;
 }
