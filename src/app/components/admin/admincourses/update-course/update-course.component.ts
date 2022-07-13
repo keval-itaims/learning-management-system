@@ -1,10 +1,13 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/classes/course';
+import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
 import { CourseService } from 'src/app/services/course.service';
 import { InstructorService } from 'src/app/services/instructor.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-update-course',
@@ -13,15 +16,16 @@ import { InstructorService } from 'src/app/services/instructor.service';
 })
 export class UpdateCourseComponent implements OnInit {
 
-  constructor(private activatedRouter:ActivatedRoute,private courseService:CourseService,private instructorService:InstructorService) { }
+  constructor(private activatedRouter:ActivatedRoute,private courseService:CourseService,private instructorService:InstructorService,private utilityService:UtilityService,private router:Router) { }
 
-  courseDetail !: Course | any
+  // courseDetail !: Course | any
+  courseDetail: CourseResponse =  new CourseResponse()
+  course = new Course()
   updateCourseForm!:FormGroup | any
   isLoading: boolean = true
   minDate: Date = new Date()
   courseImage!: File
-  instructorDetail : User[] = []
-
+  instructorDetail: User[] = []
   ngOnInit(): void {
     this.updateCourseForm = new FormGroup({
       "courseName" : new FormControl('',[Validators.required]),
@@ -29,8 +33,8 @@ export class UpdateCourseComponent implements OnInit {
       "coursePrice" : new FormControl('',[Validators.required,Validators.pattern('[0-9]*')]),
       "courseDuration" : new FormControl('',[Validators.required,Validators.pattern('[0-9]*')]),
       "courseDate" : new FormControl('',[Validators.required]),
-      "courseTutorId" : new FormControl('',[Validators.required]),
-      "courseImage" : new FormControl(''),
+      "userId" : new FormControl('',[Validators.required]),
+      "courseImage" :new FormControl(''),
       "courseStatus" : new FormControl('future')
     })
     this.getCourse();
@@ -55,11 +59,12 @@ export class UpdateCourseComponent implements OnInit {
           coursePrice : this.courseDetail.coursePrice,
           courseDuration : this.courseDetail.courseDuration,
           courseDate : this.courseDetail.courseDate,
-          courseTutorId : this.courseDetail.courseTutorId,
+          userId : this.courseDetail.userId,
           courseDescription : this.courseDetail.courseDescription,
+          courseImage : this.courseDetail.courseImage
         })
         this.getInstructor()
-        this.isLoading = false
+
       },
       error =>{
         console.log(error)
@@ -70,6 +75,7 @@ export class UpdateCourseComponent implements OnInit {
   }
 
   private getInstructor(){
+
     this.instructorService.getInstructorDetails().subscribe(
       data =>{
         console.log(data);
@@ -85,7 +91,57 @@ export class UpdateCourseComponent implements OnInit {
   }
 
   onUpdateCourse(){
+    this.course= this.updateCourseForm.value;
+    this.course.courseId = this.courseDetail.courseId
+    console.log("Updated  course Detail : ",this.course)
 
+
+    this.courseService.updateCourse(this.course).subscribe(
+      data =>{
+        console.log("Data : ",data)
+
+        if(this.courseImage){
+          const formData = new FormData();
+          formData.append('courseImage',this.courseImage,this.courseImage.name);
+          console.log("Course Id : ",this.course.courseId)
+          this.courseService.uploadCourseImage(this.course.courseId,formData).subscribe(
+            // data => console.log(data),
+            event =>{
+              console.log(event)
+              if(event.type == HttpEventType.UploadProgress){
+                let progress = 0
+                if(event.total){
+                  console.log("Event total : ",event.total)
+                  console.log("Event loaded : ",event.loaded)
+                  progress = Math.round((event.loaded / event.total ) * 100);
+                  console.log("progress: ",progress)
+                }
+                if(progress == 100){
+                    setTimeout(()=>{
+                      this.isLoading = false
+                      this.utilityService.openSnackBar("Course updated!","close")
+                      this.router.navigate(['/admin/courses/detail'])
+                    },1500)
+                }
+
+
+               }
+            },
+            error => {
+              this.isLoading = false
+              console.log(error)
+            }
+          )
+        }
+        this.isLoading = false
+        this.utilityService.openSnackBar("Course updated!","close")
+        this.router.navigate(['/admin/courses/detail'])
+      },
+      error =>{
+        this.isLoading = false
+        console.log(error)
+      }
+    )
   }
 
   get coursename(){return this.updateCourseForm.get('courseName')}
@@ -93,7 +149,7 @@ export class UpdateCourseComponent implements OnInit {
   get courseduration(){return this.updateCourseForm.get('courseDuration')}
   get coursedate(){return this.updateCourseForm.get('courseDate')}
   get coursedesc(){return this.updateCourseForm.get('courseDescription')}
-  get courseimage(){return this.updateCourseForm.get('courseImage')}
+  // get courseimage(){return this.updateCourseForm.get('courseImage')}
   get courseinstructor(){return this.updateCourseForm.get('userId')}
 
 }

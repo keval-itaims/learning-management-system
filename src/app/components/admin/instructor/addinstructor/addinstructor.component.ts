@@ -84,10 +84,11 @@ export class AddinstructorComponent implements OnInit {
                     let progress = Math.round(event.loaded / event.total) * 100;
                     console.log("progress: ",progress)
                     if(progress===100){
-
-                      this.isLoading = false;
-                      this.utilityService.openSnackBar("Instructor added!","close")
-                      this.router.navigate(['admin/instructor/detail'])
+                      setTimeout(()=>{
+                        this.isLoading = false;
+                        this.utilityService.openSnackBar("Instructor added!","close")
+                        this.router.navigate(['admin/instructor/detail'])
+                      },1000)
                     }
 
                   }

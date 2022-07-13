@@ -2,7 +2,10 @@
 <div class="flex justify-center pt-4 w-full items-center">
   <h1 class="border-b-4 border-blue-600 p-1">Update Course</h1>
 </div>
-<div class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2">
+<div
+  class="w-3/5 mx-auto border-2 rounded-lg shadow-md m-2 md:w-1/2"
+  *ngIf="courseDetail !== null && instructorDetail.length > 0 && !isLoading"
+>
   <form
     class="p-2"
     [formGroup]="updateCourseForm"
@@ -168,18 +171,7 @@
         class="outline-blue-500 leading-8 rounded-md p-1 w-full"
         accept="image/*"
         (change)="onSelectFile($event)"
-        formControlName="courseImages"
       />
-      <div
-        *ngIf="
-          courseimage.invalid && (courseimage.touched || courseimage.dirty)
-        "
-        class="mt-1"
-      >
-        <p *ngIf="courseimage.errors.required" class="text-red-600 text-xs">
-          *image is required!
-        </p>
-      </div>
     </div>
     <div class="text-center mt-1 mb-1">
       <button type="submit" mat-raised-button color="primary">Add</button>
