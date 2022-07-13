@@ -96,6 +96,6 @@
     </div>
   </section>
   <app-chapters *ngIf="course" [course]="course"></app-chapters>
-  <app-add-review></app-add-review>
+  <app-add-review *ngIf="course" [courseId]="course.courseId"></app-add-review>
   <app-display-review></app-display-review>
 </main>

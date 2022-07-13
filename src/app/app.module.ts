@@ -68,6 +68,7 @@ import { ChapterDetailsComponent } from './components/admin/admincourses/adminch
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
+import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { CourseReviewComponent } from './components/admin/course-review/course-r
     MatListModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    NgbRatingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
