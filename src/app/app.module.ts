@@ -68,7 +68,8 @@ import { ChapterDetailsComponent } from './components/admin/admincourses/adminch
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
-import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import { EnrollModalComponent } from './components/coursespage/enroll-modal/enroll-modal.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,6 +126,7 @@ import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap'
     ViewCourseComponent,
     UpdateChapterComponent,
     CourseReviewComponent,
+    EnrollModalComponent,
     // ViewCourseComponent,
 ],
   imports: [

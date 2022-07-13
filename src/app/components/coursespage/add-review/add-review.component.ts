@@ -24,12 +24,12 @@ export class AddReviewComponent implements OnInit {
     private utility: UtilityService) { }
 
   ngOnInit(): void {
+    this.user = this.userService.getUser()
   }
 
   onClick(){
     if(!this.reviewDescription) return;
     this.isLoading = true;
-    this.user = this.userService.getUser()
     this.userReview = new UserReview();
   
     this.userReview.courseRating = this.courseRating;

@@ -13,7 +13,9 @@
                                     <div class="absolute top-0 right-0 h-4 w-4 my-1 border-2 border-white rounded-full bg-green-400 z-2"></div>
                                 </div> -->
 
-        <div class="ml-4 text-xl">User Name</div>
+        <div class="ml-4 text-xl">
+          {{ user ? user.FirstName : "" + " " + user ? user.lastName : "" }}
+        </div>
         <div>
           <button
             type="submit"
@@ -30,23 +32,27 @@
           <span class="text-sm md:text-xl mr-6 md:mr-10"
             >How good was our course?</span
           >
-          <ngb-rating
-            class="text-2xl"
-            [max]="5"
-            [(rate)]="courseRating"
-            [readonly]="false"
-          ></ngb-rating>
+          <div>
+            <ngb-rating
+              class="text-yellow-500"
+              [(rate)]="courseRating"
+            ></ngb-rating>
+          </div>
         </div>
         <textarea
           id="editor"
           rows="4"
           #r="ngModel"
+          [ngModelOptions]="{ standalone: true }"
           [(ngModel)]="reviewDescription"
           class="block px-4 mb-4 w-full text-base md:text-xl text-gray-800 bg-gray-100 border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
           placeholder="Write your thoughts about this course..."
           required
         ></textarea>
-        <div *ngIf="r.invalid && r.touched" class="text-red-500 text-sm">
+        <div
+          *ngIf="r.invalid && r.touched"
+          class="text-red-500 text-sm w-max mx-auto"
+        >
           Review can not be empty
         </div>
       </div>
