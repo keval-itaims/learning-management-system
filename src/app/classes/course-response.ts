@@ -1,5 +1,5 @@
 import { Chapters } from "./chapters";
-import { ReviewResponse } from "./review-response";
+import { UserReview } from "./user-review";
 
 export class CourseResponse{
     courseId!: number;
@@ -15,5 +15,5 @@ export class CourseResponse{
     tutorName!: string;
     tutorImage!: string;
     chapters!: Chapters[]
-    reviews!:ReviewResponse[]
+    reviews!:UserReview[]
 }

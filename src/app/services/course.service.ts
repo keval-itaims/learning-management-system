@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Course } from '../classes/course';
 import { CourseResponse } from '../classes/course-response';
+import { UserReview } from '../classes/user-review';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,12 @@ export class CourseService {
       reportProgress:true,
       observe:'events'
     })
+  }
+
+  addReview(userReview: UserReview): Observable<UserReview>{
+    return this.http.post<UserReview>(`${this.url}/user-reviews/post-review`, userReview);
+  }
+  getReviews(id: number): Observable<UserReview[]>{
+    return this.http.get<UserReview[]>(`${this.url}/${id}`);
   }
 }
