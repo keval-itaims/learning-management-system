@@ -1,1 +1,60 @@
-<p>enroll-modal works!</p>
+<button
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button" data-modal-toggle="defaultModal">
+        Toggle modal
+    </button>
+
+    <!-- Main modal -->
+    <div id="defaultModal" tabindex="-1"
+        class="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full justify-center items-center flex"
+        aria-modal="true" role="dialog">
+        <div class="relative w-full h-full max-w-2xl p-4 md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold tracking-wider text-gray-900 dark:text-white">
+                        Purchase Course
+                    </h3>
+                    <button type="button"
+                        class="text-gray-500 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-toggle="defaultModal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="px-6 md:px-4 py-2 space-y-4 text-center">
+                    <div>
+                        <p class = "text-base font-medium">Course </p>
+                        <p class = "text-xl text-justify md:text-center font-semibold tracking-wider">Lorem, ipsum dolor Lorem, </p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p class = "text-base font-medium">Instructor </p>
+                        <p class = "text-xl font-semibold tracking-wider">InstructorName</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p class = "text-base font-medium">Start Date </p>
+                        <p class = "text-xl font-semibold tracking-wider">12 AuGuSt, 2022</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p class = "text-base font-medium">Price</p>
+                        <p class = "text-xl font-semibold tracking-wider">(inc. all taxes)</p>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex justify-around items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                  <button data-modal-toggle="defaultModal" type="button"
+                      class="w-full inline-flex justify-center tracking-wide rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                    <button data-modal-toggle="defaultModal" type="button"
+                        class="w-full inline-flex justify-center tracking-wide rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Purchase</button>
+                </div>
+            </div>
+        </div>
+    </div>
