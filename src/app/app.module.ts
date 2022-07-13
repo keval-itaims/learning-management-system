@@ -69,7 +69,6 @@ import { ViewCourseComponent } from './components/admin/admincourses/view-course
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
 import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap'
-
 @NgModule({
   declarations: [
     AppComponent,
