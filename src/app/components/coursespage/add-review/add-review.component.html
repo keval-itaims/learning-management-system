@@ -34,11 +34,13 @@
           >
           <div>
             <ngb-rating
-              class="text-yellow-500"
+              [max]="5"
+              class="text-yellow-500 w-20 h-20"
               [(rate)]="courseRating"
             ></ngb-rating>
           </div>
         </div>
+        {{ courseRating }}
         <textarea
           id="editor"
           rows="4"
