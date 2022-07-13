@@ -91,13 +91,16 @@ export class AddcoursesComponent implements OnInit {
           event =>{
             if(event.type === HttpEventType.UploadProgress){
               if(event.total){
-                let progress = Math.round(event.loaded / event.total ?? 1) * 100;
-                this.isLoading = false
+                let progress = Math.round((event.loaded / event.total ) * 100);
+
                 console.log("progress: ",progress)
                 if(progress === 100){
 
-                  this.utilityService.openSnackBar("Course added!","close")
-                  this.router.navigate(['/admin/courses/detail'])
+                  setTimeout(()=>{
+                    this.isLoading = false
+                    this.utilityService.openSnackBar("Course added!","close")
+                    this.router.navigate(['/admin/courses/detail'])
+                  },1000)
                 }
               }
 

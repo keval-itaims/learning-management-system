@@ -24,7 +24,8 @@ export class CourseService {
     return this.http.post<Course>(`${this.url}/course`, course);
   }
   updateCourse(course: Course): Observable<Course>{
-    return this.http.put<Course>(`${this.url}/course`, course);
+    console.log("update course service : ",course)
+    return this.http.put<Course>(`${this.url}/course`,course);
   }
   deleteCourse(courseId: number): Observable<string>{
     return this.http.delete<string>(`${this.url}/course/${courseId}`);
@@ -33,8 +34,8 @@ export class CourseService {
     console.log("Id in upload image service",id)
     return this.http.post<string[]>(`http://localhost:8080/course/save-course/${id}`,formData,{
       reportProgress:true,
-      observe:'events',
-    });
+      observe:'events'
+    })
   }
 
   addReview(userReview: UserReview): Observable<UserReview>{
