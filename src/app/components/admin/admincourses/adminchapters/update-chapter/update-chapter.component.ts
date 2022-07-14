@@ -42,15 +42,8 @@ export class UpdateChapterComponent implements OnInit {
         this.chapterDetail.chapterlink = data.chapterlink
         this.chapterDetail.chapterDate = <Date>data.chapterDate
         let date: Date = new Date(this.chapterDetail.chapterDate)
-        let hour = date.getHours()+''
-        while(hour.length<2){
-          hour = "0"+hour
-        }
-        let minute = date.getMinutes()+''
-        while(minute.length<2){
-          minute = "0"+minute
-        }
-        // let time = date.getHours() +":"+ date.getMinutes()
+        let hour = String(date.getHours()).padStart(2,"0")
+        let minute = String(date.getMinutes()).padStart(2,"0")
         let time = hour +":"+ minute
 
 
