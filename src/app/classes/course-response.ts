@@ -15,5 +15,5 @@ export class CourseResponse{
     tutorName!: string;
     tutorImage!: string;
     chapters!: Chapters[]
-    reviews!:UserReview[]
+    courseReviews!:UserReview[]
 }
