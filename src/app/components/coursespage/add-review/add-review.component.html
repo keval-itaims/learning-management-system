@@ -10,7 +10,7 @@
                                 </div> -->
 
         <div class="ml-4 text-xl">
-          {{ user ? user.FirstName : "" + " " + user ? user.lastName : "" }}
+          {{ user ? user.firstName + " " + user.lastName : "" }}
         </div>
         <div>
           <button
@@ -28,11 +28,17 @@
           <span class="text-sm md:text-xl mr-6 md:mr-10"
             >How good was our course?</span
           >
-          <ngb-rating
-            [max]="5"
-            class="text-yellow-500"
-            [(rate)]="courseRating"
-          ></ngb-rating>
+          <ngb-rating [max]="5" class="text-yellow-500" [(rate)]="courseRating">
+            <ng-template let-fill="fill">
+              <span
+                class="transition-none"
+                [class.filled]="fill === 100"
+                [class.notfilled]="fill === 0"
+              >
+                <fa-icon [icon]="star" size="2x"></fa-icon>
+              </span>
+            </ng-template>
+          </ngb-rating>
         </div>
         <textarea
           id="editor"
@@ -54,4 +60,3 @@
     </div>
   </form>
 </section>
-n

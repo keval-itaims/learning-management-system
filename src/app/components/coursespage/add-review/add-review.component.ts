@@ -4,6 +4,7 @@ import { UserReview } from 'src/app/classes/user-review';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import {faStar} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-add-review',
@@ -12,6 +13,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class AddReviewComponent implements OnInit {
 
+  star = faStar;
   userReview: UserReview|any;
   @Input() courseId: number|any;
   user: User|any;
