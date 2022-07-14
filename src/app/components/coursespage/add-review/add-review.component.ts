@@ -43,7 +43,7 @@ export class AddReviewComponent implements OnInit {
       data => {
         this.isLoading = false;
         this.reviewDescription = '';
-        this.utility.openSnackBar("Review added successfully!", "Dismiss")
+        this.utility.openSnackBar("Review submitted successfully!", "Dismiss")
       },
       error => {
         this.isLoading = false;
