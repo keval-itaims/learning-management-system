@@ -68,11 +68,11 @@ import { ChapterDetailsComponent } from './components/admin/admincourses/adminch
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
-import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import { EnrollModalComponent } from './components/coursespage/enroll-modal/enroll-modal.component';
 import { BlogComponent } from './components/admin/blog/blog.component'
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -150,8 +150,8 @@ import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.comp
     MatListModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgbRatingModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxStarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

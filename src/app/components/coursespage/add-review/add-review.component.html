@@ -25,21 +25,17 @@
         <!-- </div> -->
       </div>
       <div class="py- px-4 bg-white rounded-b-lg">
-        <div class="py-4 flex items-center">
-          <span class="text-sm md:text-xl mr-6 md:mr-10"
-            >How good was our course?</span
-          >
-          <ngb-rating [max]="5" class="text-yellow-500" [(rate)]="courseRating">
-            <ng-template let-fill="fill">
-              <span
-                [class.filled]="fill === 100"
-                [class.notfilled]="fill === 0"
-              >
-                <fa-icon [icon]="star" size="2x"></fa-icon>
-              </span>
-            </ng-template>
-          </ngb-rating>
+        <div
+          class="py-4 flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2"
+        >
+          <div class="text-sm md:text-xl">How good was our course?</div>
+          <ngx-star-rating
+            [(ngModel)]="courseRating"
+            [id]="'rating'"
+            [ngModelOptions]="{ standalone: true }"
+          ></ngx-star-rating>
         </div>
+        {{ courseRating }}
         <textarea
           id="editor"
           rows="4"

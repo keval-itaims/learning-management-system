@@ -1,8 +1,16 @@
-/* @import url("https://cdn.usebootstrap.com/bootstrap/5.0.1/css/bootstrap.min.css"); */
-.filled {
-    color: rgb(250 204 21);
+::ng-deep label.star {
+    padding: 0 5px !important;
+    font-size: 20px !important;
 }
 
-.notfilled {
-    color: gray;
+@media screen and (min-width: 768px) {
+    ::ng-deep label.star {
+        font-size: 26px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    ::ng-deep label.star {
+        font-size: 34px !important;
+    }
 }
