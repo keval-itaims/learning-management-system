@@ -19,6 +19,7 @@ export class CourseDetailsComponent implements OnInit {
   isLoading = false;
   course: CourseResponse | any;
   user: User | any;
+  showModal = false;
   
   constructor(private router: Router,
     private route: ActivatedRoute,

@@ -68,6 +68,7 @@
         </div>
         <div *ngIf="!isEnrolled" class="mx-auto w-max">
           <button
+            (click)="showModal = !showModal"
             class="bg-red-500 p-2 md:py-4 mt-2 md:mt-4 text-white tracking-wide font-bold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
           >
             Enroll Now
@@ -102,3 +103,75 @@
     [courseReviews]="course.courseReviews"
   ></app-display-review>
 </main>
+
+<!-- modal -->
+<div
+  *ngIf="showModal"
+  id="defaultModal"
+  tabindex="-1"
+  class="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full justify-center items-center flex"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="relative w-full h-full max-w-2xl p-4 md:h-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow">
+      <!-- Modal header -->
+      <div class="flex items-start justify-between p-4 border-b rounded-t">
+        <h3 class="text-xl font-semibold tracking-wider text-gray-900">
+          Purchase Course
+        </h3>
+      </div>
+      <!-- Modal body -->
+      <div class="px-6 md:px-4 py-2 space-y-4 text-center">
+        <div>
+          <p class="text-base font-medium">Course</p>
+          <p
+            class="text-xl text-justify md:text-center font-semibold tracking-wider"
+          >
+            {{ course.courseName }}
+          </p>
+        </div>
+        <hr />
+        <div>
+          <p class="text-base font-medium">Instructor</p>
+          <p class="text-xl font-semibold tracking-wider">
+            {{ course.tutorName }}
+          </p>
+        </div>
+        <hr />
+        <div>
+          <p class="text-base font-medium">Starts from</p>
+          <p class="text-xl font-semibold tracking-wider">
+            {{ course.courseDate | date }}
+          </p>
+        </div>
+        <hr />
+        <div>
+          <p class="text-base font-medium">Price</p>
+          <p class="text-xl font-semibold tracking-wider">
+            {{ course.coursePrice }}(inc. all taxes)
+          </p>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div
+        class="flex justify-around items-center p-6 space-x-2 border-t border-gray-200 rounded-b"
+      >
+        <button
+          type="button"
+          (click)="showModal = !showModal"
+          class="w-full inline-flex justify-center tracking-wide rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="w-full inline-flex justify-center tracking-wide rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+        >
+          Enroll
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
