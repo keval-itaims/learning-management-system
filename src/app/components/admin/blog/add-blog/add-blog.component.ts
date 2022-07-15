@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
-// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 
 
 @Component({
@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBlogComponent implements OnInit {
 
-  // public Editor = ClassicEditor;
+  // public Editor:any = InlineEditor;
+  // blogContent:any
   constructor() { }
 
   ngOnInit(): void {
