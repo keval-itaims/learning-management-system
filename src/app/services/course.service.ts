@@ -42,6 +42,6 @@ export class CourseService {
     return this.http.post<UserReview>(`${this.url}/user-reviews/post-review`, userReview);
   }
   getReviews(id: number): Observable<UserReview[]>{
-    return this.http.get<UserReview[]>(`${this.url}/${id}`);
+    return this.http.get<UserReview[]>(`${this.url}/user-reviews/${id}`);
   }
 }

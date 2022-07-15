@@ -100,7 +100,7 @@
   <app-add-review *ngIf="course" [courseId]="course.courseId"></app-add-review>
   <app-display-review
     *ngIf="course"
-    [courseReviews]="course.courseReviews"
+    [courseReviews]="courseReviews"
   ></app-display-review>
 </main>
 
@@ -167,6 +167,7 @@
         </button>
         <button
           type="button"
+          (click)="onEnroll()"
           class="w-full inline-flex justify-center tracking-wide rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
         >
           Enroll
