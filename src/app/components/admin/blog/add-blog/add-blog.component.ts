@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBlogComponent implements OnInit {
 
-  // Editor = ClassicEditor;
+  // public Editor = ClassicEditor;
   constructor() { }
 
   ngOnInit(): void {
