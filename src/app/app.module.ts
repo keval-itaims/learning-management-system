@@ -69,7 +69,7 @@ import { ViewCourseComponent } from './components/admin/admincourses/view-course
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
 import { BlogComponent } from './components/admin/blog/blog.component'
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 @NgModule({
