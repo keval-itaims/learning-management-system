@@ -72,6 +72,8 @@ import { BlogComponent } from './components/admin/blog/blog.component'
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { EditorModule } from '@tinymce/tinymce-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -149,6 +151,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxStarRatingModule,
+    EditorModule
     // CKEditorModule
   ],
   providers: [],
