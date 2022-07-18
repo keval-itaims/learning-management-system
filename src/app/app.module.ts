@@ -73,6 +73,8 @@ import { BlogComponent } from './components/admin/blog/blog.component'
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { BlogDetailsComponent } from './components/admin/blog/blog-details/blog-details.component';
+import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.component';
 
 @NgModule({
   declarations: [
@@ -132,6 +134,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     CourseReviewComponent,
     BlogComponent,
     AddBlogComponent,
+    BlogDetailsComponent,
+    ViewBlogComponent,
     // ViewCourseComponent,
 ],
   imports: [

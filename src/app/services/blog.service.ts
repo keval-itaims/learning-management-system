@@ -12,6 +12,14 @@ export class BlogService{
 
   constructor(private httpClient:HttpClient){}
 
+  public getAllBlogDetails():Observable<Blog[]>{
+    return this.httpClient.get<Blog[]>(this.baseUrl)
+  }
+
+  public getSingleBlogDetail(id:number):Observable<Blog>{
+    return this.httpClient.get<Blog>(`${this.baseUrl}/${id}`)
+  }
+
   public addBlog(blog:Blog):Observable<Blog>{
     return this.httpClient.post<Blog>(this.baseUrl,blog);
   }
