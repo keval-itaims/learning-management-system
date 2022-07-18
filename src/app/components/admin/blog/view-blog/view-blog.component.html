@@ -1,0 +1,45 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="text-center m-3" *ngIf="blogDetail === null && !isLoading">
+  <h2>Course detail not found!</h2>
+</div>
+<div *ngIf="blogDetail !== null && !isLoading" class="m-2 flex flex-col">
+  <div class="flex flex-col justify-around lg:flex-row flex-grow p-1">
+    <div class="w-full lg:w-1/2 p-3">
+      <img
+        [src]="'data:image/png;base64,' + blogDetail.blogImage"
+        alt="Blog image"
+        class="block h-56 w-full"
+      />
+    </div>
+    <div class="w-full lg:w-1/2 p-3">
+      <h1>{{ blogDetail.blogTitle }}</h1>
+      <p>
+        <span class="font-bold">Date : </span>
+        <span>{{ blogDetail.blogDate | date }}</span>
+      </p>
+
+      <div
+        class="flex justify-center items-center mt-2 w-auto grow md:justify-start"
+      >
+        <button mat-raised-button color="accent" (click)="onUpdateBlog()">
+          Edit
+        </button>
+        <button mat-raised-button color="warn" (click)="onDeleteBlog()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-amber-300 text-center m-3 rounded-lg">
+  <h1 class="font-extrabold p-2">Blog Content</h1>
+</div>
+<div class="m-3 border-2 border-red-600">
+  <div #blogContent class="m-2"></div>
+
+  <!-- <ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+  </ul> -->
+</div>

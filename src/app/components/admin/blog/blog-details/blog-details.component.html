@@ -1,0 +1,38 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Blogs</h1>
+</div>
+<div class="text-center m-auto" *ngIf="blogDetails.length === 0 && !isLoading">
+  Blogs detail not found!
+</div>
+<div
+  *ngIf="blogDetails.length > 0"
+  class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 m-3"
+>
+  <div *ngFor="let blog of blogDetails" class="p-1">
+    <mat-card class="mx-auto">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title class="font-bold">{{ blog.blogTitle }}</mat-card-title>
+        <mat-card-subtitle>On {{ blog.blogDate }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-md-image
+        [src]="'data:image/png;base64,' + blog.blogImage"
+        alt="Photo of a blog"
+        class="block mx-auto"
+      />
+      <!-- <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz
+          breeds of dog from Japan. A small, agile dog that copes very well with
+          mountainous terrain, the Shiba Inu was originally bred for hunting.
+        </p>
+      </mat-card-content> -->
+      <mat-card-actions>
+        <!-- <button mat-button>LIKE</button> -->
+        <button mat-button (click)="onViewBlog(blog.blogId)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
