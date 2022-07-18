@@ -45,8 +45,12 @@ export class CourseService {
     return this.http.get<UserReview[]>(`${this.url}/user-reviews/${id}`);
   }
 
-  makePayment(data: object): Observable<any>{
+  createOrder(data: object): Observable<any>{
     return this.http.post<any>(`${this.url}/create-order`, data);
+  }
+
+  enrollCourse(data: object) : Observable<any>{
+    return this.http.post<any>(`${this.url}/enroll-course`, data);
   }
 
   get nativeWindow():any{
