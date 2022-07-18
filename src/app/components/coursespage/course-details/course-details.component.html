@@ -58,18 +58,20 @@
           </div>
         </div>
 
-        <div>
-          <span class="pt-4 text-xl font-medium"
-            >Starts from: {{ course ? (course.courseDate | date) : "" }}</span
-          >
-          <!-- <p class="pt-4 text-xl font-medium tracking-wide lg:text-2xl">
-            Ends at:
-          </p> -->
+        <div class="flex justify-between items-center flex-wrap">
+          <p class="pt-4 text-xl font-medium">
+            Starts from: {{ course ? (course.courseDate | date) : "" }}
+          </p>
+          <p class="pt-4 text-xl font-medium">
+            Price: {{ course ? course.coursePrice : "" }}&nbsp;<fa-icon
+              [icon]="inr"
+            ></fa-icon>
+          </p>
         </div>
         <div *ngIf="!isEnrolled" class="mx-auto w-max">
           <button
             (click)="showModal = !showModal"
-            class="bg-red-500 p-2 md:py-4 mt-2 md:mt-4 text-white tracking-wide font-bold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
+            class="bg-red-500 p-2 md:px-4 mt-2 md:mt-4 text-white tracking-wide font-bold text-base md:text-xl border rounded-lg hover:bg-indigo-600 cursor-pointer"
           >
             Enroll Now
           </button>
@@ -79,7 +81,7 @@
   </section>
 
   <!-- Course Details OutLine -->
-  <section class="bg-gray-50 mt-4">
+  <section class="bg-gray-100 mt-4">
     <div class="text-center py-4">
       <p class="text-xl md:text-2xl font-bold">Course Description</p>
     </div>
@@ -100,10 +102,9 @@
   <app-add-review *ngIf="course" [courseId]="course.courseId"></app-add-review>
   <app-display-review
     *ngIf="course"
-    [courseReviews]="courseReviews"
+    [course]="course"
   ></app-display-review>
 </main>
-
 <!-- modal -->
 <div
   *ngIf="showModal"
@@ -115,13 +116,14 @@
 >
   <div class="relative w-full h-full max-w-2xl p-4 md:h-auto">
     <!-- Modal content -->
-    <div class="relative bg-white rounded-lg shadow">
+    <div class="relative bg-gray-100 rounded-lg shadow-lg">
       <!-- Modal header -->
-      <div class="flex items-start justify-between p-4 border-b rounded-t">
-        <h3 class="text-xl font-semibold tracking-wider text-gray-900">
-          Purchase Course
-        </h3>
+      <div
+        class="p-4 text-center text-xl font-semibold tracking-wider text-blue-500"
+      >
+        Purchase Course
       </div>
+      <hr class="border-2 w-9/12 mx-auto border-red-500 rounded-2xl" />
       <!-- Modal body -->
       <div class="px-6 md:px-4 py-2 space-y-4 text-center">
         <div>
@@ -150,13 +152,14 @@
         <div>
           <p class="text-base font-medium">Price</p>
           <p class="text-xl font-semibold tracking-wider">
-            {{ course.coursePrice }}(inc. all taxes)
+            {{ course.coursePrice }}<fa-icon [icon]="inr"></fa-icon> (inc. all
+            taxes)
           </p>
         </div>
       </div>
       <!-- Modal footer -->
       <div
-        class="flex justify-around items-center p-6 space-x-2 border-t border-gray-200 rounded-b"
+        class="flex justify-around items-center p-6 space-x-2 border-t border-red-500 rounded-b"
       >
         <button
           type="button"

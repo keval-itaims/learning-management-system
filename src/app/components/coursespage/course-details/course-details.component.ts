@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {faStar, faClock} from '@fortawesome/free-solid-svg-icons';
+import {faStar, faClock, faInr} from '@fortawesome/free-solid-svg-icons';
 import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
 import { UserReview } from 'src/app/classes/user-review';
@@ -16,6 +16,7 @@ export class CourseDetailsComponent implements OnInit {
 
   clock = faClock;
   star = faStar;
+  inr = faInr;
   isEnrolled = false;
   isLoading = false;
   course: CourseResponse | any;
@@ -50,7 +51,50 @@ export class CourseDetailsComponent implements OnInit {
       }
     )
   }
-  onEnroll(){
 
+  rzp1:any;
+  data: object|any;
+  options: object|any;
+  onEnroll(){
+    this.showModal = !this.showModal;
+    this.isLoading = true;
+    this.data = {
+      userId: this.user.user_id,
+      courseId: this.course.coruseId,
+      amount: this.course.coursePrice,
+    }
+    this.courseService.makePayment(this.data).subscribe(
+      (response) => {
+        console.log(response);
+        this.options = {
+          "key": "rzp_test_0OYWVJUOQXo91j",
+          "amount": response.amount,
+          "currency": "INR",
+          "name": `${this.user.firstName} + ' ' + ${this.user.lastName}`,
+          "description": "Enroll the course",
+          "image": "",
+          "order_id": response.id,
+          "callback_url": "",
+          "prefill": {
+              "name": "Gaurav Kumar",
+              "email": "gaurav.kumar@example.com",
+              "contact": "9999999999"
+          },
+          "notes": {
+          "address": "Razorpay Corporate Office"
+          },
+          "theme": {
+            "color": "#3399cc"
+          }
+        };
+        this.rzp1 = new this.courseService.nativeWindow.Razorpay(this.options);
+        this.isLoading = false;
+        this.rzp1.open();
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+    }
+  )
   }
 }

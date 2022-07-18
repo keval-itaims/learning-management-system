@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
-import { UserReview } from 'src/app/classes/user-review';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./display-review.component.css']
 })
 export class DisplayReviewComponent implements OnInit {
-  @Input() courseReviews: any|UserReview[];
+  @Input() course: any|CourseResponse[];
   user: User|any;
   constructor(private userService: UserService) { }
 
