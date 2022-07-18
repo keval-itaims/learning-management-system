@@ -88,6 +88,7 @@ export class AddBlogComponent implements OnInit {
                   setTimeout(()=>{
                     this.isLoading = false;
                     this.utilityService.openSnackBar("Blog added!","close")
+                    this.router.navigate(['/admin/blog/detail'])
                   },1000)
                 }
 
