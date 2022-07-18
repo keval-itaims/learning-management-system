@@ -114,11 +114,16 @@ export class CourseDetailsComponent implements OnInit {
     this.options.payment_id = event.detail.razorpay_payment_id;
     this.courseService.enrollCourse(this.options).subscribe(
       (_) => {
-        this.isLoading = false;
+        this.user.myCourses = !this.user.myCourses
+          ? [this.course.courseId]
+          : [...this.user.myCourses, this.course.courseId];
+        this.userService.saveUser(this.user);
         this.utility.openSnackBar(
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
+        this.isLoading = false;
+        this.router.navigate(['./'], { relativeTo: this.route });
       },
       (error) => {
         console.log(error);
