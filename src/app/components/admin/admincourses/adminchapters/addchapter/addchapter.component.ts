@@ -48,10 +48,7 @@ export class AddchapterComponent implements OnInit {
 
   private compareDate(date:Date){
     let d = new Date(date)
-    console.log("Date : ",d)
-    console.log("Condition : ",d.getTime() > new Date().getTime() )
     this.minDate = d.getTime() > new Date().getTime() ? d : new Date()
-    console.log("Minimum Date :",this.minDate)
   }
 
   onAddChapter(){
@@ -61,10 +58,8 @@ export class AddchapterComponent implements OnInit {
     this.chapterDetail.chapterDate.setHours(splitTime[0])
     this.chapterDetail.chapterDate.setMinutes(splitTime[1])
     this.chapterDetail.chapterDate.setSeconds(0)
-    console.log("Chapter detail : ",this.chapterDetail)
     this.chapterService.addChapter(this.chapterDetail).subscribe(
       data => {
-        console.log(data)
         this.utilityService.openSnackBar("Chapter added!","close")
         this.router.navigate(['/admin/courses/chapter/detail',this.chapterDetail.courseId])
       },

@@ -75,6 +75,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { BlogDetailsComponent } from './components/admin/blog/blog-details/blog-details.component';
 import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.component';
+import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-blog.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +137,7 @@ import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.c
     AddBlogComponent,
     BlogDetailsComponent,
     ViewBlogComponent,
+    UpdateBlogComponent,
     // ViewCourseComponent,
 ],
   imports: [

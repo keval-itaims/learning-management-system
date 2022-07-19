@@ -41,19 +41,14 @@ export class UpdateCourseComponent implements OnInit {
   }
 
   onSelectFile(event:any){
-    console.log("inside method")
     this.courseImage = <File>event.target.files[0];
-    console.log(this.courseImage);
   }
 
   private getCourse(){
     let id = this.activatedRouter.snapshot.params['id'];
-    console.log("Id in update course: ",id)
     this.courseService.getSingleCourse(id).subscribe(
       data =>{
-        console.log(data),
         this.courseDetail = data;
-        console.log(this.courseDetail)
         this.updateCourseForm.patchValue({
           courseName : this.courseDetail.courseName,
           coursePrice : this.courseDetail.coursePrice,
@@ -78,10 +73,8 @@ export class UpdateCourseComponent implements OnInit {
 
     this.instructorService.getInstructorDetails().subscribe(
       data =>{
-        console.log(data);
         this.instructorDetail = data;
         this.isLoading = false;
-        console.log("Instructor detail object : ",this.instructorDetail)
       },
       error =>{
         this.isLoading = false;
@@ -93,28 +86,18 @@ export class UpdateCourseComponent implements OnInit {
   onUpdateCourse(){
     this.course= this.updateCourseForm.value;
     this.course.courseId = this.courseDetail.courseId
-    console.log("Updated  course Detail : ",this.course)
-
-
     this.courseService.updateCourse(this.course).subscribe(
       data =>{
-        console.log("Data : ",data)
 
         if(this.courseImage){
           const formData = new FormData();
           formData.append('courseImage',this.courseImage,this.courseImage.name);
-          console.log("Course Id : ",this.course.courseId)
           this.courseService.uploadCourseImage(this.course.courseId,formData).subscribe(
-            // data => console.log(data),
             event =>{
-              console.log(event)
               if(event.type == HttpEventType.UploadProgress){
                 let progress = 0
                 if(event.total){
-                  console.log("Event total : ",event.total)
-                  console.log("Event loaded : ",event.loaded)
                   progress = Math.round((event.loaded / event.total ) * 100);
-                  console.log("progress: ",progress)
                 }
                 if(progress == 100){
                     setTimeout(()=>{
@@ -149,7 +132,6 @@ export class UpdateCourseComponent implements OnInit {
   get courseduration(){return this.updateCourseForm.get('courseDuration')}
   get coursedate(){return this.updateCourseForm.get('courseDate')}
   get coursedesc(){return this.updateCourseForm.get('courseDescription')}
-  // get courseimage(){return this.updateCourseForm.get('courseImage')}
   get courseinstructor(){return this.updateCourseForm.get('userId')}
 
 }

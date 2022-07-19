@@ -30,18 +30,15 @@ export class ChapterDetailsComponent implements OnInit {
 
   private getChapters(){
     this.id = this.activatedRouter.snapshot.params['id']
-    console.log("id : ",this.id)
 
     this.chapterService.getChaptersByCourseId(this.id).subscribe(
       data =>{
-        console.log(data)
         this.chaptersDetails = data
         this.isLoading = false
         this.dataSource = new MatTableDataSource(this.chaptersDetails)
 
       },
       error =>{
-        console.log(error)
         this.isLoading = false
       }
     )
@@ -56,7 +53,6 @@ export class ChapterDetailsComponent implements OnInit {
   onDeleteChapter(element:any){
 
     this.id = element.chapterId;
-    console.log("Chapter Id : ",this.id)
     this.confirmDialogService.openConfirmDialog({
       title: 'Delete Chapter',
       message: 'Are you sure?',
@@ -67,7 +63,6 @@ export class ChapterDetailsComponent implements OnInit {
         if (result) {
           this.chapterService.deleteChapter(this.id).subscribe(
             data => {
-              console.log(data)
               this.utilityService.openSnackBar("Chapter deleted!", "close")
               this.getChapters()
             },

@@ -40,6 +40,7 @@ import { BlogComponent } from './components/admin/blog/blog.component';
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
 import { BlogDetailsComponent } from './components/admin/blog/blog-details/blog-details.component';
 import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.component';
+import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-blog.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -78,7 +79,8 @@ const routes: Routes = [
       {path:'',redirectTo:'detail',pathMatch:'full'},
       {path:'add',component:AddBlogComponent},
       {path:'detail',component:BlogDetailsComponent},
-      {path:'view/:id',component:ViewBlogComponent}
+      {path:'view/:id',component:ViewBlogComponent},
+      {path:'update/:id',component:UpdateBlogComponent}
     ]}
   ]},
   {path:'homepage', component:HomepageComponent, children:[

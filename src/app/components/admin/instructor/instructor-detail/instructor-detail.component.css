@@ -1,3 +1,35 @@
 table {
   width: 100%
 }
+
+.mat-table {
+  overflow: auto;
+  /* max-height: 500px; */
+}
+
+mat-table::ng-deep .mat-column-name{
+  border-right: 1px solid grey;
+  align-self: stretch;
+  text-align: center
+
+}
+mat-table::ng-deep .mat-column-position{
+border-right: 1px solid grey;
+align-self: stretch;
+text-align: center;
+
+}
+mat-table::ng-deep .mat-column-weight{
+border-right: 1px solid grey;
+align-self: stretch;
+text-align: center;
+
+}
+mat-table::ng-deep .mat-column-symbol{
+
+text-align: center;
+align-self: stretch;
+}
+mat-table::ng-deep .mat-column-weight{
+   align-self: stretch;
+}

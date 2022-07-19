@@ -15,7 +15,7 @@ export class ContactusDetailComponent implements OnInit {
   constructor(private contactusService:UtilityService,private snackbar:MatSnackBar,private router:Router) { }
 
 
-  contactusDetails!: Contact[];
+  contactusDetails: Contact[] = [];
   isLoading:boolean = true;
 
   displayedColumns: string[] = ['name', 'emailId', 'message','action'];
@@ -31,13 +31,9 @@ export class ContactusDetailComponent implements OnInit {
     this.contactusService.getContactMessages().subscribe(
       data => {
         this.isLoading = false;
-        console.log(data)
-
         this.contactusDetails = data.filter((item)=>{
-          console.log(item)
           return item.status == 0;
         })
-        console.log(this.contactusDetails)
         this.dataSource = new MatTableDataSource(this.contactusDetails);
       },
       error => {
@@ -47,11 +43,8 @@ export class ContactusDetailComponent implements OnInit {
     )
   }
   onReply(element : any){
-    console.log(element)
     let id = element.cId;
-    console.log(id)
     this.router.navigate(['/admin/contact-us/reply/',id])
-    // this.openSnackbar();
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

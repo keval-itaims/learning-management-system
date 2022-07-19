@@ -29,12 +29,10 @@ export class StudentComponent implements OnInit {
     this.studentService.getStudent().subscribe(
       data => {
         this.isLoading = false;
-        console.log(data)
         this.studentDetail = data.filter((item)=>{
           return item.role === "student";
         })
         this.dataSource = new MatTableDataSource(this.studentDetail);
-        console.log(this.studentDetail)
       },
       error => {
         this.isLoading = false;
@@ -61,7 +59,6 @@ export class StudentComponent implements OnInit {
         if(result){
           this.studentService.deleteStudent(id).subscribe(
             data =>{
-
               this.utilityService.openSnackBar("Student deleted!","close");
               this.getStudent()
             },

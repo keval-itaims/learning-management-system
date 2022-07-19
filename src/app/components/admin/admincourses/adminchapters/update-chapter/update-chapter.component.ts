@@ -36,7 +36,6 @@ export class UpdateChapterComponent implements OnInit {
     this.id = this.activatedRouter.snapshot.params['id']
     this.chapterService.getSingleChapterDetail(this.id).subscribe(
       data => {
-        console.log(data)
         this.chapterDetail.chapterId = data.chapterId
         this.chapterDetail.chapterName = data.chapterName
         this.chapterDetail.chapterlink = data.chapterlink
@@ -56,9 +55,7 @@ export class UpdateChapterComponent implements OnInit {
             meetingTime : time
           }
         )
-        console.log("Chapter Detail ",this.chapterDetail)
         this.isLoading = false
-        console.log("Form Data : ",this.updateChapterForm.value)
       },
       error =>{
         console.log(error)
@@ -69,7 +66,6 @@ export class UpdateChapterComponent implements OnInit {
 
   onUpdateChapter(){
     this.chapterDetail = this.updateChapterForm.value;
-    console.log(this.chapterDetail.chapterDate)
     this.chapterDetail.courseId = this.activatedRouter.snapshot.params['id'];
     const splitTime:any[] = this.chapterDetail.meetingTime.split(":");
     let meetingDate = new Date(this.chapterDetail.chapterDate)
@@ -78,10 +74,8 @@ export class UpdateChapterComponent implements OnInit {
     meetingDate.setSeconds(0)
     this.chapterDetail.chapterDate = meetingDate
 
-    console.log("Chapter detail : ",this.chapterDetail)
     this.chapterService.updateChapter(this.chapterDetail).subscribe(
       data => {
-        console.log(data)
         this.chapterDetail.courseId = data.course.courseId
         this.utilityService.openSnackBar("Chapter updated!","close")
         this.router.navigate(['/admin/courses/chapter/detail',this.chapterDetail.courseId])

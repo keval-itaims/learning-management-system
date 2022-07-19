@@ -14,7 +14,10 @@
         Update
       </button>
     </a>
-    <mat-form-field appearance="standard">
+    <mat-form-field
+      appearance="standard"
+      *ngIf="contactusDetails.length > 0 && !isLoading"
+    >
       <mat-label>Search</mat-label>
       <input
         matInput
@@ -24,10 +27,14 @@
       />
     </mat-form-field>
   </div>
+  <div *ngIf="contactusDetails.length === 0 && !isLoading" class="text-center">
+    <h2>Instructor data not found!</h2>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8 w-full lg:w-3/4 mx-auto"
+    *ngIf="contactusDetails.length > 0 && !isLoading"
   >
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
