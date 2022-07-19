@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
 import { UserReview } from 'src/app/classes/user-review';
@@ -15,6 +15,8 @@ export class DisplayReviewComponent implements OnInit {
   @Input() course: any | CourseResponse;
   courseReviews: UserReview[] | any;
   user: User | any;
+  @Output() refresh = new EventEmitter();
+
   constructor(
     private userService: UserService,
     private courseService: CourseService
@@ -23,13 +25,13 @@ export class DisplayReviewComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUser();
     this.courseReviews = this.course.courseReviews;
-    console.log(this.courseReviews);
   }
   removeReview(id: number) {
     this.isLoading = true;
     this.courseService.removeReview(id).subscribe(
       (_) => {
         this.isLoading = false;
+        this.refresh.emit();
       },
       (error) => {
         this.isLoading = false;

@@ -99,8 +99,13 @@
     </div>
   </section>
   <app-chapters *ngIf="course" [course]="course"></app-chapters>
-  <app-add-review *ngIf="course" [courseId]="course.courseId"></app-add-review>
+  <app-add-review
+    (refresh)="refreshComponent()"
+    *ngIf="course"
+    [courseId]="course.courseId"
+  ></app-add-review>
   <app-display-review
+    (refresh)="refreshComponent()"
     *ngIf="course"
     [course]="course"
   ></app-display-review>

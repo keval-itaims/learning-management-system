@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faStar, faClock, faInr } from '@fortawesome/free-solid-svg-icons';
 import { CourseResponse } from 'src/app/classes/course-response';
@@ -123,12 +123,21 @@ export class CourseDetailsComponent implements OnInit {
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
-        this.ngOnInit();
+        this.refreshComponent();
       },
       (error) => {
         console.log(error);
         this.isLoading = false;
       }
     );
+  }
+
+  refreshComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['./'], { relativeTo: this.route }).then(() => {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => true;
+      this.router.onSameUrlNavigation = 'ignore';
+    });
   }
 }
