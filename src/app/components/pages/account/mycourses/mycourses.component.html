@@ -9,7 +9,10 @@
       View Courses
     </button>
   </div>
-  <section *ngIf="myCourses" class="flex gap-8 flex-wrap items-center">
+  <section
+    *ngIf="myCourses"
+    class="flex gap-5 flex-wrap items-center justify-center"
+  >
     <app-course *ngFor="let course of myCourses" [course]="course">
     </app-course>
   </section>

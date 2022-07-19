@@ -1,29 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/classes/user';
 import { SignupService } from 'src/app/services/signup.service';
-import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   regForm: FormGroup | any;
   user: User = new User();
 
   //patterns
-  password_pattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,}';
+  password_pattern =
+    '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@[-`{-~]).{8,}';
   pat_email = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}';
   name_pattern = '[A-Za-z ]+';
 
@@ -32,9 +28,13 @@ export class SignupComponent implements OnInit {
   emailError = false; //Check if user is already registered
   isLoading = false;
 
-  constructor(private fb: FormBuilder, private signupService: SignupService,
-    private router: Router, private route:ActivatedRoute,
-    private utilityService: UtilityService) {}
+  constructor(
+    private fb: FormBuilder,
+    private signupService: SignupService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private utilityService: UtilityService
+  ) {}
 
   ngOnInit() {
     this.regForm = this.fb.group({
@@ -53,6 +53,10 @@ export class SignupComponent implements OnInit {
       ],
       repeatPassword: ['', [Validators.required]],
       role: ['student'],
+      phoneNum: [
+        this.user.phoneNum,
+        [Validators.required, Validators.pattern('^[6789][0-9]{9}$')],
+      ],
     });
   }
 
@@ -61,26 +65,29 @@ export class SignupComponent implements OnInit {
     let repeatPassword = this.regForm.controls['repeatPassword'].value;
     this.match_password_error = pass === repeatPassword ? false : true;
   }
-  onSubmit(){
-    if(this.regForm.invalid) return;
+  onSubmit() {
+    if (this.regForm.invalid) return;
     this.isLoading = true;
     this.user = this.regForm.value;
     this.signupService.signup(this.user).subscribe(
       (data) => {
         this.isLoading = false;
-        if(data === null){
+        if (data === null) {
           this.emailError = true;
           return;
-        }
-        else{
+        } else {
           this.emailError = false;
-          this.utilityService.openSnackBar("Account registered successfully!", "Dismiss")
-          this.router.navigate(['../login'], {relativeTo:this.route});
+          this.utilityService.openSnackBar(
+            'Account registered successfully!',
+            'Dismiss'
+          );
+          this.router.navigate(['../login'], { relativeTo: this.route });
         }
       },
-      (error) => {console.log(error)
+      (error) => {
+        console.log(error);
         this.isLoading = false;
       }
-    )
+    );
   }
 }

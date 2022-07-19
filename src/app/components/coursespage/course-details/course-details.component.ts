@@ -59,6 +59,7 @@ export class CourseDetailsComponent implements OnInit {
   options: any | object;
   rzp1: any;
   onEnroll() {
+    this.ngOnInit();
     this.showModal = !this.showModal;
     this.isLoading = true;
     this.courseService
@@ -78,7 +79,7 @@ export class CourseDetailsComponent implements OnInit {
       key: 'rzp_test_0OYWVJUOQXo91j',
       amount: response.amount,
       currency: 'INR',
-      name: `${this.user.firstName} ${this.user.lastName}`,
+      name: `ITAIMS`,
       description: 'Enroll the course',
       image: '../../../../assets/images/logo.png',
       order_id: response.id,
@@ -91,9 +92,9 @@ export class CourseDetailsComponent implements OnInit {
         window.dispatchEvent(event);
       },
       prefill: {
-        name: 'Gaurav Kumar',
-        email: 'gaurav.kumar@example.com',
-        contact: '9999999999',
+        name: `${this.user.firstName} ${this.user.lastName}`,
+        email: `${this.user.email}`,
+        contact: `${this.user.phoneNum}`,
       },
       notes: {
         address: 'Razorpay Corporate Office',
