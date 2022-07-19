@@ -41,48 +41,26 @@ export class AddinstructorComponent implements OnInit {
 
   onFileSelected(event:any){
     this.profileImage = <File>event.target.files[0];
-    console.log("profile Image : ",this.profileImage)
-
   }
 
   addInstructor(){
-    // this.isLoading = true;
+    this.isLoading = true;
     this.message = ''
-
-    // alert(`${this.instructorForm.value.firstName} is added!`)
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
-    console.log(this.instructor);
-    // let formData:FormData = new FormData();
-    // // formData.append('instructorData',this.instructor);
-    // formData.append('profileImage',this.profileImage,this.profileImage.name);
-    // formData.append('instructorData',JSON.stringify(this.instructor));
-
-    // console.log("Image : ",formData.get('profileImage'))
-    // console.log("Data : ",formData.get('instructorData'))
-    // this.instructorService.registerInstructorFromRemote(formData).subscribe(
-    //   data => console.log(data),
-    //   error => console.log(error)
-    // )
-
     this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
-      data =>{
-        console.log("response received!");
-        console.log(data);
+      data => {
         if(data!=null){
           this.instructor = data;
-          console.log("id",this.instructor.user_id);
           if(this.profileImage!==undefined){
 
             const formData = new FormData();
             formData.append('profileImage',this.profileImage,this.profileImage.name);
             this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
-              // data => console.log("Data in upload image",data),
               event =>{
                 if(event.type === HttpEventType.UploadProgress){
                   if(event.total){
                     let progress = Math.round(event.loaded / event.total) * 100;
-                    console.log("progress: ",progress)
                     if(progress===100){
                       setTimeout(()=>{
                         this.isLoading = false;
@@ -97,9 +75,7 @@ export class AddinstructorComponent implements OnInit {
 
               },
               error => {
-                console.log(error)
                 this.isLoading = false;
-
               }
 
             )

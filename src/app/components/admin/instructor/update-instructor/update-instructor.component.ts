@@ -38,18 +38,13 @@ export class UpdateInstructorComponent implements OnInit {
 
     })
     this.getInstructor();
-    console.log(this.instructor)
   }
 
   getInstructor():any{
-    console.log("get method called!")
     this.id = this.activetedRoute.snapshot.params['id'];
-    console.log("id is: ",this.id)
     this.instructorService.getInstructorById(this.id).subscribe(
       data => {
-        console.log(data)
         this.instructor = data;
-        console.log("instructor data",this.instructor);
         this.instructorForm.patchValue({
           firstName : this.instructor.firstName,
           lastName : this.instructor.lastName,
@@ -57,10 +52,8 @@ export class UpdateInstructorComponent implements OnInit {
           phoneNum : this.instructor.phoneNum
         })
         this.isLoading = false;
-        console.log("form value",this.instructorForm.value)
       },
       error =>{
-          console.log(error);
           this.isLoading = false;
 
       },
@@ -77,16 +70,13 @@ export class UpdateInstructorComponent implements OnInit {
     this.instructor.phoneNum = this.instructorForm.value.phoneNum;
     alert(this.instructor.firstName);
     this.instructor.user_id = this.id;
-    // console.log(this.instructor.tutor_id)
-    console.log(this.instructor.user_id)
-    console.log(this.instructor)
     this.instructorService.updateInstructor(this.instructor).subscribe(
       data => {
         this.utilityService.openSnackBar("Instructor updated!","close")
         this.router.navigate(['/admin/instructor/detail'])
       },
       error =>{
-        console.log("error accured!")
+        console.log(error)
       }
     )
 

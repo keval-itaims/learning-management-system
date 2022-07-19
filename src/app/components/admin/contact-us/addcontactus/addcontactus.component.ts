@@ -34,10 +34,7 @@ export class AddcontactusComponent implements OnInit {
   getContactDetail(){
     this.utilityService.getContactDetails().subscribe(
       data => {
-        console.log("Data received!",data[0]);
         this.contactDetail = data[0];
-        console.log("contact object",this.contactDetail);
-
         this.contactusForm.patchValue({
           emailId : this.contactDetail.emailId,
           phoneNumber : this.contactDetail.phoneNumber,
@@ -54,7 +51,6 @@ export class AddcontactusComponent implements OnInit {
       this.id = this.contactDetail.cId;
       this.contactDetail = this.contactusForm.value;
       this.contactDetail.cId = this.id
-      console.log(this.contactDetail)
       this.utilityService.setContactDetails(this.contactDetail).subscribe(
         data => this.router.navigate(['/admin/contact-us/detail']),
         error => console.log(error)

@@ -28,11 +28,7 @@ export class CoursesDetailsComponent implements OnInit {
   private getAllCourses(){
     this.courseService.getAllCourses().subscribe(
       data =>{
-        console.log(data)
         this.courseDetails = data;
-        // console.log(this.courseDetails.courseDate)
-        // this.courseDetails.courseDate = this.courseDetails.courseDate.split(0,9)
-        console.log(this.courseDetails)
         this.dataSource = new MatTableDataSource(this.courseDetails);
         this.isLoading = false
       },

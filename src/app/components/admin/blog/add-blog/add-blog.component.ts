@@ -63,17 +63,14 @@ export class AddBlogComponent implements OnInit {
 
   onSelectImage(element:any){
     this.blogImage = element.target.files[0];
-    console.log(this.blogImage)
   }
 
   onAddBlog(){
     this.isLoading = true
     this.blogDetail = this.addBlogForm.value
     this.blogDetail.blogDate = new Date()
-    console.log("Blog Detail : ",this.blogDetail)
     this.blogService.addBlog(this.blogDetail).subscribe(
       data =>{
-        console.log(data)
         this.isLoading = false
         let id = data.blogId
         const formData = new FormData()
@@ -83,7 +80,6 @@ export class AddBlogComponent implements OnInit {
             if(event.type === HttpEventType.UploadProgress){
               if(event.total){
                 let progress = Math.round(event.loaded / event.total) * 100;
-                console.log("progress: ",progress)
                 if(progress===100){
                   setTimeout(()=>{
                     this.isLoading = false;

@@ -31,13 +31,9 @@ export class ReplycontactmessageComponent implements OnInit {
 
   getContactMessage(){
     this.id = this.activateRouter.snapshot.params['id'];
-    console.log("id",this.id);
     this.utilityService.getContactMessageById(this.id).subscribe(
       data => {
-
-        console.log("Data : ",data),
         this.contactMessage = data;
-        console.log("Object",this.contactMessage)
         this.replyMessageForm.patchValue({
           name : this.contactMessage.name,
           emailId : this.contactMessage.emailId,
@@ -57,14 +53,18 @@ export class ReplycontactmessageComponent implements OnInit {
     this.isLoading = true
     this.contactMessage = this.replyMessageForm.value;
     this.contactMessage.cId = this.id;
-    console.log(this.contactMessage);
 
     this.utilityService.replyContactMessage(this.contactMessage).subscribe(
       data => {
         this.isLoading = false;
-        this.utilityService.openSnackBar("Mail send!","close");
-        this.router.navigate(['/admin/contact-us/detail'])
-        console.log(data)
+        if(data){
+          this.utilityService.openSnackBar("Mail send!","close");
+          this.router.navigate(['/admin/contact-us/detail'])
+        }
+        else{
+          this.utilityService.openSnackBar("Error! mail not send","close");
+          this.router.navigate(['/admin/contact-us/detail'])
+        }
       },
       error => console.log(error)
     )

@@ -32,8 +32,9 @@ export class BlogService{
     })
   }
 
-  public updateBlog(id:number,blog:Blog):Observable<Blog>{
-    return this.httpClient.put<Blog>(`${this.baseUrl}/${id}`,blog)
+
+  public updateBlog(blog:Blog):Observable<Blog>{
+    return this.httpClient.put<Blog>(`${this.baseUrl}`,blog)
   }
 
   public deleteBlog(id:number):Observable<string>{

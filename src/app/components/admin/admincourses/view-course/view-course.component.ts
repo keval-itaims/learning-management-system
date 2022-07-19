@@ -25,10 +25,8 @@ export class ViewCourseComponent implements OnInit {
     this.id = this.activatedRouter.snapshot.params['id']
     this.courseService.getSingleCourse(this.id).subscribe(
       data => {
-        console.log(data)
         this.courseDetail = data
         this.isLoading = false
-        console.log("Course Data : ", this.courseDetail)
       },
       error => {
         console.log(error)
@@ -56,7 +54,6 @@ export class ViewCourseComponent implements OnInit {
         if (result) {
           this.courseService.deleteCourse(this.id).subscribe(
             data => {
-              console.log(data)
               this.utilityService.openSnackBar("Course deleted!", "close")
               this.router.navigate(['/admin/courses/detail'])
             },

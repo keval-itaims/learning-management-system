@@ -41,7 +41,7 @@ export class ViewBlogComponent implements OnInit {
   }
 
   onUpdateBlog(){
-
+    this.router.navigate(['admin/blog/update/',this.id])
   }
 
   onDeleteBlog(){
