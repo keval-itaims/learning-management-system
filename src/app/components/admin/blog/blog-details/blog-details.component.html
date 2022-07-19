@@ -5,6 +5,13 @@
 <div class="text-center m-auto" *ngIf="blogDetails.length === 0 && !isLoading">
   Blogs detail not found!
 </div>
+<div class="flex justify-between items-center mt-1" *ngIf="!isLoading">
+  <a routerLink="/admin/blog/add"
+    ><button mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>Add
+    </button>
+  </a>
+</div>
 <div
   *ngIf="blogDetails.length > 0"
   class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 m-3"
