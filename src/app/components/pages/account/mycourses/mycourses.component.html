@@ -1,12 +1,16 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <section>
-  <p *ngIf="!!enrolledCourses" class="text-red-500">
-    You haven't enrolled any course yet...!
-  </p>
-  <section class="flex gap-8 flex-wrap items-center">
-    <app-enrolled-course
-      *ngFor="let course of myCourses"
-      [course]="course"
-    ></app-enrolled-course>
+  <div *ngIf="!enrolledCourses" class="grid place-items-center gap-3 mt-10">
+    <p class="text-red-400 text-xl">You haven't enrolled any course yet...!</p>
+    <button
+      (click)="onClick()"
+      class="bg-red-500 p-2 md:px-4 text-white font-extrabold text-xl border rounded hover:bg-indigo-600 cursor-pointer"
+    >
+      View Courses
+    </button>
+  </div>
+  <section *ngIf="myCourses" class="flex gap-8 flex-wrap items-center">
+    <app-course *ngFor="let course of myCourses" [course]="course">
+    </app-course>
   </section>
 </section>

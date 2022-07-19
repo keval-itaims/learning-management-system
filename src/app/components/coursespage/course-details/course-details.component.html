@@ -62,7 +62,7 @@
           <p class="pt-4 text-xl font-medium">
             Starts from: {{ course ? (course.courseDate | date) : "" }}
           </p>
-          <p class="pt-4 text-xl font-medium">
+          <p *ngIf="!isEnrolled" class="pt-4 text-xl font-medium">
             Price: {{ course ? course.coursePrice : "" }}&nbsp;<fa-icon
               [icon]="inr"
             ></fa-icon>
