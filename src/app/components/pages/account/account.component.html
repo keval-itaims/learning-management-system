@@ -5,9 +5,15 @@
     <a (click)="logout()">Logout</a>
   </section>
   <section class="lg:flex lg:gap-3">
-    <section class="hidden lg:flex flex-col w-40 border-r-2 gap-2 items-center">
-      <a routerLink="myaccount" routerLinkActive="active">My Account</a>
-      <a routerLink="mycourses" routerLinkActive="active">My Courses</a>
+    <section
+      class="hidden lg:flex flex-col w-40 border-r-2 gap-2 items-center min-w-max"
+    >
+      <a routerLink="myaccount" routerLinkActive="active"
+        ><span class="w-max">My Account</span></a
+      >
+      <a routerLink="mycourses" routerLinkActive="active"
+        ><span class="w-max">My Courses</span></a
+      >
       <a (click)="logout()">Logout</a>
     </section>
     <section class="flex-grow">

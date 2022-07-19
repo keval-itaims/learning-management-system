@@ -41,7 +41,6 @@ import { CourseComponent } from './components/coursespage/courses/course/course.
 import { AccountComponent } from './components/pages/account/account.component';
 import { MyaccountComponent } from './components/pages/account/myaccount/myaccount.component';
 import { MycoursesComponent } from './components/pages/account/mycourses/mycourses.component';
-import { EnrolledCourseComponent } from './components/pages/account/mycourses/enrolled-course/enrolled-course.component';
 import { FaqsComponent } from './components/pages/faqs/faqs.component';
 import { InstructorHomepageComponent } from './components/admin/instructor/instructor-homepage/instructor-homepage.component';
 import { StudentComponent } from './components/admin/student/student.component';
@@ -68,7 +67,7 @@ import { ChapterDetailsComponent } from './components/admin/admincourses/adminch
 import { ViewCourseComponent } from './components/admin/admincourses/view-course/view-course.component';
 import { UpdateChapterComponent } from './components/admin/admincourses/adminchapters/update-chapter/update-chapter.component';
 import { CourseReviewComponent } from './components/admin/course-review/course-review.component';
-import { BlogComponent } from './components/admin/blog/blog.component'
+import { BlogComponent } from './components/admin/blog/blog.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
@@ -108,7 +107,6 @@ import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-
     AccountComponent,
     MyaccountComponent,
     MycoursesComponent,
-    EnrolledCourseComponent,
     FaqsComponent,
     InstructorHomepageComponent,
     StudentComponent,
@@ -139,7 +137,7 @@ import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-
     ViewBlogComponent,
     UpdateBlogComponent,
     // ViewCourseComponent,
-],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -157,10 +155,10 @@ import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxStarRatingModule,
-    EditorModule
+    EditorModule,
     // CKEditorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
