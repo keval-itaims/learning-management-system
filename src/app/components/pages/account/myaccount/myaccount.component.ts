@@ -27,37 +27,22 @@ export class MyaccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
-    if (this.user.role === 'student') {
-      this.userForm = this.fb.group({
-        firstName: [
-          this.user.firstName,
-          [Validators.required, Validators.pattern(this.name_pattern)],
-        ],
-        lastName: [
-          this.user.lastName,
-          [Validators.required, Validators.pattern(this.name_pattern)],
-        ],
-        emailId: [this.user.emailId],
-        password: [this.user.password],
-      });
-    } else {
-      this.userForm = this.fb.group({
-        firstName: [
-          this.user.firstName,
-          [Validators.required, Validators.pattern(this.name_pattern)],
-        ],
-        lastName: [
-          this.user.lastName,
-          [Validators.required, Validators.pattern(this.name_pattern)],
-        ],
-        emailId: [this.user.emailId],
-        password: [this.user.password],
-        phoneNum: [
-          this.user.phoneNum,
-          [Validators.required, Validators.pattern('^[6789][0-9]{9}$')],
-        ],
-      });
-    }
+    this.userForm = this.fb.group({
+      firstName: [
+        this.user.firstName,
+        [Validators.required, Validators.pattern(this.name_pattern)],
+      ],
+      lastName: [
+        this.user.lastName,
+        [Validators.required, Validators.pattern(this.name_pattern)],
+      ],
+      emailId: [this.user.emailId],
+      password: [this.user.password],
+      phoneNum: [
+        this.user.phoneNum,
+        [Validators.required, Validators.pattern('^[6789][0-9]{9}$')],
+      ],
+    });
   }
   onSubmit() {
     if (!this.userForm.dirty) return;

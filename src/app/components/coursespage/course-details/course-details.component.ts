@@ -42,7 +42,7 @@ export class CourseDetailsComponent implements OnInit {
           this.course = data;
           this.courseReviews = this.course.courseReviews;
           this.user = this.userService.getUser();
-          if (!!this.user) return;
+          if (!this.user || !this.user.myCourses) return;
           this.user.myCourses.forEach((item: number) => {
             if (item === this.course.courseId) {
               this.isEnrolled = true;
@@ -59,7 +59,6 @@ export class CourseDetailsComponent implements OnInit {
   options: any | object;
   rzp1: any;
   onEnroll() {
-    this.ngOnInit();
     this.showModal = !this.showModal;
     this.isLoading = true;
     this.courseService
@@ -93,7 +92,7 @@ export class CourseDetailsComponent implements OnInit {
       },
       prefill: {
         name: `${this.user.firstName} ${this.user.lastName}`,
-        email: `${this.user.email}`,
+        email: `${this.user.emailId}`,
         contact: `${this.user.phoneNum}`,
       },
       notes: {
@@ -119,12 +118,12 @@ export class CourseDetailsComponent implements OnInit {
           ? [this.course.courseId]
           : [...this.user.myCourses, this.course.courseId];
         this.userService.saveUser(this.user);
+        this.isLoading = false;
         this.utility.openSnackBar(
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
-        this.isLoading = false;
-        this.router.navigate(['./'], { relativeTo: this.route });
+        this.ngOnInit();
       },
       (error) => {
         console.log(error);
