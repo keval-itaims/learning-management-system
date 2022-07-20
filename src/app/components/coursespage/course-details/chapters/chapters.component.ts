@@ -22,15 +22,18 @@ export class ChaptersComponent implements OnInit {
   sortChapters() {
     this.chapters = this.chapters.sort(
       (a: Chapters, b: Chapters) =>
-        new Date(b.chapterDate).getDate() - new Date(a.chapterDate).getDate()
+        new Date(b.chapterDate).getTime() - new Date(a.chapterDate).getTime()
     );
   }
   compareDateCSS(chapterDate: string) {
     let d = new Date(chapterDate);
-    return this.today.getDate() == d.getDate() ? 'current' : '';
+    return this.today.toLocaleDateString() == d.toLocaleDateString()
+      ? 'current'
+      : '';
   }
   compareDate(chapterDate: string) {
     let d = new Date(chapterDate);
-    return this.today.getDate() <= d.getDate() ? false : true;
+    let previous = new Date().setDate(this.today.getDate() - 1);
+    return previous <= d.getTime() ? false : true;
   }
 }
