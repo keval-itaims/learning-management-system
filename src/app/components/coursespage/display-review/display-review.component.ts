@@ -24,6 +24,7 @@ export class DisplayReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
+    console.log("inside ng oninit",this.course)
     this.courseReviews = this.course.courseReviews;
   }
   removeReview(id: number) {
