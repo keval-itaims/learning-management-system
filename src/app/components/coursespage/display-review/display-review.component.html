@@ -1,61 +1,48 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
-<section>
-  <div
-    aria-label="group of cards"
-    tabindex="0"
-    class="focus:outline-none py-8 w-full"
-  >
-    <div class="lg:flex lg:flex-wrap items-center justify-center w-full mt-4">
-      <div
-        *ngFor="let item of courseReviews"
-        tabindex="0"
-        aria-label="card 1"
-        class="focus:outline-none lg:w-4/12 lg:mr-7 lg:mb-4 mb-7 bg-white p-6 shadow rounded"
-      >
-        <div class="flex items-center justify-between border-b border-gray-200">
-          <div class="pl-3">
-            <p
-              tabindex="0"
-              class="focus:outline-none text-xl font-medium leading-5 text-gray-800"
-            >
-              {{ item.userName }}
-            </p>
-            <p
-              tabindex="0"
-              class="focus:outline-none text-sm md:text-base leading-normal pt-2 text-gray-500"
-            >
-              {{ item.reviewDate | date }}
-            </p>
-          </div>
-          <ngx-star-rating
-            [disabled]="true"
-            [ngModel]="item.courseRating"
-            [id]="'rate'"
-          ></ngx-star-rating>
-        </div>
-        <div class="px-2">
-          <p
-            tabindex="0"
-            class="focus:outline-none text-justify text-base leading-5 py-4 text-gray-600"
-          >
-            {{ item.reviewDescription }}
+<section class="focus:outline-none py-4 w-full">
+  <div class="lg:flex lg:flex-wrap items-center justify-center w-full mt-4">
+    <div
+      *ngFor="let item of courseReviews"
+      class="focus:outline-none lg:w-4/12 lg:mr-7 lg:mb-4 mb-7 bg-gray-100 p-3 shadow-md rounded"
+    >
+      <div class="flex items-center justify-between border-b border-gray-700">
+        <div class="pl-3">
+          <p class="focus:outline-none text-xl font-medium text-gray-800">
+            {{ item.userName }}
           </p>
-          <div
-            (click)="removeReview(item.reviewId)"
-            tabindex="0"
-            class="focus:outline-none flex"
-            *ngIf="
-              user &&
-              (item.userId == user.user_id ||
-                user.role === 'admin' ||
-                (user.role === 'tutor' && course.userId === user.user_id))
-            "
+          <p
+            class="focus:outline-none text-sm md:text-base leading-normal text-gray-500"
           >
-            <div
-              class="py-2 px-4 text-sm md:text-base leading-3 font-bold text-white rounded-full bg-red-400 hover:bg-blue-400 hover:cursor-pointer"
-            >
-              Remove Review
-            </div>
+            {{ item.reviewDate | date }}
+          </p>
+        </div>
+        <ngx-star-rating
+          [disabled]="true"
+          [ngModel]="item.courseRating"
+          [id]="'rate'"
+        ></ngx-star-rating>
+      </div>
+      <div class="px-2">
+        <p
+          class="focus:outline-none text-justify text-base leading-5 py-4 text-gray-600"
+        >
+          {{ item.reviewDescription }}
+        </p>
+        <div
+          (click)="removeReview(item.reviewId)"
+          tabindex="0"
+          class="focus:outline-none flex"
+          *ngIf="
+            user &&
+            (item.userId == user.user_id ||
+              user.role === 'admin' ||
+              (user.role === 'tutor' && course.userId === user.user_id))
+          "
+        >
+          <div
+            class="py-2 px-4 text-sm md:text-base leading-3 font-bold text-white rounded-full bg-red-400 hover:bg-blue-400 hover:cursor-pointer"
+          >
+            Remove Review
           </div>
         </div>
       </div>

@@ -1,15 +1,8 @@
-<app-spinner *ngIf="isLoading"></app-spinner>>
+<app-spinner *ngIf="isLoading"></app-spinner>
 <section class="md:w-3/4 mx-auto mt-8">
   <form>
-    <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200">
-      <div class="flex justify-between items-center py-2 px-3 border-b">
-        <!-- <div class="flex flex-wrap items-center justify-between divide-gray-200 sm:divide-x dark:divide-gray-600"> -->
-
-        <!-- <div class="relative w-16 h-16">
-                                    <img class="rounded-full border border-gray-100 shadow-sm" src="https://randomuser.me/api/portraits/women/81.jpg" alt="user image" />
-                                    <div class="absolute top-0 right-0 h-4 w-4 my-1 border-2 border-white rounded-full bg-green-400 z-2"></div>
-                                </div> -->
-
+    <div class="mb-4 w-full bg-gray-100 rounded-lg border border-gray-300">
+      <div class="flex justify-between items-center p-2 border-b">
         <div class="ml-4 text-xl">
           {{ user ? user.firstName + " " + user.lastName : "" }}
         </div>
@@ -17,16 +10,15 @@
           <button
             type="submit"
             (click)="onClick()"
-            class="inline-flex items-center px-5 py-2.5 text-base md:text-xl font-bold text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-500"
+            class="inline-flex items-center px-4 py-2 text-base md:text-xl font-bold text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-500"
           >
             Publish
           </button>
         </div>
-        <!-- </div> -->
       </div>
-      <div class="py- px-4 bg-white rounded-b-lg">
+      <div class="py-4 px-4 bg-white rounded-b-lg">
         <div
-          class="py-4 flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2"
+          class="py-3 flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2"
         >
           <div class="text-sm md:text-xl">How good was our course?</div>
           <ngx-star-rating
@@ -41,7 +33,7 @@
           #r="ngModel"
           [ngModelOptions]="{ standalone: true }"
           [(ngModel)]="reviewDescription"
-          class="block px-4 mb-4 w-full text-base md:text-xl text-gray-800 bg-gray-100 border-0 focus:ring-0"
+          class="block p-3 w-full text-base md:text-xl text-gray-800 bg-gray-100 focus:ring-0"
           placeholder="Write your thoughts about this course..."
           required
         ></textarea>

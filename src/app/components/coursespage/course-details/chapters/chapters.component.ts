@@ -1,30 +1,36 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chapters } from 'src/app/classes/chapters';
 import { CourseResponse } from 'src/app/classes/course-response';
-import {faCheckCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-chapters',
   templateUrl: './chapters.component.html',
-  styleUrls: ['./chapters.component.css']
+  styleUrls: ['./chapters.component.css'],
 })
 export class ChaptersComponent implements OnInit {
-
   check = faCheckCircle;
   today = new Date();
-  @Input() course: CourseResponse|any;
+  @Input() course: CourseResponse | any;
   chapters: Chapters[] | any;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.chapters = this.course.chapters;
+    this.sortChapters();
   }
-  compareDateCSS(chapterDate : string){
+  sortChapters() {
+    this.chapters = this.chapters.sort(
+      (a: Chapters, b: Chapters) =>
+        new Date(b.chapterDate).getDate() - new Date(a.chapterDate).getDate()
+    );
+  }
+  compareDateCSS(chapterDate: string) {
     let d = new Date(chapterDate);
     return this.today.getDate() == d.getDate() ? 'current' : '';
   }
-  compareDate(chapterDate: string){
+  compareDate(chapterDate: string) {
     let d = new Date(chapterDate);
     return this.today.getDate() <= d.getDate() ? false : true;
-  } 
+  }
 }

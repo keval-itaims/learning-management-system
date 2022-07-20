@@ -38,9 +38,13 @@ export class NavbarComponent implements OnInit {
   }
   onSearch() {
     if (!this.search.trim()) return;
-    this.router.navigate(['/courses'], {
-      relativeTo: this.route,
-      state: { search: this.search },
-    });
+    this.router
+      .navigate(['courses'], {
+        relativeTo: this.route,
+        state: { search: this.search },
+      })
+      .then(() => {
+        this.search = '';
+      });
   }
 }

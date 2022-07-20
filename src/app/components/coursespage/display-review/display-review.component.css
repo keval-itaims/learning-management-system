@@ -11,6 +11,6 @@
 
 @media screen and (min-width: 1024px) {
     ::ng-deep label.star {
-        font-size: 34px !important;
+        font-size: 30px !important;
     }
 }

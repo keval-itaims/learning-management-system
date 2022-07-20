@@ -20,7 +20,6 @@ export class CourseDetailsComponent implements OnInit {
   isEnrolled = false;
   isLoading = false;
   course: CourseResponse | any;
-  courseReviews: UserReview[] | any;
   user: User | any;
   showModal = false;
 
@@ -40,7 +39,6 @@ export class CourseDetailsComponent implements OnInit {
         (data) => {
           this.isLoading = false;
           this.course = data;
-          this.courseReviews = this.course.courseReviews;
           this.user = this.userService.getUser();
           if (!this.user || !this.user.myCourses) return;
           this.user.myCourses.forEach((item: number) => {
@@ -123,7 +121,7 @@ export class CourseDetailsComponent implements OnInit {
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
-        this.refreshComponent();
+        this.ngOnInit();
       },
       (error) => {
         console.log(error);
