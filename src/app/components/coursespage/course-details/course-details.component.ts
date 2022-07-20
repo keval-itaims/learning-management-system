@@ -123,7 +123,7 @@ export class CourseDetailsComponent implements OnInit {
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
-        this.refreshComponent();
+        this.ngOnInit();
       },
       (error) => {
         console.log(error);
