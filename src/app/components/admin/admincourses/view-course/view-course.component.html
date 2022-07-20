@@ -55,3 +55,15 @@
     </div>
   </div>
 </div>
+<div class="m-3 flex flex-col">
+  <div class="bg-amber-400 p-2">
+    <h1 class="text-xl text-center p-2">Course Review</h1>
+  </div>
+  <div class="m-2">
+    <app-display-review
+      (refresh)="refreshComponent()"
+      *ngIf="courseDetail"
+      [course]="courseDetail"
+    ></app-display-review>
+  </div>
+</div>
