@@ -1,6 +1,9 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <section>
-  <div *ngIf="!enrolledCourses" class="grid place-items-center gap-3 mt-10">
+  <div
+    *ngIf="enrolledCourses.length == 0"
+    class="grid place-items-center gap-3 mt-10"
+  >
     <p class="text-red-400 text-xl">You haven't enrolled any course yet...!</p>
     <button
       (click)="onClick()"
@@ -11,7 +14,7 @@
   </div>
   <section
     *ngIf="myCourses"
-    class="flex gap-5 flex-wrap items-center justify-center"
+    class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 place-items-center"
   >
     <app-course *ngFor="let course of myCourses" [course]="course">
     </app-course>

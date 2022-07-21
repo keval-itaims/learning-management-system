@@ -27,7 +27,7 @@ export class MycoursesComponent implements OnInit {
     this.isLoading = true;
     this.user = this.userService.getUser();
     this.enrolledCourses = this.user.myCourses;
-    if (!this.enrolledCourses) {
+    if (this.enrolledCourses.length == 0) {
       this.isLoading = false;
       return;
     }
