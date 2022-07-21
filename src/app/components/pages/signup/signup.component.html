@@ -226,7 +226,7 @@
 <!-- Model -->
 <div
   *ngIf="showModal"
-  class="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full justify-center items-center flex"
+  class="fixed top-0 left-0 right-0 z-50 w-50px overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full justify-center items-center flex"
   role="dialog"
 >
   <div class="relative w-full h-full max-w-2xl p-4 md:h-auto">
@@ -248,7 +248,7 @@
             required
             size="6"
             #r="ngModel"
-            class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-full pl-3 mt-2"
+            class="text-base border rounded font-medium leading-none text-gray-800 py-2 w-50px pl-3 mt-2"
           />
         </div>
         <div class="bg-red-300 w-full" *ngIf="(r.invalid && r.touched) || otpError">
