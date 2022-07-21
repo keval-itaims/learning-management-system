@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/classes/user';
 import { SignupService } from 'src/app/services/signup.service';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEye,
+  faEyeSlash,
+  faLessThanEqual,
+} from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -16,6 +20,13 @@ export class SignupComponent implements OnInit {
   faEyeSlash = faEyeSlash;
   regForm: FormGroup | any;
   user: User = new User();
+  showModal = false;
+  otp: number | any;
+  inputotp: number | any;
+
+  otpError = false;
+
+  email = '';
 
   //patterns
   password_pattern =
@@ -65,29 +76,55 @@ export class SignupComponent implements OnInit {
     let repeatPassword = this.regForm.controls['repeatPassword'].value;
     this.match_password_error = pass === repeatPassword ? false : true;
   }
+
   onSubmit() {
     if (this.regForm.invalid) return;
     this.isLoading = true;
     this.user = this.regForm.value;
-    this.signupService.signup(this.user).subscribe(
-      (data) => {
-        this.isLoading = false;
-        if (data === null) {
-          this.emailError = true;
-          return;
-        } else {
-          this.emailError = false;
-          this.utilityService.openSnackBar(
-            'Account registered successfully!',
-            'Dismiss'
-          );
-          this.router.navigate(['../login'], { relativeTo: this.route });
+    this.signupService
+      .otpGeneration({
+        emailId: this.user.emailId,
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+      })
+      .subscribe(
+        (otp) => {
+          this.otp = otp;
+          this.isLoading = false;
+          this.showModal = !this.showModal;
+        },
+        (error) => {
+          console.log(error);
+          this.isLoading = false;
         }
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
-    );
+      );
+  }
+  onRegister() {
+    this.otpError = this.otp == this.inputotp ? false : true;
+    if (this.otpError) return;
+    if (!this.otpError) {
+      this.isLoading = true;
+      this.showModal = !this.showModal;
+      this.signupService.signup(this.user).subscribe(
+        (data) => {
+          this.isLoading = false;
+          if (data === null) {
+            this.emailError = true;
+            return;
+          } else {
+            this.emailError = false;
+            this.utilityService.openSnackBar(
+              'Account registered successfully!',
+              'Dismiss'
+            );
+            this.router.navigate(['../login'], { relativeTo: this.route });
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.isLoading = false;
+        }
+      );
+    }
   }
 }

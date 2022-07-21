@@ -16,4 +16,8 @@ export class SignupService {
   signup(user: User): Observable<User>{
     return this.http.post<User>(`${this.url}/register`, user);
   }
+
+  otpGeneration(data:object): Observable<number>{
+    return this.http.post<number>(`${this.url}/register/sendotp`, data);
+  }
 }
