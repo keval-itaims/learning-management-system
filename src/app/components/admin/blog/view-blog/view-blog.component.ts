@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/classes/blog';
@@ -38,10 +39,11 @@ export class ViewBlogComponent implements OnInit {
 
   private loadHTML(blogBody:string){
     this.blogContent.nativeElement.innerHTML = blogBody
+   
   }
 
   onUpdateBlog(){
-    this.router.navigate(['admin/blog/update/',this.id])
+
   }
 
   onDeleteBlog(){
