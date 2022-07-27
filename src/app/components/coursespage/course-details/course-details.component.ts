@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faStar, faClock, faInr } from '@fortawesome/free-solid-svg-icons';
 import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
-import { UserReview } from 'src/app/classes/user-review';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -121,7 +120,7 @@ export class CourseDetailsComponent implements OnInit {
           'Course enrolled! Happy learning!',
           'Dismiss'
         );
-        this.ngOnInit();
+        this.refreshComponent();
       },
       (error) => {
         console.log(error);
