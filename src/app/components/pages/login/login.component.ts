@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   show_pass = false;
   emailError = false;
   passwordError = false;
+  statusError=false;
   isLoading = false;
   loginForm: FormGroup | any;
   login: UserLogin = new UserLogin();
@@ -48,7 +49,8 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.emailError = data.emailError;
         this.passwordError = data.passwordError;
-        if (this.emailError || this.passwordError) return;
+        this.statusError=data.statusError
+        if (this.emailError || this.passwordError || this.statusError) return;
         else {
           this.userService.saveUser(data);
           this.utilityService.openSnackBar(

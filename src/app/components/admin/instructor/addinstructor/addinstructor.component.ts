@@ -48,6 +48,7 @@ export class AddinstructorComponent implements OnInit {
     this.message = ''
     this.instructor = this.instructorForm.value;
     this.instructor.role = "tutor";
+    this.instructor.status= true;
     this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
       data => {
         if(data!=null){

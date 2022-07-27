@@ -98,10 +98,10 @@
       </div>
     </div>
   </section>
-  <app-chapters *ngIf="course" [course]="course"></app-chapters>
+  <app-chapters *ngIf="course && isEnrolled" [course]="course"></app-chapters>
   <app-add-review
     (refresh)="refreshComponent()"
-    *ngIf="course"
+    *ngIf="course && course.courseStatus==='past'"
     [courseId]="course.courseId"
   ></app-add-review>
   <app-display-review

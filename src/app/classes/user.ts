@@ -11,4 +11,6 @@ export class User {
     myCourses!: number[]
     emailError!: boolean;
     passwordError!: boolean;
+    status!: boolean;
+    statusError!:boolean;
 }

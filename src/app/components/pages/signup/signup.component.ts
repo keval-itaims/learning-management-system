@@ -64,6 +64,7 @@ export class SignupComponent implements OnInit {
       ],
       repeatPassword: ['', [Validators.required]],
       role: ['student'],
+      status:[true],
       phoneNum: [
         this.user.phoneNum,
         [Validators.required, Validators.pattern('^[6789][0-9]{9}$')],

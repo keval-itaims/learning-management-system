@@ -53,6 +53,11 @@
               user doesn't exist with this email address
             </p>
           </div>
+          <div class="bg-red-300 w-full" *ngIf="statusError">
+            <p class="text-sm text-gray-800 rounded px-2 py-1">
+              Your account is blocked, please contact admin for further queries
+            </p>
+          </div>
         </div>
 
         <div class="mt-4">
@@ -92,7 +97,7 @@
               Invalid password
             </p>
           </div>
-        </div>
+         </div>
 
         <div class="mt-6 text-center">
           <input
