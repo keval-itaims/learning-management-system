@@ -1,5 +1,5 @@
 export class User {
-    user_id !: number;
+    userId !: number;
     firstName!: string;
     lastName!: string;
     emailId!: string;
@@ -12,5 +12,4 @@ export class User {
     emailError!: boolean;
     passwordError!: boolean;
     status!: boolean;
-    statusError!:boolean;
 }

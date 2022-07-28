@@ -73,9 +73,6 @@ export class InstructorDetailComponent implements OnInit {
             error => console.log(error)
           )
         }
-        else {
-
-        }
 
       }
     )

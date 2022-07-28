@@ -1,11 +1,12 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faStar, faClock, faInr } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faClock, faInr, faListSquares } from '@fortawesome/free-solid-svg-icons';
 import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { LoginService } from 'src/app/services/login.service'
 
 @Component({
   selector: 'app-course-details',
@@ -27,7 +28,8 @@ export class CourseDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private courseService: CourseService,
     private userService: UserService,
-    private utility: UtilityService
+    private utility: UtilityService,
+    private loginService:LoginService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +58,8 @@ export class CourseDetailsComponent implements OnInit {
   options: any | object;
   rzp1: any;
   onEnroll() {
+    if(this.loginService.isLoggedIn())
+    {
     this.showModal = !this.showModal;
     this.isLoading = true;
     this.courseService
@@ -68,8 +72,11 @@ export class CourseDetailsComponent implements OnInit {
           console.log(error);
           this.isLoading = false;
         }
-      );
-  }
+        
+      );}
+      else
+      this.router.navigate(['/homepage/login'], { relativeTo: this.route });
+}
   makePayment(response: any) {
     this.options = {
       key: 'rzp_test_0OYWVJUOQXo91j',

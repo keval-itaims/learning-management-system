@@ -124,7 +124,7 @@
           <mat-select formControlName="userId" required>
             <mat-option
               *ngFor="let instructor of instructorDetail"
-              [value]="instructor.user_id"
+              [value]="instructor.userId"
               >{{ instructor.firstName }} {{ instructor.lastName }}</mat-option
             >
           </mat-select>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CourseResponse } from 'src/app/classes/course-response';
+import { User } from 'src/app/classes/user';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CourseService } from 'src/app/services/course.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -13,6 +14,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class CoursesDetailsComponent implements OnInit {
 
+  user:User|any;
   courseDetails:CourseResponse[]  = []
   isLoading : boolean = true
   displayedColumns: string[] = ['courseImage', 'courseDate','courseName','coursePrice', 'action'];

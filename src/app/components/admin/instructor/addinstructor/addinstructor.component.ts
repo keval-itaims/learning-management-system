@@ -52,12 +52,13 @@ export class AddinstructorComponent implements OnInit {
     this.instructorService.registerInstructorFromRemote(this.instructor).subscribe(
       data => {
         if(data!=null){
+          console.log(data);
           this.instructor = data;
           if(this.profileImage!==undefined){
 
             const formData = new FormData();
             formData.append('profileImage',this.profileImage,this.profileImage.name);
-            this.instructorService.uploadProfileImage(this.instructor.user_id,formData).subscribe(
+            this.instructorService.uploadProfileImage(this.instructor.userId,formData).subscribe(
               event =>{
                 if(event.type === HttpEventType.UploadProgress){
                   if(event.total){

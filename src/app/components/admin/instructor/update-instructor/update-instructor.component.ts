@@ -69,7 +69,7 @@ export class UpdateInstructorComponent implements OnInit {
     this.instructor.emailId = this.instructorForm.value.emailId;
     this.instructor.phoneNum = this.instructorForm.value.phoneNum;
     alert(this.instructor.firstName);
-    this.instructor.user_id = this.id;
+    this.instructor.userId = this.id;
     this.instructorService.updateInstructor(this.instructor).subscribe(
       data => {
         this.utilityService.openSnackBar("Instructor updated!","close")

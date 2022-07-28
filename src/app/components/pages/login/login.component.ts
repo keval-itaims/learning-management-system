@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.emailError = data.emailError;
         this.passwordError = data.passwordError;
-        this.statusError=data.statusError
+        this.statusError=!data.status;
         if (this.emailError || this.passwordError || this.statusError) return;
         else {
           this.userService.saveUser(data);
@@ -58,8 +58,13 @@ export class LoginComponent implements OnInit {
             'Dismiss'
           );
           if (data.role === 'student') this.router.navigate(['/']);
-          else
+          else if(data.role ==='tutor')
             this.router.navigate(['../../admin'], { relativeTo: this.route });
+          else
+          this.router.navigate(['../../admin'], { relativeTo: this.route });
+
+
+          
         }
       },
       (error) => {

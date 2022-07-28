@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/classes/user';
 import { LoginService } from 'src/app/services/login.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -9,7 +10,7 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-
+  user:User|any;
   constructor(private loginService: LoginService,
     private router: Router, private utilityService: UtilityService) { }
 
