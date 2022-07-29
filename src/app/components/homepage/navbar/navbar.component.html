@@ -34,6 +34,7 @@
     <ul class="hidden md:flex gap-3 md:gap-5 xl:gap-8">
       <a routerLink="main" routerLinkActive="active"><li>Home</li></a>
       <a routerLink="courses" routerLinkActive="active"><li>Courses</li></a>
+      <a routerLink="blogs" routerLinkActive="active"><li>Blog</li></a>
       <a routerLink="contact" routerLinkActive="active" class="w-max"
         ><li>Contact Us</li></a
       >
@@ -67,6 +68,10 @@
     <hr class="m-1 mb-2 border border-gray-300" />
     <a routerLink="courses" routerLinkActive="active" (click)="sidebar = false"
       ><li>Courses</li></a
+    >
+    <hr class="m-1 mb-2 border border-gray-300" />
+    <a routerLink="blogs" routerLinkActive="active" (click)="sidebar = false"
+      ><li>Blog</li></a
     >
     <hr class="m-1 mb-2 border border-gray-300" />
     <a routerLink="contact" routerLinkActive="active" (click)="sidebar = false"

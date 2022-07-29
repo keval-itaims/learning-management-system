@@ -7,13 +7,17 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar class="sidenav-header">
+    <mat-toolbar class="sidenav-header"><br>
       <img
         class="sidenav-user-image"
-        src="../../../../assets/images/user.jpg"
+        [src]="
+        user.profileImage
+          ? 'data:image/png;base64,' + user.profileImage
+          : '../assets/images/tutor 2.png'
+      "
         alt=""
       />
-      <h2>Instructors Name</h2>
+      <h2>{{user.firstName }} {{user.lastName}}</h2>
     </mat-toolbar>
 
     <mat-nav-list class="sidenav-list">
@@ -26,7 +30,7 @@
         >Dashboard</a
       >
 
-      <a mat-list-item routerLink="/admin/blog/detail" routerLinkActive="active"
+      <a *ngIf="user.role==='admin'"  mat-list-item  routerLink="/admin/blog/detail" routerLinkActive="active"
         ><mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
@@ -48,6 +52,7 @@
       </a>
 
       <a mat-list-item
+        *ngIf="user.role==='admin'"
         ><mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
@@ -68,7 +73,7 @@
       </a>
 
       <a
-       
+      *ngIf="user.role==='admin'"
         mat-list-item
         routerLink="/admin/contact-us/detail"
         routerLinkActive="active"
@@ -95,13 +100,14 @@
           >group</mat-icon
         >Student</a
       >
-      <a mat-list-item href="#" routerLink="/homepage/main" routerLinkActive="active"
+      <a mat-list-item href="#" (click)="logout()"
         ><mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
           style="margin-right: 10px"
+          
           >logout</mat-icon
-        >Back To home</a
+        >Log Out</a
       >
     </mat-nav-list>
   </mat-sidenav>

@@ -5,6 +5,7 @@ import { CourseResponse } from 'src/app/classes/course-response';
 import { User } from 'src/app/classes/user';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CourseService } from 'src/app/services/course.service';
+import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
@@ -14,25 +15,39 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class CoursesDetailsComponent implements OnInit {
 
+
   user:User|any;
-  courseDetails:CourseResponse[]  = []
-  isLoading : boolean = true
+  courseDetails: CourseResponse[] | any = [];
+  isLoading : boolean = false
   displayedColumns: string[] = ['courseImage', 'courseDate','courseName','coursePrice', 'action'];
   dataSource: MatTableDataSource<CourseResponse[]> | any;
 
-  constructor(private courseService:CourseService,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService,private router:Router) { }
+  constructor(private courseService:CourseService,private confirmDialogService:ConfirmDialogService,private utilityService:UtilityService,private router:Router,private userService:UserService) { }
 
 
   ngOnInit(): void {
+    this.isLoading=true
+    this.user=this.userService.getUser()
     this.getAllCourses()
+    
+   
+   
   }
 
   private getAllCourses(){
     this.courseService.getAllCourses().subscribe(
       data =>{
         this.courseDetails = data;
+        if(this.user.role==='tutor'){
+          
+          this.courseDetails=this.courseDetails.filter((course:CourseResponse)=> {
+            
+            return course.userId==this.user.userId
+          })
+        }
         this.dataSource = new MatTableDataSource(this.courseDetails);
         this.isLoading = false
+      
       },
       error => {
         this.isLoading = false
@@ -41,6 +56,7 @@ export class CoursesDetailsComponent implements OnInit {
     )
   }
 
+ 
   onViewCourse(element:any){
     let id = element.courseId;
     this.router.navigate(['/admin/courses/view',id])

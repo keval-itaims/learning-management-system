@@ -48,13 +48,13 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   onUpdateInstructor(element: any) {
-    let id = element.user_id;
+    let id = element.userId;
     this.router.navigate(['/admin/instructor/update/', id]);
 
   }
 
   onDeleteInstrcutor(element: any) {
-    let id = element.user_id;
+    let id = element.userId;
     alert("user Id : " + id)
     this.confirmDialogService.openConfirmDialog({
       title: 'Delete Instructor',

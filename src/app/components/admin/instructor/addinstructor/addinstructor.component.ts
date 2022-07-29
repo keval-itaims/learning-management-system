@@ -60,9 +60,11 @@ export class AddinstructorComponent implements OnInit {
             formData.append('profileImage',this.profileImage,this.profileImage.name);
             this.instructorService.uploadProfileImage(this.instructor.userId,formData).subscribe(
               event =>{
+                console.log(event)
                 if(event.type === HttpEventType.UploadProgress){
                   if(event.total){
-                    let progress = Math.round(event.loaded / event.total) * 100;
+                    let progress = Math.round(event.loaded / event.total * 100) ;
+                    console.log(progress)
                     if(progress===100){
                       setTimeout(()=>{
                         this.isLoading = false;

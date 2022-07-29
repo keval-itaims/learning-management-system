@@ -41,6 +41,7 @@ import { AddBlogComponent } from './components/admin/blog/add-blog/add-blog.comp
 import { BlogDetailsComponent } from './components/admin/blog/blog-details/blog-details.component';
 import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.component';
 import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-blog.component';
+import { BlogsComponent } from './components/pages/blogs/blogs.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
@@ -95,6 +96,7 @@ const routes: Routes = [
     {path:'course/:id', component:CourseDetailsComponent},
     {path:'login', component:LoginComponent},
     {path:'forgot-password', component:ForgotPasswordComponent},
+    {path:'blogs',component:BlogsComponent},
     {path:'account', component:AccountComponent, children:[
       {path:'', redirectTo:'myaccount', pathMatch: 'full'},
       {path:'myaccount', component:MyaccountComponent},
