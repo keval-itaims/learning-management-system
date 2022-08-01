@@ -38,7 +38,7 @@ export class AdminsidebarComponent implements OnInit{
      logout(){
     this.loginService.logout();
     this.utilityService.openSnackBar("Logged out successfully!", "Dismiss");
-    this.router.navigate(['/']);
+    this.router.navigate(['/homepage/main']);
 
   }
 

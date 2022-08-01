@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
       ],
       repeatPassword: ['', [Validators.required]],
       role: ['student'],
-      status:[true],
+      status: [true],
       phoneNum: [
         this.user.phoneNum,
         [Validators.required, Validators.pattern('^[6789][0-9]{9}$')],
@@ -90,8 +90,15 @@ export class SignupComponent implements OnInit {
       })
       .subscribe(
         (otp) => {
+          if (otp === null) {
+            this.emailError = true;
+            this.isLoading = false;
+            return;
+          }
+
           this.otp = otp;
           this.isLoading = false;
+          this.emailError = false;
           this.showModal = !this.showModal;
         },
         (error) => {
