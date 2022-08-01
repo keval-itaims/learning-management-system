@@ -39,7 +39,7 @@ export class AddReviewComponent implements OnInit {
 
     this.userReview.courseRating = this.courseRating;
     this.userReview.reviewDescription = this.reviewDescription;
-    this.userReview.userId = this.user.user_id;
+    this.userReview.userId = this.user.userId;
     this.userReview.courseId = this.courseId;
 
     this.courseService.addReview(this.userReview).subscribe(

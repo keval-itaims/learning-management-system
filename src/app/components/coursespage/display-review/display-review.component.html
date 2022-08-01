@@ -34,9 +34,9 @@
           class="focus:outline-none flex"
           *ngIf="
             user &&
-            (item.userId == user.user_id ||
+            (item.userId == user.userId ||
               user.role === 'admin' ||
-              (user.role === 'tutor' && course.userId === user.user_id))
+              (user.role === 'tutor' && course.userId === user.userId))
           "
         >
           <div

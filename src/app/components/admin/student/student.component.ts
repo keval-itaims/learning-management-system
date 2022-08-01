@@ -78,7 +78,7 @@ export class StudentComponent implements OnInit {
 
   }
   onDeleteStudent(element:any){
-    let id = element.user_id;
+    let id = element.userId;
     this.deleteStudent(id);
   }
 

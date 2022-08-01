@@ -114,7 +114,7 @@ export class CourseDetailsComponent implements OnInit {
   onPaymentSuccess(event: any): void {
     this.isLoading = true;
     this.options.courseId = this.course.courseId;
-    this.options.userId = this.user.user_id;
+    this.options.userId = this.user.userId;
     this.options.payment_id = event.detail.razorpay_payment_id;
     this.courseService.enrollCourse(this.options).subscribe(
       (_) => {
