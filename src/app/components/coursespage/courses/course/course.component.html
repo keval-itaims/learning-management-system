@@ -23,9 +23,9 @@
         >{{ course.courseDuration }} weeks
       </div>
       <div
-        class="rounded-full bg-red-500 text-white grid place-items-center h-14 w-14"
+        class="rounded-full bg-red-500 text-white grid place-items-center h-14 w-18"
       >
-        ${{ course.coursePrice }}
+        &#8377;  {{ course.coursePrice }}
       </div>
       <div *ngIf="course.courseStatus == 'past'">
         {{ course.courseRating == 0 ? "N/A" : course.courseRating
