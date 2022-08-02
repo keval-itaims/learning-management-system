@@ -5,6 +5,7 @@ import { Instructor } from '../classes/instructor';
 import { Observable, ObservableNotification } from 'rxjs';
 import { User } from '../classes/user';
 import { identifierName } from '@angular/compiler';
+import { CourseResponse } from '../classes/course-response';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class InstructorService {
 
   public updateInstructor(instructor:User):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}`,instructor);
+  }
+
+  public courseDetails(userId:number):Observable<CourseResponse>{
+    return this.httpClient.get<CourseResponse>(`http://localhost:8080/getTutorCourses/${userId}`)
   }
 
   public deleteInstructor(id:number):Observable<Object>{

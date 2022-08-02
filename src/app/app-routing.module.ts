@@ -43,6 +43,7 @@ import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.c
 import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-blog.component';
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
 import { StudentDetailsComponent } from './components/admin/admincourses/student-details/student-details.component';
+import { InstructorCourseComponent } from './components/admin/instructor/instructor-course/instructor-course.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
         {path:'detail',component:InstructorDetailComponent},
         {path:'create',component:AddinstructorComponent},
         {path:'update/:id',component:UpdateInstructorComponent},
+        {path:'instructorcourse/:id',component:InstructorCourseComponent}
     ]},
     {path:'contact-us',component:ContactusHomepageComponent,children:[
       {path:'',redirectTo:'detail',pathMatch:'full'},

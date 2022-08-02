@@ -61,35 +61,40 @@ export class InstructorDetailComponent implements OnInit {
     )
   }
 
-  onUpdateInstructor(element: any) {
+  // onUpdateInstructor(element: any) {
+  //   let id = element.userId;
+  //   this.router.navigate(['/admin/instructor/update/', id]);
+
+  // }
+
+  // onDeleteInstrcutor(element: any) {
+  //   let id = element.userId;
+  //   alert("user Id : " + id)
+  //   this.confirmDialogService.openConfirmDialog({
+  //     title: 'Delete Instructor',
+  //     message: 'Are you sure?',
+  //     confirmText: 'Delete',
+  //     cancleText: 'Cancle'
+  //   }).subscribe(
+  //     result => {
+  //       if (result) {
+  //         this.instructorService.deleteInstructor(id).subscribe(
+  //           data => {
+  //             this.utilityService.openSnackBar("Instructor deleted!", "close");
+  //             this.getInstructor();
+
+  //           },
+  //           error => console.log(error)
+  //         )
+  //       }
+
+  //     }
+  //   )
+  // }
+
+  onViewDetails(element:any){
     let id = element.userId;
-    this.router.navigate(['/admin/instructor/update/', id]);
-
-  }
-
-  onDeleteInstrcutor(element: any) {
-    let id = element.userId;
-    alert("user Id : " + id)
-    this.confirmDialogService.openConfirmDialog({
-      title: 'Delete Instructor',
-      message: 'Are you sure?',
-      confirmText: 'Delete',
-      cancleText: 'Cancle'
-    }).subscribe(
-      result => {
-        if (result) {
-          this.instructorService.deleteInstructor(id).subscribe(
-            data => {
-              this.utilityService.openSnackBar("Instructor deleted!", "close");
-              this.getInstructor();
-
-            },
-            error => console.log(error)
-          )
-        }
-
-      }
-    )
+    this.router.navigate(['/admin/instructor/instructorcourse',id])
   }
 
   applyFilter(event: Event) {
