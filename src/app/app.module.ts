@@ -77,6 +77,7 @@ import { ViewBlogComponent } from './components/admin/blog/view-blog/view-blog.c
 import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-blog.component';
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
 import { StudentDetailsComponent } from './components/admin/admincourses/student-details/student-details.component';
+import { ViewblogComponent } from './components/pages/viewblog/viewblog.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import { StudentDetailsComponent } from './components/admin/admincourses/student
     UpdateBlogComponent,
     BlogsComponent,
     StudentDetailsComponent,
+    ViewblogComponent,
     // ViewCourseComponent,
   ],
   imports: [

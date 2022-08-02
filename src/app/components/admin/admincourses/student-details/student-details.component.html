@@ -1,1 +1,71 @@
-<p>student-details works!</p>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="flex justify-center pt-4 w-full items-center">
+  <h1 class="border-b-4 border-blue-600 p-1">Student</h1>
+</div>
+
+<div class="m-2 w-auto">
+  <div class="flex justify-between items-center mt-1 lg:ml-32 ml-0">
+    <mat-form-field
+      appearance="standard"
+      *ngIf="studentDetail.length > 0 && !isLoading"
+    >
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. ium"
+        #input
+      />
+    </mat-form-field>
+  </div>
+  <div *ngIf="studentDetail.length === 0 && !isLoading" class="text-center">
+    <h2>Student data not found!</h2>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 w-full lg:w-3/4 mx-auto"
+    *ngIf="studentDetail.length > 0"
+  >
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- First Name Column -->
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="emailId">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
+    </ng-container>
+
+    <!-- PhoneNO Column -->
+    <ng-container matColumnDef="phoneNo">
+      <th mat-header-cell *matHeaderCellDef>Contact No</th>
+      <td mat-cell *matCellDef="let element">{{ element.phoneNum }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <!-- <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="onDeleteStudent(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

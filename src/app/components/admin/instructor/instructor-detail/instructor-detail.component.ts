@@ -20,6 +20,8 @@ export class InstructorDetailComponent implements OnInit {
 
   instructorDetail : User[] = [];
   isLoading: boolean = true;
+  previousTutor : User[] = [];
+  
 
   constructor(private instructorService: InstructorService, private router: Router, private confirmDialogService: ConfirmDialogService, private utilityService: UtilityService) { }
 
@@ -35,9 +37,21 @@ export class InstructorDetailComponent implements OnInit {
 
   private getInstructor() {
     this.instructorService.getInstructorDetails().subscribe(
+
       data => {
+
+
         this.isLoading = false;
-        this.instructorDetail = data;
+        this.instructorDetail = data.filter((item:User)=>
+        {
+          return item.status==true;
+        }
+        );
+        this.previousTutor = data.filter((item:User)=>
+        {
+          return item.status==false;
+        }
+        );
         this.dataSource = new MatTableDataSource(this.instructorDetail);
       },
       error => {

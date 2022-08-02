@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/pages/about/about.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { ErrorComponent } from './components/pages/error/error.component';
@@ -44,6 +44,7 @@ import { UpdateBlogComponent } from './components/admin/blog/update-blog/update-
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
 import { StudentDetailsComponent } from './components/admin/admincourses/student-details/student-details.component';
 
+
 const routes: Routes = [
   {path:'', redirectTo:'homepage', pathMatch: 'full'},
   {path:'create-instructor',component:AddinstructorComponent},
@@ -70,7 +71,7 @@ const routes: Routes = [
       {path:'view/:id',component:ViewCourseComponent},
       {path:'detail',component:CoursesDetailsComponent},
       {path:'update/:id',component:UpdateCourseComponent},
-      {path:'students/:id',component:StudentDetailsComponent},
+      {path:'students/:courseId',component:StudentDetailsComponent},
       {path:'chapter',component:AdminchaptersComponent,children:[
         {path:'',redirectTo:'detail',pathMatch:'full'},
         {path:'add/:id',component:AddchapterComponent},

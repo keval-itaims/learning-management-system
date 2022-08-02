@@ -29,6 +29,10 @@ export class CourseService {
   deleteCourse(courseId: number): Observable<string> {
     return this.http.delete<string>(`${this.url}/course/${courseId}`);
   }
+   studentDetails(courseId:number):Observable<CourseResponse>{
+    return this.http.get<CourseResponse>(`${this.url}/enrolled-student/${courseId}`)
+  }
+
   public uploadCourseImage(
     id: number,
     formData: FormData

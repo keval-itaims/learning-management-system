@@ -30,5 +30,9 @@ export class BlogsComponent implements OnInit {
     )
   }
 
+  onViewBlog(id:number){
+    this.router.navigate(['homepage/viewblog',id])
+  }
+
 
 }
