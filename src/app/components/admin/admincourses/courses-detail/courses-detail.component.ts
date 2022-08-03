@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CourseResponse } from 'src/app/classes/course-response';
@@ -7,6 +7,7 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-courses-detail',
@@ -15,7 +16,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class CoursesDetailsComponent implements OnInit {
 
-
+  @ViewChild(MatPaginator) paginator!:MatPaginator
   user:User|any;
   courseDetails: CourseResponse[] | any = [];
   isLoading : boolean = false
@@ -45,7 +46,9 @@ export class CoursesDetailsComponent implements OnInit {
             return course.userId==this.user.userId
           })
         }
+        
         this.dataSource = new MatTableDataSource(this.courseDetails);
+        this.dataSource.paginator=this.paginator
         this.isLoading = false
       
       },

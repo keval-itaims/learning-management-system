@@ -144,6 +144,7 @@ import { InstructorCourseComponent } from './components/admin/instructor/instruc
     StudentDetailsComponent,
     ViewblogComponent,
     InstructorCourseComponent,
+    
     // ViewCourseComponent,
   ],
   imports: [

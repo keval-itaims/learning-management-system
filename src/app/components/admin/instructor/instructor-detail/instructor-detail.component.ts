@@ -1,4 +1,4 @@
-import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit,ViewChild } from '@angular/core';
 import { Instructor } from 'src/app/classes/instructor';
 import { MatTableDataSource } from '@angular/material/table';
 import { InstructorService } from 'src/app/services/instructor.service';
@@ -7,6 +7,7 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { User } from 'src/app/classes/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 
@@ -18,6 +19,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class InstructorDetailComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator!:MatPaginator
   instructorDetail : User[] = [];
   isLoading: boolean = true;
   previousTutor : User[] = [];
@@ -52,7 +54,10 @@ export class InstructorDetailComponent implements OnInit {
           return item.status==false;
         }
         );
+      
         this.dataSource = new MatTableDataSource(this.instructorDetail);
+        this.dataSource.paginator=this.paginator
+        
       },
       error => {
         this.isLoading = false;

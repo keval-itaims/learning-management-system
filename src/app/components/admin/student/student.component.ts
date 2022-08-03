@@ -8,6 +8,7 @@ import { StudentService } from 'src/app/services/student.service';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class StudentComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator!:MatPaginator
   studentDetail:User[] = []
   isLoading:boolean = true;
 
@@ -32,7 +34,9 @@ export class StudentComponent implements OnInit {
         this.studentDetail = data.filter((item)=>{
           return item.role === "student";
         })
+        
         this.dataSource = new MatTableDataSource(this.studentDetail);
+        this.dataSource.paginator=this.paginator
       },
       error => {
         this.isLoading = false;
