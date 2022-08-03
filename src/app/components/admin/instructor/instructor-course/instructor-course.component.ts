@@ -77,7 +77,7 @@ export class InstructorCourseComponent implements OnInit {
    }
    onDeleteInstrcutor() {
     this.confirmDialogService.openConfirmDialog({
-      title: 'Delete Course',
+      title: 'Delete Instructor',
       message: 'Are you sure?',
       confirmText: 'Delete',
       cancleText: 'Cancle'
