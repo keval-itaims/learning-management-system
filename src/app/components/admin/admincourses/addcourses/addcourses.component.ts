@@ -14,7 +14,7 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./addcourses.component.css']
 })
 export class AddcoursesComponent implements OnInit {
-
+ 
   addCourseForm : any
   isLoading:boolean = true;
   courseImage!: File
@@ -42,7 +42,11 @@ export class AddcoursesComponent implements OnInit {
   private getInstructor(){
     this.instructorService.getInstructorDetails().subscribe(
       data =>{
-        this.instructorDetail = data;
+        this.isLoading=false
+        this.instructorDetail = data.filter((item:User)=>
+        {
+          return item.status==true;
+        });
         this.isLoading = false;
       },
       error =>{
