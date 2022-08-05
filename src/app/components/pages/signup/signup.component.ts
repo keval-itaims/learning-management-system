@@ -80,8 +80,9 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.regForm.invalid) return;
-    this.isLoading = true;
     this.user = this.regForm.value;
+    if(this.match_password_error) return;
+    this.isLoading=true
     this.signupService
       .otpGeneration({
         emailId: this.user.emailId,
@@ -91,6 +92,7 @@ export class SignupComponent implements OnInit {
       .subscribe(
         (otp) => {
           if (otp === null) {
+      
             this.emailError = true;
             this.isLoading = false;
             return;
@@ -99,6 +101,7 @@ export class SignupComponent implements OnInit {
           this.otp = otp;
           this.isLoading = false;
           this.emailError = false;
+          
           this.showModal = !this.showModal;
         },
         (error) => {
